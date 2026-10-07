@@ -1,26 +1,171 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* DANDELA HOUSE — charte claire */
+:root,
+[data-theme="light"] {
+  --background-color: #f8f2e8;
+  --font-color: #182d25;
+  --font-reverse-color: #f8f2e8;
+  --card-color: #fffcf7;
+  --card-border: #e8dfd0;
+
+  --primary: #8b3045;
+  --primary-dark: #6f2436;
+  --primary-contrast: #ffffff;
+  --primary-shadow: rgba(139, 48, 69, 0.22);
+
+  --secondary: #182d25;
+  --secondary-light: #2a4538;
+  --secondary-contrast: #f8f2e8;
+
+  --accent-green: #a8c66c;
+  --accent-champagne: #bda77c;
+
+  --logo-bordeaux: #8b3045;
+  --logo-badge-bg: #f8f2e8;
+
+  --grey-hyper-light: #efe6d8;
+  --grey-light: #bda77c;
+  --grey: #5c7268;
+  --grey-dark: #2a4538;
+  --grey-title: #3d5548;
+
+  --success: #6b8f4e;
+  --error: #b54760;
+  --warning: #bda77c;
+
+  --hero-overlay: rgba(24, 45, 37, 0.62);
+  --header-blur: rgba(248, 242, 232, 0.88);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="dark"] {
+  --background-color: #0d1c16;
+  --font-color: #f8f2e8;
+  --font-reverse-color: #182d25;
+  --card-color: #1a3026;
+  --card-border: #2a4538;
+
+  --primary: #b54760;
+  --primary-dark: #8b3045;
+  --primary-contrast: #ffffff;
+  --primary-shadow: rgba(181, 71, 96, 0.28);
+
+  --secondary: #f8f2e8;
+  --secondary-light: #fffcf7;
+  --secondary-contrast: #0d1c16;
+
+  --accent-green: #a8c66c;
+  --accent-champagne: #bda77c;
+
+  --logo-bordeaux: #8b3045;
+  --logo-badge-bg: #f8f2e8;
+
+  --grey-hyper-light: #1a3026;
+  --grey-light: #2a4538;
+  --grey: #bda77c;
+  --grey-dark: #efe6d8;
+  --grey-title: #c9dcc0;
+
+  --hero-overlay: rgba(13, 28, 22, 0.72);
+  --header-blur: rgba(13, 28, 22, 0.9);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  [data-theme="system"] {
+    --background-color: #0d1c16;
+    --font-color: #f8f2e8;
+    --font-reverse-color: #182d25;
+    --card-color: #1a3026;
+    --card-border: #2a4538;
+
+    --primary: #b54760;
+    --primary-dark: #8b3045;
+    --primary-contrast: #ffffff;
+    --primary-shadow: rgba(181, 71, 96, 0.28);
+
+    --secondary: #f8f2e8;
+    --secondary-light: #fffcf7;
+    --secondary-contrast: #0d1c16;
+
+    --accent-green: #a8c66c;
+    --accent-champagne: #bda77c;
+
+    --logo-bordeaux: #8b3045;
+    --logo-badge-bg: #f8f2e8;
+
+    --grey-hyper-light: #1a3026;
+    --grey-light: #2a4538;
+    --grey: #bda77c;
+    --grey-dark: #efe6d8;
+    --grey-title: #c9dcc0;
+
+    --hero-overlay: rgba(13, 28, 22, 0.72);
+    --header-blur: rgba(13, 28, 22, 0.9);
   }
 }
 
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] {
+    --background-color: #f8f2e8;
+    --font-color: #182d25;
+    --font-reverse-color: #f8f2e8;
+    --card-color: #fffcf7;
+    --card-border: #e8dfd0;
+
+    --primary: #8b3045;
+    --primary-dark: #6f2436;
+    --primary-contrast: #ffffff;
+    --primary-shadow: rgba(139, 48, 69, 0.22);
+
+    --secondary: #182d25;
+    --secondary-light: #2a4538;
+    --secondary-contrast: #f8f2e8;
+
+    --accent-green: #a8c66c;
+    --accent-champagne: #bda77c;
+
+    --logo-bordeaux: #8b3045;
+    --logo-badge-bg: #f8f2e8;
+
+    --grey-hyper-light: #efe6d8;
+    --grey-light: #bda77c;
+    --grey: #5c7268;
+    --grey-dark: #2a4538;
+    --grey-title: #3d5548;
+
+    --hero-overlay: rgba(24, 45, 37, 0.62);
+    --header-blur: rgba(248, 242, 232, 0.88);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background-color);
+  --color-foreground: var(--font-color);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-card: var(--card-color);
+  --color-accent-green: var(--accent-green);
+  --color-accent-champagne: var(--accent-champagne);
+  --font-sans: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--background-color);
+  color: var(--font-color);
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--primary-shadow);
+  color: var(--font-color);
+}
+
+.section-anchor {
+  scroll-margin-top: 88px;
 }

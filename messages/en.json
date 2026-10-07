@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "title": "DANDELA House — Guest house in Saurimo (Sapu)",
+    "description": "Five-room guest house with reception, garage, and security in Sapu, Angola."
+  },
+  "metaRooms": {
+    "title": "Rooms and rates — DANDELA House",
+    "description": "Explore DANDELA House's five rooms: kitchenette, TV, private bathroom, and housekeeping three times a week."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "The house",
+    "amenities": "Services",
+    "gallery": "Gallery",
+    "rooms": "Rooms and rates",
+    "contact": "Contact",
+    "contactCta": "Get in touch"
+  },
+  "hero": {
+    "badge": "Guest house · Sapu, Angola",
+    "title": "DANDELA House — your stay in Saurimo",
+    "subtitle": "Five upstairs rooms, ground-floor reception, terrace with a treadmill, garage for two cars, and security staff at the gate.",
+    "ctaPrimary": "View rooms",
+    "ctaSecondary": "Explore the house",
+    "cardPlace": "Sapu · Saurimo",
+    "cardStat1Value": "5",
+    "cardStat1Label": "Rooms",
+    "cardStat2Value": "8am–5pm",
+    "cardStat2Label": "Reception",
+    "cardStat3Value": "3×",
+    "cardStat3Label": "Housekeeping / wk",
+    "cardLine": "Private rooms · terrace · garage",
+    "globeHint": "Africa · Angola",
+    "pinLuanda": "Luanda",
+    "pinSapu": "Sapu",
+    "cityChambre1": "Sapu · Saurimo",
+    "cityChambre2": "City 2",
+    "cityChambre3": "City 3",
+    "cityChambre4": "City 4",
+    "cityChambre5": "City 5"
+  },
+  "about": {
+    "title": "A guest house built around you",
+    "lead": "In the heart of Sapu (Saurimo), DANDELA House blends privacy, modern comfort, and a secure setting.",
+    "p1": "Five rooms on the upper floor, each with a kitchenette, fridge, comfortable bed, TV, and a private bathroom with shower and toilet. Upstairs you will also find a lounge where drinks are available.",
+    "p2": "On the ground floor, reception is open from 8 a.m. to 5 p.m. Outside, a spacious terrace with a treadmill and an enclosed garage for two vehicles. Gate security and CCTV add peace of mind.",
+    "stat1Label": "Rooms",
+    "stat1Value": "5",
+    "stat2Label": "Reception",
+    "stat2Value": "8am–5pm",
+    "stat3Label": "Housekeeping",
+    "stat3Value": "3×/wk"
+  },
+  "amenities": {
+    "title": "Services and facilities",
+    "subtitle": "Everything you need for a calm stay—from your room to the outdoors.",
+    "items": {
+      "rooms": { "title": "5 private rooms", "desc": "Kitchenette, fridge, TV, and full bathroom in every room." },
+      "reception": { "title": "Reception", "desc": "On-site desk from 8 a.m. to 5 p.m. daily." },
+      "security": { "title": "Security", "desc": "Gate guards and CCTV across the property." },
+      "garage": { "title": "Garage and terrace", "desc": "Garage for 2 cars and terrace with treadmill." },
+      "lounge": { "title": "Lounge", "desc": "Shared upstairs space with drinks for purchase." },
+      "housekeeping": { "title": "Housekeeping", "desc": "Cleaning service three times per week." }
+    }
+  },
+  "homeRooms": {
+    "title": "The rooms",
+    "subtitle": "Each room's main view. The other photos are in the gallery.",
+    "kicker": "Room",
+    "lead": "An upstairs room, with a dining corner, a bed, and air conditioning.",
+    "cta": "View details"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "More views of K. Kubango."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Online booking is coming soon. For now, reach us by message or social media.",
+    "email": "contact@dandela-house.ao",
+    "phone": "+244 923 000 000",
+    "address": "Sapu neighborhood, Saurimo, Lunda Sul Province, Angola",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formMessage": "Message",
+    "formSubmit": "Send message",
+    "formNote": "The form will be wired up soon—please use the contacts below in the meantime."
+  },
+  "footer": {
+    "tagline": "DANDELA House — guest house in Sapu, Saurimo.",
+    "rights": "All rights reserved.",
+    "socialTitle": "Social media"
+  },
+  "roomsPage": {
+    "title": "Rooms and rates",
+    "intro": "Five rooms on the upper floor with the same essential comfort. Final rates and photos will be published soon.",
+    "priceLabel": "Indicative rate",
+    "priceSoon": "TBC",
+    "priceNote": "Final prices and availability will be confirmed at reception.",
+    "featuresTitle": "Included in every room",
+    "viewAll": "View details",
+    "roomNames": {
+      "chambre-1": "K. Kubango",
+      "chambre-2": "Sapu Room II",
+      "chambre-3": "Lunda Room I",
+      "chambre-4": "Lunda Room II",
+      "chambre-5": "DANDELA Room"
+    },
+    "features": {
+      "kitchenette": "Equipped kitchenette",
+      "fridge": "Fridge",
+      "bed": "Comfortable bed",
+      "tv": "Television",
+      "bathroom": "Bathroom (shower + toilet)",
+      "housekeeping": "Housekeeping 3× weekly"
+    },
+    "buildingTitle": "Building layout",
+    "building": {
+      "upstairs": "Upper floor: 5 rooms + lounge (drinks available).",
+      "downstairs": "Ground floor: reception (8 a.m.–5 p.m.).",
+      "outside": "Outside: terrace with treadmill, garage (2 spaces), gated entrance with guards."
+    }
+  },
+  "languages": {
+    "pt": "Portuguese",
+    "fr": "French",
+    "en": "English"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}

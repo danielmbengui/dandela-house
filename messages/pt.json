@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "title": "DANDELA House — Guest house em Saurimo (Sapu)",
+    "description": "Guest house com 5 quartos, recepção, garagem e segurança 24h. Conforto e tranquilidade em Sapu, Angola."
+  },
+  "metaRooms": {
+    "title": "Quartos e tarifas — DANDELA House",
+    "description": "Descubra os 5 quartos da DANDELA House: kitchenette, TV, casa de banho privativa e limpeza três vezes por semana."
+  },
+  "nav": {
+    "home": "Início",
+    "about": "A casa",
+    "amenities": "Serviços",
+    "gallery": "Galeria",
+    "rooms": "Quartos e tarifas",
+    "contact": "Contacto",
+    "contactCta": "Contactar"
+  },
+  "hero": {
+    "badge": "Guest house · Sapu, Angola",
+    "title": "DANDELA House — o seu refúgio em Saurimo",
+    "subtitle": "Cinco quartos no piso superior, recepção acolhedora no rés-do-chão, terraço com tapete de corrida, garagem para duas viaturas e equipa de segurança à entrada.",
+    "ctaPrimary": "Ver quartos",
+    "ctaSecondary": "Conhecer a casa",
+    "cardPlace": "Sapu · Saurimo",
+    "cardStat1Value": "5",
+    "cardStat1Label": "Quartos",
+    "cardStat2Value": "08h–17h",
+    "cardStat2Label": "Recepção",
+    "cardStat3Value": "3×",
+    "cardStat3Label": "Limpeza / sem.",
+    "cardLine": "Quartos privados · terraço · garagem",
+    "globeHint": "África · Angola",
+    "pinLuanda": "Luanda",
+    "pinSapu": "Sapu",
+    "cityChambre1": "Sapu · Saurimo",
+    "cityChambre2": "Cidade 2",
+    "cityChambre3": "Cidade 3",
+    "cityChambre4": "Cidade 4",
+    "cityChambre5": "Cidade 5"
+  },
+  "about": {
+    "title": "Uma guest house pensada para si",
+    "lead": "No coração de Sapu (Saurimo), a DANDELA House combina privacidade, conforto moderno e um ambiente seguro.",
+    "p1": "Cinco quartos no andar superior, cada um com kitchenette, frigorífico, cama confortável, televisão e casa de banho com duche e WC. Há ainda uma sala de descanso no piso de cima, com possibilidade de comprar bebidas.",
+    "p2": "No rés-do-chão, a recepção está aberta das 08h às 17h. Ao sair, encontra uma ampla terraço com tapete de corrida e um garagem fechado para duas viaturas. Guardas na entrada e videovigilância reforçam a sua tranquilidade.",
+    "stat1Label": "Quartos",
+    "stat1Value": "5",
+    "stat2Label": "Recepção",
+    "stat2Value": "08h–17h",
+    "stat3Label": "Limpeza",
+    "stat3Value": "3×/sem"
+  },
+  "amenities": {
+    "title": "Serviços e equipamentos",
+    "subtitle": "Tudo o que precisa para uma estadia serena, do quarto ao exterior.",
+    "items": {
+      "rooms": { "title": "5 quartos privados", "desc": "Kitchenette, frigorífico, TV e casa de banho completa em cada quarto." },
+      "reception": { "title": "Recepção", "desc": "Atendimento presencial das 08h às 17h, todos os dias." },
+      "security": { "title": "Segurança", "desc": "Guardas à entrada e câmaras de videovigilância no recinto." },
+      "garage": { "title": "Garagem e terraço", "desc": "Garagem para 2 carros e terraço com tapete de corrida." },
+      "lounge": { "title": "Sala de descanso", "desc": "Zona comum no piso superior com venda de bebidas." },
+      "housekeeping": { "title": "Limpeza", "desc": "Serviço de camareira três vezes por semana." }
+    }
+  },
+  "homeRooms": {
+    "title": "Os quartos",
+    "subtitle": "A apresentação de cada quarto. As outras fotos estão na galeria.",
+    "kicker": "Quarto",
+    "lead": "Quarto no piso superior, com zona de refeição, cama e ar condicionado.",
+    "cta": "Ver detalhes"
+  },
+  "gallery": {
+    "title": "Galeria",
+    "subtitle": "As outras vistas de K. Kubango."
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Reservas online em breve. Por agora, fale connosco por mensagem ou redes sociais.",
+    "email": "contacto@dandela-house.ao",
+    "phone": "+244 923 000 000",
+    "address": "Bairro Sapu, Saurimo, Província de Lunda Sul, Angola",
+    "formName": "Nome",
+    "formEmail": "Email",
+    "formMessage": "Mensagem",
+    "formSubmit": "Enviar mensagem",
+    "formNote": "O formulário será ligado em breve — use os contactos abaixo entretanto."
+  },
+  "footer": {
+    "tagline": "DANDELA House — guest house em Sapu, Saurimo.",
+    "rights": "Todos os direitos reservados.",
+    "socialTitle": "Redes sociais"
+  },
+  "roomsPage": {
+    "title": "Quartos e tarifas",
+    "intro": "Cinco quartos no piso superior, com o mesmo conforto essencial. Tarifas e fotos definitivas serão publicadas em breve.",
+    "priceLabel": "Tarifa indicativa",
+    "priceSoon": "A definir",
+    "priceNote": "Preços finais e disponibilidade serão confirmados pela recepção.",
+    "featuresTitle": "Incluído em cada quarto",
+    "viewAll": "Ver detalhes",
+    "roomNames": {
+      "chambre-1": "K. Kubango",
+      "chambre-2": "Quarto Sapu II",
+      "chambre-3": "Quarto Lunda I",
+      "chambre-4": "Quarto Lunda II",
+      "chambre-5": "Quarto DANDELA"
+    },
+    "features": {
+      "kitchenette": "Kitchenette equipada",
+      "fridge": "Frigorífico",
+      "bed": "Cama confortável",
+      "tv": "Televisão",
+      "bathroom": "Casa de banho (duche + WC)",
+      "housekeeping": "Limpeza 3× por semana"
+    },
+    "buildingTitle": "Organização do edifício",
+    "building": {
+      "upstairs": "Piso superior: 5 quartos + sala de descanso (bebidas disponíveis).",
+      "downstairs": "Rés-do-chão: recepção (08h–17h).",
+      "outside": "Exterior: terraço com tapete de corrida, garagem (2 lugares), entrada com guardas."
+    }
+  },
+  "languages": {
+    "pt": "Português",
+    "fr": "Francês",
+    "en": "Inglês"
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  }
+}
