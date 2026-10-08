@@ -64,12 +64,12 @@ export const presentationFr: PresentationConfig = {
   logoMark: "images/logo-mark-dark.png",
   logoFull: "images/logo-full-dark.png",
   music: {
-    src: "remotion/audio/dandela-lounge.mp3",
+    src: "remotion/audio/dandela-afrobeat.mp3",
     isPlaceholder: false,
     note:
-      "Thinking About You — Arulo (Mixkit Free License). Voir public/remotion/audio/LICENSE.md.",
-    volume: 0.72,
-    fadeInSeconds: 1.2,
+      "Africa — Arulo (Mixkit Free License, afrobeat). Voir public/remotion/audio/LICENSE.md.",
+    volume: 0.78,
+    fadeInSeconds: 0.8,
     fadeOutSeconds: 2.5,
   },
   scenes: {

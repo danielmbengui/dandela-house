@@ -32,7 +32,7 @@ Les fichiers médias sont servis depuis **`public/`** (voir `remotion.config.ts`
 
 ## Musique
 
-Piste actuelle : `public/remotion/audio/dandela-lounge.mp3` (Mixkit — détails dans `public/remotion/audio/LICENSE.md`). Pour changer de morceau, éditer `music.src` dans `presentation.fr.ts`.
+Piste actuelle : `public/remotion/audio/dandela-afrobeat.mp3` (Mixkit — détails dans `public/remotion/audio/LICENSE.md`). Pour changer de morceau, éditer `music.src` dans `presentation.fr.ts`.
 
 ## Spécifications
 
