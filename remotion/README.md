@@ -32,7 +32,7 @@ Les fichiers médias sont servis depuis **`public/`** (voir `remotion.config.ts`
 
 ## Musique
 
-Remplacer `public/remotion/audio/dandela-lounge-placeholder.mp3` par votre piste afro-lounge, puis mettre à jour `music.src` et `music.isPlaceholder` dans la config.
+Piste actuelle : `public/remotion/audio/dandela-lounge.mp3` (Mixkit — détails dans `public/remotion/audio/LICENSE.md`). Pour changer de morceau, éditer `music.src` dans `presentation.fr.ts`.
 
 ## Spécifications
 

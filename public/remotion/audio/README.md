@@ -1,8 +1,6 @@
 # Musique — vidéo Remotion
 
-Le fichier `dandela-lounge-placeholder.mp3` est un **silence de 45 s** pour permettre le rendu sans piste finale.
+- **`dandela-lounge.mp3`** — piste afro-lounge instrumentale (Mixkit, voir `LICENSE.md`).
+- **`dandela-lounge-placeholder.mp3`** — ancien silence de test (peut être supprimé du dépôt si inutile).
 
-Remplacez-le par une piste **afro-lounge instrumentale** (licence compatible), puis mettez à jour :
-
-- `remotion/dandela/config/presentation.fr.ts` → `music.src`
-- `music.isPlaceholder: false`
+Configuration : `remotion/dandela/config/presentation.fr.ts` → bloc `music`.
