@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "remotion:studio": "remotion studio",
+    "remotion:render": "remotion render DandelaPresentation-FR-9x16 out/remotion/dandela-fr-9x16.mp4 --codec=h264",
+    "remotion:render:16x9": "remotion render DandelaPresentation-FR-16x9 out/remotion/dandela-fr-16x9.mp4 --codec=h264",
+    "remotion:render:1x1": "remotion render DandelaPresentation-FR-1x1 out/remotion/dandela-fr-1x1.mp4 --codec=h264",
+    "remotion:render:all": "npm run remotion:render && npm run remotion:render:16x9 && npm run remotion:render:1x1"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -16,17 +21,24 @@
     "@mui/material-nextjs": "^9.4.0",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.1",
+    "@remotion/cli": "^4.0.534",
+    "@remotion/google-fonts": "^4.0.534",
     "framer-motion": "^14.0.0",
     "next": "16.3.8",
     "next-intl": "^4.14.9",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "three": "^0.186.1"
+    "remotion": "^4.0.534",
+    "three": "^0.186.1",
+    "zod": "4.5.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5.8.3"
   }
 }
