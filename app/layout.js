@@ -1,12 +1,21 @@
 import { headers } from "next/headers";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import ThemeInitScript from "@/components/providers/ThemeInitScript";
 import "./globals.css";
 
-const display = Plus_Jakarta_Sans({
+const serif = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-display",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const sans = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -23,7 +32,7 @@ export default async function RootLayout({ children }) {
       suppressHydrationWarning
       data-scroll-behavior="smooth"
     >
-      <body className={`${display.variable} antialiased`}>
+      <body className={`${serif.variable} ${sans.variable} antialiased`}>
         <ThemeInitScript />
         {children}
       </body>

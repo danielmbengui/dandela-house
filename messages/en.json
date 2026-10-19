@@ -1,124 +1,274 @@
 {
   "meta": {
-    "title": "DANDELA House — Guest house in Saurimo (Sapu)",
-    "description": "Five-room guest house with reception, garage, and security in Sapu, Angola."
+    "title": "DANDELA House — Guest house in Saurimo (Sapu), Angola",
+    "description": "Five private rooms with kitchenette and air conditioning, reception, secure garage and 24/7 guards. Book your room in Sapu, Saurimo, in seconds."
   },
   "metaRooms": {
-    "title": "Rooms and rates — DANDELA House",
-    "description": "Explore DANDELA House's five rooms: kitchenette, TV, private bathroom, and housekeeping three times a week."
+    "title": "Rooms & rates — DANDELA House",
+    "description": "Discover the 5 rooms at DANDELA House: kitchenette, TV, private bathroom and housekeeping three times a week."
   },
   "nav": {
     "home": "Home",
     "about": "The house",
     "amenities": "Services",
     "gallery": "Gallery",
-    "rooms": "Rooms and rates",
+    "rooms": "Rooms",
     "contact": "Contact",
-    "contactCta": "Get in touch"
+    "contactCta": "Book now",
+    "roomsPage": "Rooms & rates",
+    "menu": "Menu",
+    "language": "Language",
+    "appearance": "Appearance",
+    "around": "Around the house",
+    "faq": "Questions"
   },
-  "hero": {
-    "badge": "Guest house · Sapu, Angola",
-    "title": "DANDELA House — your stay in Saurimo",
-    "subtitle": "Five upstairs rooms, ground-floor reception, terrace with a treadmill, garage for two cars, and security staff at the gate.",
-    "ctaPrimary": "View rooms",
-    "ctaSecondary": "Explore the house",
-    "cardPlace": "Sapu · Saurimo",
-    "cardStat1Value": "5",
-    "cardStat1Label": "Rooms",
-    "cardStat2Value": "8am–5pm",
-    "cardStat2Label": "Reception",
-    "cardStat3Value": "3×",
-    "cardStat3Label": "Housekeeping / wk",
-    "cardLine": "Private rooms · terrace · garage",
-    "globeHint": "Africa · Angola",
-    "pinLuanda": "Luanda",
-    "pinSapu": "Sapu",
-    "cityChambre1": "Sapu · Saurimo",
-    "cityChambre2": "City 2",
-    "cityChambre3": "City 3",
-    "cityChambre4": "City 4",
-    "cityChambre5": "City 5"
-  },
-  "about": {
-    "title": "A guest house built around you",
-    "lead": "In the heart of Sapu (Saurimo), DANDELA House blends privacy, modern comfort, and a secure setting.",
-    "p1": "Five rooms on the upper floor, each with a kitchenette, fridge, comfortable bed, TV, and a private bathroom with shower and toilet. Upstairs you will also find a lounge where drinks are available.",
-    "p2": "On the ground floor, reception is open from 8 a.m. to 5 p.m. Outside, a spacious terrace with a treadmill and an enclosed garage for two vehicles. Gate security and CCTV add peace of mind.",
-    "stat1Label": "Rooms",
-    "stat1Value": "5",
-    "stat2Label": "Reception",
-    "stat2Value": "8am–5pm",
-    "stat3Label": "Housekeeping",
-    "stat3Value": "3×/wk"
-  },
-  "amenities": {
-    "title": "Services and facilities",
-    "subtitle": "Everything you need for a calm stay—from your room to the outdoors.",
-    "items": {
-      "rooms": { "title": "5 private rooms", "desc": "Kitchenette, fridge, TV, and full bathroom in every room." },
-      "reception": { "title": "Reception", "desc": "On-site desk from 8 a.m. to 5 p.m. daily." },
-      "security": { "title": "Security", "desc": "Gate guards and CCTV across the property." },
-      "garage": { "title": "Garage and terrace", "desc": "Garage for 2 cars and terrace with treadmill." },
-      "lounge": { "title": "Lounge", "desc": "Shared upstairs space with drinks for purchase." },
-      "housekeeping": { "title": "Housekeeping", "desc": "Cleaning service three times per week." }
+  "home": {
+    "hero": {
+      "kicker": "Guest house · Sapu, Saurimo · Angola",
+      "titleA": "Sleep well.",
+      "titleB": "Live Saurimo.",
+      "subtitle": "Five quiet, air-conditioned private rooms in a guarded house at the heart of Sapu. Kitchenette, closed garage and on-site reception: arrive, drop your bags, breathe.",
+      "ctaBook": "Book on WhatsApp",
+      "ctaRooms": "Explore the rooms",
+      "from": "From",
+      "perNight": "/ night",
+      "scroll": "Scroll",
+      "stat1Value": "5",
+      "stat1Label": "private rooms",
+      "stat2Value": "8am–5pm",
+      "stat2Label": "on-site reception",
+      "stat3Value": "24/7",
+      "stat3Label": "guards & cameras",
+      "stat4Value": "2",
+      "stat4Label": "garage spaces",
+      "sceneLabel": "DANDELA House room key, in 3D",
+      "enter": "Step inside"
+    },
+    "booking": {
+      "title": "Express booking",
+      "subtitle": "Reply on WhatsApp within minutes.",
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "guests": "Guests",
+      "guestsValue": "{count, plural, one {# guest} other {# guests}}",
+      "room": "Room",
+      "anyRoom": "Any room",
+      "submit": "Check availability",
+      "message": "Hello DANDELA House, I would like to book {room} from {checkIn} to {checkOut} for {guests}. Is it available?",
+      "roomAny": "a room",
+      "roomNamed": "the {name} room",
+      "undated": "dates to be confirmed"
+    },
+    "marquee": {
+      "items": [
+        "Equipped kitchenette",
+        "Air conditioning",
+        "Secure garage",
+        "24/7 guards",
+        "Housekeeping 3× a week",
+        "Reception 8am–5pm",
+        "Terrace & treadmill",
+        "Upstairs lounge"
+      ]
+    },
+    "rooms": {
+      "kicker": "The rooms",
+      "title": "Five rooms, the same care in every detail",
+      "subtitle": "Each room is named after an Angolan city. All are upstairs, with kitchenette, private bathroom and air conditioning.",
+      "perNight": "/ night",
+      "soon": "Coming soon",
+      "soonName": "Room coming soon",
+      "book": "Book",
+      "details": "All rooms",
+      "doorAlt": "{name} room door sign",
+      "features": {
+        "bed": "Comfortable bed",
+        "kitchenette": "Kitchenette",
+        "ac": "Air conditioning",
+        "bathroom": "Private shower + WC",
+        "tv": "Television",
+        "fridge": "Fridge",
+        "wifi": "Wi‑Fi"
+      }
+    },
+    "video": {
+      "kicker": "Guided tour",
+      "title": "Two minutes inside the house",
+      "subtitle": "Our team walks you through the rooms, reception, terrace and garage. The video is in Portuguese, with subtitles.",
+      "point1": "Upstairs rooms, lounge with drinks",
+      "point2": "Ground-floor reception, open 8am–5pm",
+      "point3": "Terrace, closed garage and guards at the gate",
+      "unmute": "Unmute",
+      "mute": "Mute",
+      "play": "Play video",
+      "pause": "Pause",
+      "caption": "Presentation video · DANDELA House"
+    },
+    "experience": {
+      "kicker": "The experience",
+      "title": "Everything you need, nothing you don't",
+      "subtitle": "A house designed for short and extended stays alike: business travellers, families passing through, missions in Saurimo.",
+      "items": {
+        "garage": {
+          "title": "Closed garage",
+          "desc": "Two spaces inside the property, guarded gate."
+        },
+        "security": {
+          "title": "24/7 security",
+          "desc": "Guards at the entrance and CCTV cameras."
+        },
+        "reception": {
+          "title": "On-site reception",
+          "desc": "Open every day 8am–5pm, late arrival on request."
+        },
+        "terrace": {
+          "title": "Terrace & fitness",
+          "desc": "Large terrace with a treadmill to keep your routine."
+        },
+        "lounge": {
+          "title": "Lounge",
+          "desc": "Shared upstairs space with cold drinks available."
+        },
+        "housekeeping": {
+          "title": "Housekeeping included",
+          "desc": "Rooms cleaned three times a week."
+        }
+      }
+    },
+    "gallery": {
+      "kicker": "Gallery",
+      "title": "The house in pictures",
+      "subtitle": "Real photos, no heavy retouching: what you see is what you get.",
+      "labels": {
+        "facade": "Facade",
+        "courtyard": "Courtyard & garage",
+        "room": "{name} room",
+        "door": "{name} room"
+      },
+      "close": "Close",
+      "open": "Enlarge photo"
+    },
+    "location": {
+      "kicker": "Where to find us",
+      "title": "Sapu, Saurimo — Lunda Sul",
+      "text": "In a quiet residential neighbourhood, minutes from Saurimo's centre. Ideal for work assignments, families passing through and extended stays.",
+      "address": "Sapu neighbourhood, Saurimo, Lunda Sul Province, Angola",
+      "mapsCta": "Open in Maps",
+      "points": {
+        "airport": {
+          "label": "Saurimo Airport",
+          "value": "≈ 15 min"
+        },
+        "center": {
+          "label": "City centre",
+          "value": "≈ 10 min"
+        },
+        "market": {
+          "label": "Market & shops",
+          "value": "≈ 5 min"
+        },
+        "hospital": {
+          "label": "Provincial hospital",
+          "value": "≈ 12 min"
+        }
+      },
+      "pointsNote": "Approximate driving times."
+    },
+    "reviews": {
+      "kicker": "Guests say",
+      "title": "Stays that leave a mark",
+      "items": [
+        {
+          "name": "Adriana M.",
+          "origin": "Luanda · business trip",
+          "text": "Spotless room, quiet air conditioning and a closed garage for the rental car. Exactly what I needed for a week-long assignment."
+        },
+        {
+          "name": "Jean-Baptiste K.",
+          "origin": "Kinshasa · with family",
+          "text": "Warm welcome at reception, and the kitchenette changed everything with the kids. Quiet neighbourhood, we slept really well."
+        },
+        {
+          "name": "Sofia R.",
+          "origin": "Lisbon · extended stay",
+          "text": "Three weeks on site. Regular housekeeping, reassuring security and a terrace that's perfect for morning coffee."
+        }
+      ]
+    },
+    "cta": {
+      "kicker": "Ready to come?",
+      "title": "Book your room in 30 seconds",
+      "subtitle": "Message us on WhatsApp, call reception or send an email. We confirm availability and rates quickly.",
+      "whatsapp": "Message on WhatsApp",
+      "call": "Call",
+      "email": "Send an email",
+      "hours": "Reception open every day, 8am–5pm"
+    },
+    "faq": {
+      "kicker": "Before you arrive",
+      "title": "We'll answer.",
+      "items": [
+        {
+          "q": "How do I book a room?",
+          "a": "Message us on WhatsApp, call reception or send an email. Share your dates and the number of guests: we confirm availability and the rate."
+        },
+        {
+          "q": "What are the reception hours?",
+          "a": "Reception is open every day from 8am to 5pm. A later arrival is possible on request."
+        },
+        {
+          "q": "Can I park my car?",
+          "a": "Yes. The house has a closed two-space garage inside the property, with a guarded gate."
+        },
+        {
+          "q": "What does the room include?",
+          "a": "Every room has a kitchenette, air conditioning, a comfortable bed and a private bathroom with shower and WC. Housekeeping comes three times a week."
+        },
+        {
+          "q": "Are the rates shown final?",
+          "a": "They are indicative. The final price and availability are confirmed when you book."
+        }
+      ]
     }
   },
-  "homeRooms": {
-    "title": "The rooms",
-    "subtitle": "Each room's main view. The other photos are in the gallery.",
-    "kicker": "Room",
-    "lead": "An upstairs room, with a dining corner, a bed, and air conditioning.",
-    "cta": "View details"
-  },
-  "gallery": {
-    "title": "Gallery",
-    "subtitle": "More views of K. Kubango."
-  },
-  "contact": {
-    "title": "Contact",
-    "subtitle": "Online booking is coming soon. For now, reach us by message or social media.",
-    "email": "contact@dandela-house.ao",
-    "phone": "+244 923 000 000",
-    "address": "Sapu neighborhood, Saurimo, Lunda Sul Province, Angola",
-    "formName": "Name",
-    "formEmail": "Email",
-    "formMessage": "Message",
-    "formSubmit": "Send message",
-    "formNote": "The form will be wired up soon—please use the contacts below in the meantime."
-  },
   "footer": {
-    "tagline": "DANDELA House — guest house in Sapu, Saurimo.",
+    "tagline": "Guest house in Sapu, Saurimo — Lunda Sul, Angola.",
     "rights": "All rights reserved.",
-    "socialTitle": "Social media"
+    "socialTitle": "Follow us",
+    "exploreTitle": "Explore",
+    "contactTitle": "Contact",
+    "statement": "The stay starts here",
+    "backToTop": "Back to top"
   },
   "roomsPage": {
-    "title": "Rooms and rates",
-    "intro": "Five rooms on the upper floor with the same essential comfort. Final rates and photos will be published soon.",
+    "title": "Rooms & rates",
+    "intro": "Five upstairs rooms with the same essential comfort. Rates shown are indicative and confirmed at booking.",
     "priceLabel": "Indicative rate",
-    "priceSoon": "TBC",
+    "priceSoon": "To be announced",
+    "perNight": "/ night",
     "priceNote": "Final prices and availability will be confirmed at reception.",
     "featuresTitle": "Included in every room",
     "viewAll": "View details",
     "roomNames": {
       "chambre-1": "K. Kubango",
-      "chambre-2": "Sapu Room II",
-      "chambre-3": "Lunda Room I",
-      "chambre-4": "Lunda Room II",
-      "chambre-5": "DANDELA Room"
+      "chambre-2": "Malange",
+      "chambre-3": "Maquela",
+      "chambre-4": "Room 4",
+      "chambre-5": "Room 5"
     },
     "features": {
       "kitchenette": "Equipped kitchenette",
       "fridge": "Fridge",
       "bed": "Comfortable bed",
       "tv": "Television",
-      "bathroom": "Bathroom (shower + toilet)",
-      "housekeeping": "Housekeeping 3× weekly"
+      "bathroom": "Bathroom (shower + WC)",
+      "housekeeping": "Housekeeping 3× a week"
     },
     "buildingTitle": "Building layout",
     "building": {
-      "upstairs": "Upper floor: 5 rooms + lounge (drinks available).",
-      "downstairs": "Ground floor: reception (8 a.m.–5 p.m.).",
-      "outside": "Outside: terrace with treadmill, garage (2 spaces), gated entrance with guards."
+      "upstairs": "Upstairs: 5 rooms + lounge (drinks available).",
+      "downstairs": "Ground floor: reception (8am–5pm).",
+      "outside": "Outside: terrace with treadmill, garage (2 spaces), guarded entrance."
     }
   },
   "languages": {

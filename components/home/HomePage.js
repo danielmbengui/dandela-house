@@ -1,19 +1,27 @@
 import HeroSection from "./HeroSection";
-import AboutSection from "./AboutSection";
-import AmenitiesSection from "./AmenitiesSection";
+import MarqueeStrip from "./MarqueeStrip";
 import RoomsSection from "./RoomsSection";
+import VideoTourSection from "./VideoTourSection";
+import ExperienceSection from "./ExperienceSection";
 import GallerySection from "./GallerySection";
-import ContactSection from "./ContactSection";
+import LocationSection from "./LocationSection";
+import ReviewsSection from "./ReviewsSection";
+import FaqSection from "./FaqSection";
+import BookingCtaSection from "./BookingCtaSection";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <AboutSection />
-      <AmenitiesSection />
+      <MarqueeStrip />
       <RoomsSection />
+      <VideoTourSection />
+      <ExperienceSection />
       <GallerySection />
-      <ContactSection />
+      <LocationSection />
+      <ReviewsSection />
+      <FaqSection />
+      <BookingCtaSection />
     </>
   );
 }

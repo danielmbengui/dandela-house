@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "DANDELA House — Guest house à Saurimo (Sapu)",
-    "description": "Guest house de 5 chambres, réception, garage et sécurité. Confort et sérénité à Sapu, Angola."
+    "title": "DANDELA House — Guest house à Saurimo (Sapu), Angola",
+    "description": "Cinq chambres privées avec kitchenette et climatisation, réception, garage sécurisé et gardiennage. Réservez votre chambre à Sapu, Saurimo, en quelques secondes."
   },
   "metaRooms": {
     "title": "Chambres et tarifs — DANDELA House",
@@ -12,99 +12,249 @@
     "about": "La maison",
     "amenities": "Services",
     "gallery": "Galerie",
-    "rooms": "Chambres et tarifs",
+    "rooms": "Chambres",
     "contact": "Contact",
-    "contactCta": "Nous contacter"
+    "contactCta": "Réserver",
+    "roomsPage": "Chambres et tarifs",
+    "menu": "Menu",
+    "language": "Langue",
+    "appearance": "Apparence",
+    "around": "Et autour",
+    "faq": "Questions"
   },
-  "hero": {
-    "badge": "Guest house · Sapu, Angola",
-    "title": "DANDELA House — votre refuge à Saurimo",
-    "subtitle": "Cinq chambres à l'étage, réception au rez-de-chaussée, terrasse avec tapis de course, garage pour deux voitures et agents de sécurité à l'entrée.",
-    "ctaPrimary": "Voir les chambres",
-    "ctaSecondary": "Découvrir la maison",
-    "cardPlace": "Sapu · Saurimo",
-    "cardStat1Value": "5",
-    "cardStat1Label": "Chambres",
-    "cardStat2Value": "08h–17h",
-    "cardStat2Label": "Réception",
-    "cardStat3Value": "3×",
-    "cardStat3Label": "Ménage / sem.",
-    "cardLine": "Chambres privées · terrasse · garage",
-    "globeHint": "Afrique · Angola",
-    "pinLuanda": "Luanda",
-    "pinSapu": "Sapu",
-    "cityChambre1": "Sapu · Saurimo",
-    "cityChambre2": "Ville 2",
-    "cityChambre3": "Ville 3",
-    "cityChambre4": "Ville 4",
-    "cityChambre5": "Ville 5"
-  },
-  "about": {
-    "title": "Une guest house pensée pour vous",
-    "lead": "Au cœur de Sapu (Saurimo), DANDELA House allie intimité, confort moderne et environnement sécurisé.",
-    "p1": "Cinq chambres à l'étage, chacune avec kitchenette, réfrigérateur, lit confortable, télévision et salle de bain avec douche et WC. Une salle de repos à l'étage permet aussi de se procurer des boissons.",
-    "p2": "Au rez-de-chaussée, la réception est ouverte de 08h à 17h. En sortant, une grande terrasse avec tapis de course et un garage fermé pour deux voitures. Des gardes à l'entrée et des caméras renforcent votre tranquillité.",
-    "stat1Label": "Chambres",
-    "stat1Value": "5",
-    "stat2Label": "Réception",
-    "stat2Value": "08h–17h",
-    "stat3Label": "Ménage",
-    "stat3Value": "3×/sem"
-  },
-  "amenities": {
-    "title": "Services et équipements",
-    "subtitle": "Tout le nécessaire pour un séjour serein, de la chambre à l'extérieur.",
-    "items": {
-      "rooms": { "title": "5 chambres privées", "desc": "Kitchenette, frigo, TV et salle de bain complète dans chaque chambre." },
-      "reception": { "title": "Réception", "desc": "Accueil sur place de 08h à 17h, tous les jours." },
-      "security": { "title": "Sécurité", "desc": "Gardes à l'entrée et caméras de vidéosurveillance." },
-      "garage": { "title": "Garage et terrasse", "desc": "Garage pour 2 voitures et terrasse avec tapis de course." },
-      "lounge": { "title": "Salle de repos", "desc": "Espace commun à l'étage avec vente de boissons." },
-      "housekeeping": { "title": "Ménage", "desc": "Femme de ménage trois fois par semaine." }
+  "home": {
+    "hero": {
+      "kicker": "Guest house · Sapu, Saurimo · Angola",
+      "titleA": "Dormez bien.",
+      "titleB": "Vivez Saurimo.",
+      "subtitle": "Cinq chambres privées, calmes et climatisées, dans une maison gardée au cœur de Sapu. Kitchenette, garage fermé et réception sur place : arrivez, posez vos valises, respirez.",
+      "ctaBook": "Réserver sur WhatsApp",
+      "ctaRooms": "Découvrir les chambres",
+      "from": "À partir de",
+      "perNight": "/ nuit",
+      "scroll": "Faire défiler",
+      "stat1Value": "5",
+      "stat1Label": "chambres privées",
+      "stat2Value": "08h–17h",
+      "stat2Label": "réception sur place",
+      "stat3Value": "24/7",
+      "stat3Label": "gardiennage & caméras",
+      "stat4Value": "2",
+      "stat4Label": "places de garage",
+      "sceneLabel": "Clé de chambre DANDELA House, en 3D",
+      "enter": "Entrer dans la maison"
+    },
+    "booking": {
+      "title": "Réservation express",
+      "subtitle": "Réponse sur WhatsApp en quelques minutes.",
+      "checkIn": "Arrivée",
+      "checkOut": "Départ",
+      "guests": "Voyageurs",
+      "guestsValue": "{count, plural, one {# voyageur} other {# voyageurs}}",
+      "room": "Chambre",
+      "anyRoom": "Peu importe",
+      "submit": "Demander la disponibilité",
+      "message": "Bonjour DANDELA House, je souhaite réserver {room} du {checkIn} au {checkOut} pour {guests}. Est-ce disponible ?",
+      "roomAny": "une chambre",
+      "roomNamed": "la chambre {name}",
+      "undated": "dates à préciser"
+    },
+    "marquee": {
+      "items": [
+        "Kitchenette équipée",
+        "Climatisation",
+        "Garage sécurisé",
+        "Gardiennage 24h/24",
+        "Ménage 3× par semaine",
+        "Réception 08h–17h",
+        "Terrasse & tapis de course",
+        "Salle de repos à l'étage"
+      ]
+    },
+    "rooms": {
+      "kicker": "Les chambres",
+      "title": "Cinq chambres, un même soin du détail",
+      "subtitle": "Chaque chambre porte le nom d'une ville d'Angola. Toutes sont à l'étage, avec kitchenette, salle de bain privée et climatisation.",
+      "perNight": "/ nuit",
+      "soon": "Bientôt",
+      "soonName": "Chambre à venir",
+      "book": "Réserver",
+      "details": "Toutes les chambres",
+      "doorAlt": "Plaque de la chambre {name}",
+      "features": {
+        "bed": "Lit confortable",
+        "kitchenette": "Kitchenette",
+        "ac": "Climatisation",
+        "bathroom": "Douche + WC privés",
+        "tv": "Télévision",
+        "fridge": "Réfrigérateur",
+        "wifi": "Wi‑Fi"
+      }
+    },
+    "video": {
+      "kicker": "Visite guidée",
+      "title": "Deux minutes à l'intérieur de la maison",
+      "subtitle": "Notre équipe vous fait visiter les chambres, la réception, la terrasse et le garage. La vidéo est en portugais, sous-titrée.",
+      "point1": "Chambres à l'étage, salle de repos avec boissons",
+      "point2": "Réception au rez-de-chaussée, ouverte de 08h à 17h",
+      "point3": "Terrasse, garage fermé et gardes à l'entrée",
+      "unmute": "Activer le son",
+      "mute": "Couper le son",
+      "play": "Lire la vidéo",
+      "pause": "Mettre en pause",
+      "caption": "Vidéo de présentation · DANDELA House"
+    },
+    "experience": {
+      "kicker": "L'expérience",
+      "title": "Tout ce qu'il faut, rien de superflu",
+      "subtitle": "Une maison pensée pour les séjours courts comme prolongés : voyageurs d'affaires, familles de passage, missions à Saurimo.",
+      "items": {
+        "garage": {
+          "title": "Garage fermé",
+          "desc": "Deux places à l'intérieur de la propriété, portail surveillé."
+        },
+        "security": {
+          "title": "Sécurité 24h/24",
+          "desc": "Gardes à l'entrée et caméras de vidéosurveillance."
+        },
+        "reception": {
+          "title": "Réception sur place",
+          "desc": "Accueil tous les jours de 08h à 17h, arrivée tardive sur demande."
+        },
+        "terrace": {
+          "title": "Terrasse & sport",
+          "desc": "Grande terrasse avec tapis de course pour garder le rythme."
+        },
+        "lounge": {
+          "title": "Salle de repos",
+          "desc": "Espace commun à l'étage, boissons fraîches disponibles."
+        },
+        "housekeeping": {
+          "title": "Ménage inclus",
+          "desc": "Chambres entretenues trois fois par semaine."
+        }
+      }
+    },
+    "gallery": {
+      "kicker": "Galerie",
+      "title": "La maison en images",
+      "subtitle": "Photos réelles, sans retouche excessive : ce que vous voyez est ce que vous trouverez.",
+      "labels": {
+        "facade": "Façade",
+        "courtyard": "Cour et garage",
+        "room": "Chambre {name}",
+        "door": "Chambre {name}"
+      },
+      "close": "Fermer",
+      "open": "Agrandir la photo"
+    },
+    "location": {
+      "kicker": "Où nous trouver",
+      "title": "Sapu, Saurimo — Lunda Sul",
+      "text": "Dans un quartier résidentiel calme, à quelques minutes du centre de Saurimo. Idéal pour les missions professionnelles, les familles de passage et les séjours prolongés.",
+      "address": "Quartier Sapu, Saurimo, province de Lunda Sul, Angola",
+      "mapsCta": "Ouvrir dans Maps",
+      "points": {
+        "airport": {
+          "label": "Aéroport de Saurimo",
+          "value": "≈ 15 min"
+        },
+        "center": {
+          "label": "Centre-ville",
+          "value": "≈ 10 min"
+        },
+        "market": {
+          "label": "Marché et commerces",
+          "value": "≈ 5 min"
+        },
+        "hospital": {
+          "label": "Hôpital provincial",
+          "value": "≈ 12 min"
+        }
+      },
+      "pointsNote": "Temps indicatifs en voiture."
+    },
+    "reviews": {
+      "kicker": "Ils ont séjourné",
+      "title": "Des séjours qui laissent une trace",
+      "items": [
+        {
+          "name": "Adriana M.",
+          "origin": "Luanda · séjour professionnel",
+          "text": "Chambre impeccable, climatisation silencieuse et un garage fermé pour la voiture de location. Exactement ce qu'il fallait pour une semaine de mission."
+        },
+        {
+          "name": "Jean-Baptiste K.",
+          "origin": "Kinshasa · en famille",
+          "text": "Accueil chaleureux à la réception, la kitchenette a tout changé pour les enfants. Quartier calme, on dort très bien."
+        },
+        {
+          "name": "Sofia R.",
+          "origin": "Lisbonne · séjour prolongé",
+          "text": "Trois semaines sur place. Ménage régulier, sécurité rassurante et une terrasse parfaite pour le café du matin."
+        }
+      ]
+    },
+    "cta": {
+      "kicker": "Prêt à venir ?",
+      "title": "Réservez votre chambre en 30 secondes",
+      "subtitle": "Écrivez-nous sur WhatsApp, appelez la réception ou envoyez un email. Nous confirmons rapidement la disponibilité et le tarif.",
+      "whatsapp": "Écrire sur WhatsApp",
+      "call": "Appeler",
+      "email": "Envoyer un email",
+      "hours": "Réception ouverte tous les jours, 08h–17h"
+    },
+    "faq": {
+      "kicker": "Avant d'arriver",
+      "title": "On vous répond.",
+      "items": [
+        {
+          "q": "Comment réserver une chambre ?",
+          "a": "Écrivez-nous sur WhatsApp, appelez la réception ou envoyez un email. Indiquez vos dates et le nombre de voyageurs : nous confirmons la disponibilité et le tarif."
+        },
+        {
+          "q": "Quels sont les horaires de la réception ?",
+          "a": "La réception est ouverte tous les jours de 08h à 17h. Une arrivée plus tardive est possible sur demande."
+        },
+        {
+          "q": "Puis-je garer ma voiture ?",
+          "a": "Oui. La maison dispose d'un garage fermé de deux places, à l'intérieur de la propriété, avec un portail surveillé."
+        },
+        {
+          "q": "Que comprend la chambre ?",
+          "a": "Chaque chambre a une kitchenette, la climatisation, un lit confortable et une salle de bain privée avec douche et WC. Le ménage passe trois fois par semaine."
+        },
+        {
+          "q": "Les tarifs affichés sont-ils définitifs ?",
+          "a": "Ce sont des tarifs indicatifs. Le prix final et la disponibilité sont confirmés au moment de la réservation."
+        }
+      ]
     }
   },
-  "homeRooms": {
-    "title": "Les chambres",
-    "subtitle": "La présentation de chaque chambre. Les autres photos sont dans la galerie.",
-    "kicker": "Chambre",
-    "lead": "Chambre à l'étage, avec son coin repas, son lit et sa climatisation.",
-    "cta": "Voir le détail"
-  },
-  "gallery": {
-    "title": "Galerie",
-    "subtitle": "Les autres vues de K. Kubango."
-  },
-  "contact": {
-    "title": "Contact",
-    "subtitle": "La réservation en ligne arrive bientôt. En attendant, écrivez-nous ou retrouvez-nous sur les réseaux.",
-    "email": "contact@dandela-house.ao",
-    "phone": "+244 923 000 000",
-    "address": "Quartier Sapu, Saurimo, province de Lunda Sul, Angola",
-    "formName": "Nom",
-    "formEmail": "Email",
-    "formMessage": "Message",
-    "formSubmit": "Envoyer le message",
-    "formNote": "Le formulaire sera connecté prochainement — utilisez les contacts ci-dessous pour l'instant."
-  },
   "footer": {
-    "tagline": "DANDELA House — guest house à Sapu, Saurimo.",
+    "tagline": "Guest house à Sapu, Saurimo — Lunda Sul, Angola.",
     "rights": "Tous droits réservés.",
-    "socialTitle": "Réseaux sociaux"
+    "socialTitle": "Suivez-nous",
+    "exploreTitle": "Explorer",
+    "contactTitle": "Contact",
+    "statement": "Le séjour commence ici",
+    "backToTop": "Retour en haut"
   },
   "roomsPage": {
     "title": "Chambres et tarifs",
-    "intro": "Cinq chambres à l'étage, avec le même confort essentiel. Tarifs et photos définitifs seront publiés prochainement.",
+    "intro": "Cinq chambres à l'étage, avec le même confort essentiel. Les tarifs affichés sont indicatifs et confirmés à la réservation.",
     "priceLabel": "Tarif indicatif",
     "priceSoon": "À définir",
+    "perNight": "/ nuit",
     "priceNote": "Les prix finaux et la disponibilité seront confirmés à la réception.",
     "featuresTitle": "Inclus dans chaque chambre",
     "viewAll": "Voir le détail",
     "roomNames": {
       "chambre-1": "K. Kubango",
-      "chambre-2": "Chambre Sapu II",
-      "chambre-3": "Chambre Lunda I",
-      "chambre-4": "Chambre Lunda II",
-      "chambre-5": "Chambre DANDELA"
+      "chambre-2": "Malange",
+      "chambre-3": "Maquela",
+      "chambre-4": "Chambre 4",
+      "chambre-5": "Chambre 5"
     },
     "features": {
       "kitchenette": "Kitchenette équipée",

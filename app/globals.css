@@ -1,140 +1,106 @@
 @import "tailwindcss";
 
-/* DANDELA HOUSE — charte claire */
+/* ------------------------------------------------------------------
+   DANDELA HOUSE
+   Fond / texte / cartes : --background-color, --font-color, --card-color.
+   Principale : rouge du drapeau angolais. Secondaire : jaune du drapeau.
+   Identiques dans les deux modes.
+------------------------------------------------------------------- */
 :root,
 [data-theme="light"] {
-  --background-color: #f8f2e8;
-  --font-color: #182d25;
-  --font-reverse-color: #f8f2e8;
-  --card-color: #fffcf7;
-  --card-border: #e8dfd0;
+  color-scheme: light;
 
-  --primary: #8b3045;
-  --primary-dark: #6f2436;
+  --background-color: #f4f4f6;
+  --font-color: #171717;
+  --card-color: #ffffff;
+
+  --background: var(--background-color);
+  --foreground: var(--font-color);
+  --bg: var(--background-color);
+  --bg-elev: var(--card-color);
+  --text: var(--font-color);
+
+  --text-muted: #5c5c66;
+  --text-faint: #8b8b94;
+  --text-reverse: #f4f4f6;
+  --font-reverse-color: var(--text-reverse);
+
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: rgba(255, 255, 255, 0.94);
+  --border: rgba(23, 23, 23, 0.1);
+  --border-strong: rgba(23, 23, 23, 0.18);
+  --card-border: var(--border);
+  --card-border-color: var(--border);
+
+  /* Rouge drapeau Angola — #CE1126 */
+  --primary: #ce1126;
+  --primary-dark: #9e0c1c;
   --primary-contrast: #ffffff;
-  --primary-shadow: rgba(139, 48, 69, 0.22);
+  --primary-glow: rgba(206, 17, 38, 0.14);
+  --primary-shadow: rgba(206, 17, 38, 0.34);
 
-  --secondary: #182d25;
-  --secondary-light: #2a4538;
-  --secondary-contrast: #f8f2e8;
+  /* Jaune drapeau Angola — #FFCD00 */
+  --secondary: #ffcd00;
+  --secondary-light: #ffe56a;
+  --secondary-deep: #e0b400;
+  --secondary-contrast: #171717;
+  --secondary-glow: rgba(255, 205, 0, 0.32);
 
-  --accent-green: #a8c66c;
-  --accent-champagne: #bda77c;
+  --gold: var(--secondary);
+  --gold-soft: var(--secondary-light);
+  --gold-deep: var(--secondary-deep);
+  --gold-contrast: var(--secondary-contrast);
+  --gold-glow: var(--secondary-glow);
+  --accent-champagne: var(--secondary);
+  --grey: var(--text-muted);
 
-  --logo-bordeaux: #8b3045;
-  --logo-badge-bg: #f8f2e8;
-
-  --grey-hyper-light: #efe6d8;
-  --grey-light: #bda77c;
-  --grey: #5c7268;
-  --grey-dark: #2a4538;
-  --grey-title: #3d5548;
-
-  --success: #6b8f4e;
-  --error: #b54760;
-  --warning: #bda77c;
-
-  --hero-overlay: rgba(24, 45, 37, 0.62);
-  --header-blur: rgba(248, 242, 232, 0.88);
+  --hero-overlay: rgba(10, 10, 11, 0.62);
+  --header-blur: rgba(244, 244, 246, 0.86);
+  --shadow-soft: 0 24px 60px -30px rgba(23, 23, 23, 0.28);
+  --shadow-gold: var(--primary-shadow);
 }
 
 [data-theme="dark"] {
-  --background-color: #0d1c16;
-  --font-color: #f8f2e8;
-  --font-reverse-color: #182d25;
-  --card-color: #1a3026;
-  --card-border: #2a4538;
+  color-scheme: dark;
 
-  --primary: #b54760;
-  --primary-dark: #8b3045;
-  --primary-contrast: #ffffff;
-  --primary-shadow: rgba(181, 71, 96, 0.28);
+  --background-color: #0a0a0b;
+  --font-color: #ededed;
+  --card-color: #161618;
 
-  --secondary: #f8f2e8;
-  --secondary-light: #fffcf7;
-  --secondary-contrast: #0d1c16;
+  --text-muted: #a1a1a8;
+  --text-faint: #6e6e76;
+  --text-reverse: #171717;
 
-  --accent-green: #a8c66c;
-  --accent-champagne: #bda77c;
+  --surface: rgba(22, 22, 24, 0.72);
+  --surface-strong: rgba(22, 22, 24, 0.94);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
 
-  --logo-bordeaux: #8b3045;
-  --logo-badge-bg: #f8f2e8;
-
-  --grey-hyper-light: #1a3026;
-  --grey-light: #2a4538;
-  --grey: #bda77c;
-  --grey-dark: #efe6d8;
-  --grey-title: #c9dcc0;
-
-  --hero-overlay: rgba(13, 28, 22, 0.72);
-  --header-blur: rgba(13, 28, 22, 0.9);
+  --primary-glow: rgba(206, 17, 38, 0.28);
+  --header-blur: rgba(10, 10, 11, 0.8);
+  --shadow-soft: 0 24px 60px -30px rgba(0, 0, 0, 0.7);
 }
 
 @media (prefers-color-scheme: dark) {
   [data-theme="system"] {
-    --background-color: #0d1c16;
-    --font-color: #f8f2e8;
-    --font-reverse-color: #182d25;
-    --card-color: #1a3026;
-    --card-border: #2a4538;
+    color-scheme: dark;
 
-    --primary: #b54760;
-    --primary-dark: #8b3045;
-    --primary-contrast: #ffffff;
-    --primary-shadow: rgba(181, 71, 96, 0.28);
+    --background-color: #0a0a0b;
+    --font-color: #ededed;
+    --card-color: #161618;
 
-    --secondary: #f8f2e8;
-    --secondary-light: #fffcf7;
-    --secondary-contrast: #0d1c16;
+    --text-muted: #a1a1a8;
+    --text-faint: #6e6e76;
+    --text-reverse: #171717;
 
-    --accent-green: #a8c66c;
-    --accent-champagne: #bda77c;
+    --surface: rgba(22, 22, 24, 0.72);
+    --surface-strong: rgba(22, 22, 24, 0.94);
+    --border: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.18);
 
-    --logo-bordeaux: #8b3045;
-    --logo-badge-bg: #f8f2e8;
-
-    --grey-hyper-light: #1a3026;
-    --grey-light: #2a4538;
-    --grey: #bda77c;
-    --grey-dark: #efe6d8;
-    --grey-title: #c9dcc0;
-
-    --hero-overlay: rgba(13, 28, 22, 0.72);
-    --header-blur: rgba(13, 28, 22, 0.9);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  [data-theme="system"] {
-    --background-color: #f8f2e8;
-    --font-color: #182d25;
-    --font-reverse-color: #f8f2e8;
-    --card-color: #fffcf7;
-    --card-border: #e8dfd0;
-
-    --primary: #8b3045;
-    --primary-dark: #6f2436;
-    --primary-contrast: #ffffff;
-    --primary-shadow: rgba(139, 48, 69, 0.22);
-
-    --secondary: #182d25;
-    --secondary-light: #2a4538;
-    --secondary-contrast: #f8f2e8;
-
-    --accent-green: #a8c66c;
-    --accent-champagne: #bda77c;
-
-    --logo-bordeaux: #8b3045;
-    --logo-badge-bg: #f8f2e8;
-
-    --grey-hyper-light: #efe6d8;
-    --grey-light: #bda77c;
-    --grey: #5c7268;
-    --grey-dark: #2a4538;
-    --grey-title: #3d5548;
-
-    --hero-overlay: rgba(24, 45, 37, 0.62);
-    --header-blur: rgba(248, 242, 232, 0.88);
+    --primary-glow: rgba(206, 17, 38, 0.28);
+    --header-blur: rgba(10, 10, 11, 0.8);
+    --shadow-soft: 0 24px 60px -30px rgba(0, 0, 0, 0.7);
   }
 }
 
@@ -144,9 +110,9 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-card: var(--card-color);
-  --color-accent-green: var(--accent-green);
-  --color-accent-champagne: var(--accent-champagne);
-  --font-sans: var(--font-display);
+  --color-accent-champagne: var(--secondary);
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-cormorant);
 }
 
 html {
@@ -158,14 +124,149 @@ body {
   min-height: 100dvh;
   background: var(--background-color);
   color: var(--font-color);
-  font-family: var(--font-display), system-ui, sans-serif;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  transition:
+    background-color 500ms ease,
+    color 500ms ease;
 }
 
 ::selection {
-  background: var(--primary-shadow);
-  color: var(--font-color);
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.arrow-link .arrow {
+  display: inline-block;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.arrow-link:hover .arrow {
+  transform: translate(3px, -3px);
 }
 
 .section-anchor {
   scroll-margin-top: 88px;
+}
+
+/* ---------- logo : variante selon le thème, sans flash ---------- */
+.logo-dark {
+  display: none !important;
+}
+[data-theme="dark"] .logo-light {
+  display: none !important;
+}
+[data-theme="dark"] .logo-dark {
+  display: block !important;
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] .logo-light {
+    display: none !important;
+  }
+  [data-theme="system"] .logo-dark {
+    display: block !important;
+  }
+}
+
+/* ---------- utilitaires visuels ---------- */
+.font-serif {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.gold-text,
+.gold-text-bright {
+  color: var(--secondary);
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary) 40%, var(--secondary) 60%, transparent);
+  opacity: 0.85;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .gold-text,
+  .marquee-track,
+  .float-slow {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

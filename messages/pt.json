@@ -1,110 +1,260 @@
 {
   "meta": {
-    "title": "DANDELA House — Guest house em Saurimo (Sapu)",
-    "description": "Guest house com 5 quartos, recepção, garagem e segurança 24h. Conforto e tranquilidade em Sapu, Angola."
+    "title": "DANDELA House — Guest house em Saurimo (Sapu), Angola",
+    "description": "Cinco quartos privados com kitchenette e ar condicionado, receção, garagem segura e vigilância. Reserve o seu quarto em Sapu, Saurimo, em segundos."
   },
   "metaRooms": {
-    "title": "Quartos e tarifas — DANDELA House",
-    "description": "Descubra os 5 quartos da DANDELA House: kitchenette, TV, casa de banho privativa e limpeza três vezes por semana."
+    "title": "Quartos e preços — DANDELA House",
+    "description": "Conheça os 5 quartos da DANDELA House: kitchenette, TV, casa de banho privada e limpeza três vezes por semana."
   },
   "nav": {
     "home": "Início",
     "about": "A casa",
     "amenities": "Serviços",
     "gallery": "Galeria",
-    "rooms": "Quartos e tarifas",
+    "rooms": "Quartos",
     "contact": "Contacto",
-    "contactCta": "Contactar"
+    "contactCta": "Reservar",
+    "roomsPage": "Quartos e preços",
+    "menu": "Menu",
+    "language": "Idioma",
+    "appearance": "Aparência",
+    "around": "E à volta",
+    "faq": "Perguntas"
   },
-  "hero": {
-    "badge": "Guest house · Sapu, Angola",
-    "title": "DANDELA House — o seu refúgio em Saurimo",
-    "subtitle": "Cinco quartos no piso superior, recepção acolhedora no rés-do-chão, terraço com tapete de corrida, garagem para duas viaturas e equipa de segurança à entrada.",
-    "ctaPrimary": "Ver quartos",
-    "ctaSecondary": "Conhecer a casa",
-    "cardPlace": "Sapu · Saurimo",
-    "cardStat1Value": "5",
-    "cardStat1Label": "Quartos",
-    "cardStat2Value": "08h–17h",
-    "cardStat2Label": "Recepção",
-    "cardStat3Value": "3×",
-    "cardStat3Label": "Limpeza / sem.",
-    "cardLine": "Quartos privados · terraço · garagem",
-    "globeHint": "África · Angola",
-    "pinLuanda": "Luanda",
-    "pinSapu": "Sapu",
-    "cityChambre1": "Sapu · Saurimo",
-    "cityChambre2": "Cidade 2",
-    "cityChambre3": "Cidade 3",
-    "cityChambre4": "Cidade 4",
-    "cityChambre5": "Cidade 5"
-  },
-  "about": {
-    "title": "Uma guest house pensada para si",
-    "lead": "No coração de Sapu (Saurimo), a DANDELA House combina privacidade, conforto moderno e um ambiente seguro.",
-    "p1": "Cinco quartos no andar superior, cada um com kitchenette, frigorífico, cama confortável, televisão e casa de banho com duche e WC. Há ainda uma sala de descanso no piso de cima, com possibilidade de comprar bebidas.",
-    "p2": "No rés-do-chão, a recepção está aberta das 08h às 17h. Ao sair, encontra uma ampla terraço com tapete de corrida e um garagem fechado para duas viaturas. Guardas na entrada e videovigilância reforçam a sua tranquilidade.",
-    "stat1Label": "Quartos",
-    "stat1Value": "5",
-    "stat2Label": "Recepção",
-    "stat2Value": "08h–17h",
-    "stat3Label": "Limpeza",
-    "stat3Value": "3×/sem"
-  },
-  "amenities": {
-    "title": "Serviços e equipamentos",
-    "subtitle": "Tudo o que precisa para uma estadia serena, do quarto ao exterior.",
-    "items": {
-      "rooms": { "title": "5 quartos privados", "desc": "Kitchenette, frigorífico, TV e casa de banho completa em cada quarto." },
-      "reception": { "title": "Recepção", "desc": "Atendimento presencial das 08h às 17h, todos os dias." },
-      "security": { "title": "Segurança", "desc": "Guardas à entrada e câmaras de videovigilância no recinto." },
-      "garage": { "title": "Garagem e terraço", "desc": "Garagem para 2 carros e terraço com tapete de corrida." },
-      "lounge": { "title": "Sala de descanso", "desc": "Zona comum no piso superior com venda de bebidas." },
-      "housekeeping": { "title": "Limpeza", "desc": "Serviço de camareira três vezes por semana." }
+  "home": {
+    "hero": {
+      "kicker": "Guest house · Sapu, Saurimo · Angola",
+      "titleA": "Durma bem.",
+      "titleB": "Viva Saurimo.",
+      "subtitle": "Cinco quartos privados, tranquilos e climatizados, numa casa vigiada no coração do Sapu. Kitchenette, garagem fechada e receção no local: chegue, pouse as malas, respire.",
+      "ctaBook": "Reservar no WhatsApp",
+      "ctaRooms": "Ver os quartos",
+      "from": "A partir de",
+      "perNight": "/ noite",
+      "scroll": "Deslizar",
+      "stat1Value": "5",
+      "stat1Label": "quartos privados",
+      "stat2Value": "08h–17h",
+      "stat2Label": "receção no local",
+      "stat3Value": "24/7",
+      "stat3Label": "vigilância e câmaras",
+      "stat4Value": "2",
+      "stat4Label": "lugares de garagem",
+      "sceneLabel": "Chave de quarto DANDELA House, em 3D",
+      "enter": "Entrar na casa"
+    },
+    "booking": {
+      "title": "Reserva expresso",
+      "subtitle": "Resposta no WhatsApp em poucos minutos.",
+      "checkIn": "Chegada",
+      "checkOut": "Partida",
+      "guests": "Hóspedes",
+      "guestsValue": "{count, plural, one {# hóspede} other {# hóspedes}}",
+      "room": "Quarto",
+      "anyRoom": "Qualquer",
+      "submit": "Pedir disponibilidade",
+      "message": "Olá DANDELA House, gostaria de reservar {room} de {checkIn} a {checkOut} para {guests}. Está disponível?",
+      "roomAny": "um quarto",
+      "roomNamed": "o quarto {name}",
+      "undated": "datas a definir"
+    },
+    "marquee": {
+      "items": [
+        "Kitchenette equipada",
+        "Ar condicionado",
+        "Garagem segura",
+        "Vigilância 24h",
+        "Limpeza 3× por semana",
+        "Receção 08h–17h",
+        "Terraço e passadeira",
+        "Sala de descanso no andar de cima"
+      ]
+    },
+    "rooms": {
+      "kicker": "Os quartos",
+      "title": "Cinco quartos, o mesmo cuidado em cada detalhe",
+      "subtitle": "Cada quarto tem o nome de uma cidade de Angola. Todos ficam no andar de cima, com kitchenette, casa de banho privada e ar condicionado.",
+      "perNight": "/ noite",
+      "soon": "Em breve",
+      "soonName": "Quarto a chegar",
+      "book": "Reservar",
+      "details": "Todos os quartos",
+      "doorAlt": "Placa do quarto {name}",
+      "features": {
+        "bed": "Cama confortável",
+        "kitchenette": "Kitchenette",
+        "ac": "Ar condicionado",
+        "bathroom": "Duche + WC privados",
+        "tv": "Televisão",
+        "fridge": "Frigorífico",
+        "wifi": "Wi‑Fi"
+      }
+    },
+    "video": {
+      "kicker": "Visita guiada",
+      "title": "Dois minutos dentro da casa",
+      "subtitle": "A nossa equipa mostra-lhe os quartos, a receção, o terraço e a garagem. Vídeo em português, legendado.",
+      "point1": "Quartos no andar de cima, sala de descanso com bebidas",
+      "point2": "Receção no rés-do-chão, aberta das 08h às 17h",
+      "point3": "Terraço, garagem fechada e guardas à entrada",
+      "unmute": "Ativar o som",
+      "mute": "Silenciar",
+      "play": "Reproduzir o vídeo",
+      "pause": "Pausar",
+      "caption": "Vídeo de apresentação · DANDELA House"
+    },
+    "experience": {
+      "kicker": "A experiência",
+      "title": "Tudo o que precisa, nada a mais",
+      "subtitle": "Uma casa pensada para estadias curtas e prolongadas: viajantes de negócios, famílias de passagem, missões em Saurimo.",
+      "items": {
+        "garage": {
+          "title": "Garagem fechada",
+          "desc": "Dois lugares dentro da propriedade, portão vigiado."
+        },
+        "security": {
+          "title": "Segurança 24h",
+          "desc": "Guardas à entrada e câmaras de videovigilância."
+        },
+        "reception": {
+          "title": "Receção no local",
+          "desc": "Atendimento todos os dias das 08h às 17h, chegada tardia a pedido."
+        },
+        "terrace": {
+          "title": "Terraço e desporto",
+          "desc": "Grande terraço com passadeira para manter o ritmo."
+        },
+        "lounge": {
+          "title": "Sala de descanso",
+          "desc": "Espaço comum no andar de cima, bebidas frescas disponíveis."
+        },
+        "housekeeping": {
+          "title": "Limpeza incluída",
+          "desc": "Quartos arrumados três vezes por semana."
+        }
+      }
+    },
+    "gallery": {
+      "kicker": "Galeria",
+      "title": "A casa em imagens",
+      "subtitle": "Fotografias reais, sem retoques excessivos: o que vê é o que vai encontrar.",
+      "labels": {
+        "facade": "Fachada",
+        "courtyard": "Pátio e garagem",
+        "room": "Quarto {name}",
+        "door": "Quarto {name}"
+      },
+      "close": "Fechar",
+      "open": "Ampliar a fotografia"
+    },
+    "location": {
+      "kicker": "Onde estamos",
+      "title": "Sapu, Saurimo — Lunda Sul",
+      "text": "Num bairro residencial tranquilo, a poucos minutos do centro de Saurimo. Ideal para missões profissionais, famílias de passagem e estadias prolongadas.",
+      "address": "Bairro Sapu, Saurimo, Província da Lunda Sul, Angola",
+      "mapsCta": "Abrir no Maps",
+      "points": {
+        "airport": {
+          "label": "Aeroporto de Saurimo",
+          "value": "≈ 15 min"
+        },
+        "center": {
+          "label": "Centro da cidade",
+          "value": "≈ 10 min"
+        },
+        "market": {
+          "label": "Mercado e comércio",
+          "value": "≈ 5 min"
+        },
+        "hospital": {
+          "label": "Hospital provincial",
+          "value": "≈ 12 min"
+        }
+      },
+      "pointsNote": "Tempos indicativos de carro."
+    },
+    "reviews": {
+      "kicker": "Quem já ficou",
+      "title": "Estadias que deixam marca",
+      "items": [
+        {
+          "name": "Adriana M.",
+          "origin": "Luanda · viagem de trabalho",
+          "text": "Quarto impecável, ar condicionado silencioso e garagem fechada para o carro alugado. Exatamente o que precisava para uma semana de missão."
+        },
+        {
+          "name": "Jean-Baptiste K.",
+          "origin": "Kinshasa · em família",
+          "text": "Receção calorosa, a kitchenette mudou tudo com as crianças. Bairro calmo, dorme-se muito bem."
+        },
+        {
+          "name": "Sofia R.",
+          "origin": "Lisboa · estadia prolongada",
+          "text": "Três semanas no local. Limpeza regular, segurança tranquilizadora e um terraço perfeito para o café da manhã."
+        }
+      ]
+    },
+    "cta": {
+      "kicker": "Pronto para vir?",
+      "title": "Reserve o seu quarto em 30 segundos",
+      "subtitle": "Escreva-nos no WhatsApp, ligue para a receção ou envie um email. Confirmamos rapidamente a disponibilidade e o preço.",
+      "whatsapp": "Escrever no WhatsApp",
+      "call": "Ligar",
+      "email": "Enviar email",
+      "hours": "Receção aberta todos os dias, 08h–17h"
+    },
+    "faq": {
+      "kicker": "Antes de chegar",
+      "title": "Respondemos-lhe.",
+      "items": [
+        {
+          "q": "Como reservo um quarto?",
+          "a": "Escreva-nos no WhatsApp, ligue para a receção ou envie um email. Indique as datas e o número de hóspedes: confirmamos a disponibilidade e o preço."
+        },
+        {
+          "q": "Qual o horário da receção?",
+          "a": "A receção está aberta todos os dias das 08h às 17h. Uma chegada mais tarde é possível a pedido."
+        },
+        {
+          "q": "Posso estacionar o carro?",
+          "a": "Sim. A casa tem uma garagem fechada com dois lugares, dentro da propriedade, com portão vigiado."
+        },
+        {
+          "q": "O que inclui o quarto?",
+          "a": "Cada quarto tem kitchenette, ar condicionado, cama confortável e casa de banho privada com duche e WC. A limpeza passa três vezes por semana."
+        },
+        {
+          "q": "Os preços apresentados são finais?",
+          "a": "São preços indicativos. O valor final e a disponibilidade são confirmados no momento da reserva."
+        }
+      ]
     }
   },
-  "homeRooms": {
-    "title": "Os quartos",
-    "subtitle": "A apresentação de cada quarto. As outras fotos estão na galeria.",
-    "kicker": "Quarto",
-    "lead": "Quarto no piso superior, com zona de refeição, cama e ar condicionado.",
-    "cta": "Ver detalhes"
-  },
-  "gallery": {
-    "title": "Galeria",
-    "subtitle": "As outras vistas de K. Kubango."
-  },
-  "contact": {
-    "title": "Contacto",
-    "subtitle": "Reservas online em breve. Por agora, fale connosco por mensagem ou redes sociais.",
-    "email": "contacto@dandela-house.ao",
-    "phone": "+244 923 000 000",
-    "address": "Bairro Sapu, Saurimo, Província de Lunda Sul, Angola",
-    "formName": "Nome",
-    "formEmail": "Email",
-    "formMessage": "Mensagem",
-    "formSubmit": "Enviar mensagem",
-    "formNote": "O formulário será ligado em breve — use os contactos abaixo entretanto."
-  },
   "footer": {
-    "tagline": "DANDELA House — guest house em Sapu, Saurimo.",
+    "tagline": "Guest house no Sapu, Saurimo — Lunda Sul, Angola.",
     "rights": "Todos os direitos reservados.",
-    "socialTitle": "Redes sociais"
+    "socialTitle": "Siga-nos",
+    "exploreTitle": "Explorar",
+    "contactTitle": "Contacto",
+    "statement": "A estadia começa aqui",
+    "backToTop": "Voltar ao topo"
   },
   "roomsPage": {
-    "title": "Quartos e tarifas",
-    "intro": "Cinco quartos no piso superior, com o mesmo conforto essencial. Tarifas e fotos definitivas serão publicadas em breve.",
-    "priceLabel": "Tarifa indicativa",
+    "title": "Quartos e preços",
+    "intro": "Cinco quartos no andar de cima, com o mesmo conforto essencial. Os preços indicados são indicativos e confirmados na reserva.",
+    "priceLabel": "Preço indicativo",
     "priceSoon": "A definir",
-    "priceNote": "Preços finais e disponibilidade serão confirmados pela recepção.",
+    "perNight": "/ noite",
+    "priceNote": "Os preços finais e a disponibilidade serão confirmados na receção.",
     "featuresTitle": "Incluído em cada quarto",
     "viewAll": "Ver detalhes",
     "roomNames": {
       "chambre-1": "K. Kubango",
-      "chambre-2": "Quarto Sapu II",
-      "chambre-3": "Quarto Lunda I",
-      "chambre-4": "Quarto Lunda II",
-      "chambre-5": "Quarto DANDELA"
+      "chambre-2": "Malange",
+      "chambre-3": "Maquela",
+      "chambre-4": "Quarto 4",
+      "chambre-5": "Quarto 5"
     },
     "features": {
       "kitchenette": "Kitchenette equipada",
@@ -116,9 +266,9 @@
     },
     "buildingTitle": "Organização do edifício",
     "building": {
-      "upstairs": "Piso superior: 5 quartos + sala de descanso (bebidas disponíveis).",
-      "downstairs": "Rés-do-chão: recepção (08h–17h).",
-      "outside": "Exterior: terraço com tapete de corrida, garagem (2 lugares), entrada com guardas."
+      "upstairs": "Andar de cima: 5 quartos + sala de descanso (bebidas disponíveis).",
+      "downstairs": "Rés-do-chão: receção (08h–17h).",
+      "outside": "Exterior: terraço com passadeira, garagem (2 lugares), entrada com guardas."
     }
   },
   "languages": {

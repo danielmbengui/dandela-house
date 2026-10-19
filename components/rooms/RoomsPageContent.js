@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { roomFeatureKeys, roomPlaceholders } from "@/lib/rooms";
+import { formatKz } from "@/lib/format";
 
 export default function RoomsPageContent() {
   const t = useTranslations("roomsPage");
@@ -58,7 +59,7 @@ export default function RoomsPageContent() {
               icon={<CheckCircleOutlinedIcon />}
               label={t(`features.${key}`)}
               sx={{
-                bgcolor: "color-mix(in srgb, var(--accent-green) 22%, var(--card-color))",
+                bgcolor: "var(--primary-glow)",
                 border: "1px solid var(--card-border)",
               }}
             />
@@ -86,7 +87,7 @@ export default function RoomsPageContent() {
                 >
                   <Box sx={{ position: "relative", height: 200 }}>
                     <Image
-                      src={room.cover ?? room.image}
+                      src={room.cover}
                       alt={room.name ?? t(`roomNames.${room.id}`)}
                       fill
                       priority={index === 0}
@@ -94,14 +95,14 @@ export default function RoomsPageContent() {
                       style={{ objectFit: "cover" }}
                     />
                   </Box>
-                  <CardContent>
+                  <CardContent sx={{ p: { xs: 3, md: 3.5 }, "&:last-child": { pb: { xs: 3, md: 3.5 } } }}>
                     <Typography variant="h6" gutterBottom>
                       {room.name ?? t(`roomNames.${room.id}`)}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
                       {t("priceLabel")}:{" "}
-                      <Box component="span" sx={{ color: "var(--primary)", fontWeight: 700 }}>
-                        {t("priceSoon")}
+                      <Box component="span" sx={{ color: "var(--primary)", fontWeight: 600 }}>
+                        {room.comingSoon ? t("priceSoon") : `${formatKz(room.price)} ${t("perNight")}`}
                       </Box>
                     </Typography>
                     <Stack spacing={0.75}>
