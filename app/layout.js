@@ -4,6 +4,12 @@ import { routing } from "@/i18n/routing";
 import ThemeInitScript from "@/components/providers/ThemeInitScript";
 import "./globals.css";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600"],

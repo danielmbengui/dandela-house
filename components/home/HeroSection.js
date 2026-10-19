@@ -126,8 +126,8 @@ export default function HeroSection() {
       id="top"
       sx={{
         position: "relative",
-        mt: "-72px",
-        pt: { xs: "104px", md: "140px" },
+        mt: { xs: "-64px", md: "-76px" },
+        pt: { xs: "96px", md: "140px" },
         pb: { xs: 14, md: 18 },
         color: CREAM,
         overflow: "hidden",
@@ -193,9 +193,16 @@ export default function HeroSection() {
                   variant="h1"
                   component="h1"
                   sx={{
-                    fontSize: { xs: "3.2rem", sm: "4.4rem", md: "5.4rem", lg: "6.2rem" },
+                    fontSize: {
+                      xs: "clamp(2.35rem, 11vw, 3.2rem)",
+                      sm: "4.4rem",
+                      md: "5.4rem",
+                      lg: "6.2rem",
+                    },
                     color: CREAM,
                     mb: 3,
+                    maxWidth: "100%",
+                    overflowWrap: "anywhere",
                   }}
                 >
                   {t("titleA")}

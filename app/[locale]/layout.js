@@ -42,7 +42,9 @@ export default async function LocaleLayout({ children, params }) {
     <AppProviders locale={locale} messages={messages}>
       <DocumentLang locale={locale} />
       <SiteHeader />
-      <main className="pt-16 md:pt-[76px]">{children}</main>
+      <main className="w-full max-w-full overflow-x-clip pt-16 md:pt-[76px]">
+        {children}
+      </main>
       <SiteFooter />
     </AppProviders>
   );

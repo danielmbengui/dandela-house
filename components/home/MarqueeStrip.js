@@ -12,12 +12,12 @@ export default function MarqueeStrip() {
   return (
     <Box
       aria-hidden
+      className="marquee-root"
       sx={{
         mt: { xs: 8, md: 10 },
         py: 2.4,
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
-        overflow: "hidden",
         bgcolor: "var(--card-color)",
         maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
         WebkitMaskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
