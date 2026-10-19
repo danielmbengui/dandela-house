@@ -42,7 +42,7 @@ export default async function LocaleLayout({ children, params }) {
     <AppProviders locale={locale} messages={messages}>
       <DocumentLang locale={locale} />
       <SiteHeader />
-      <main className="pt-[72px]">{children}</main>
+      <main className="pt-16 md:pt-[76px]">{children}</main>
       <SiteFooter />
     </AppProviders>
   );

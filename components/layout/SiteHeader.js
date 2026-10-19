@@ -1,8 +1,19 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
-import { AppBar, Box, Button, Container, Stack, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Stack,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
@@ -48,9 +59,16 @@ export default function SiteHeader() {
   const pathname = usePathname();
   const router = useRouter();
   const { mode, setMode } = useThemeMode();
+  const theme = useTheme();
+  const isMobileNav = useMediaQuery(theme.breakpoints.down("lg"), { noSsr: true });
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const barRef = useRef(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const isHome = pathname === "/";
   const onDark = isHome && !scrolled && !menuOpen;
@@ -82,6 +100,15 @@ export default function SiteHeader() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [menuOpen]);
+
   const linkColor = onDark ? "#f3ede2" : "var(--text)";
   const borderColor = onDark ? "rgba(243,237,226,0.28)" : "var(--border)";
 
@@ -93,7 +120,317 @@ export default function SiteHeader() {
 
   const close = () => setMenuOpen(false);
 
+  const menuPanelSurface = (
+    <Box
+      sx={{
+        borderRadius: { xs: "22px", md: "28px" },
+        overflow: "hidden",
+        bgcolor: "var(--card-color)",
+        color: "var(--font-color)",
+        border: "1px solid var(--border)",
+        boxShadow: "0 28px 70px -28px rgba(0,0,0,0.45)",
+        maxHeight: isMobileNav ? "100%" : "calc(100dvh - 96px)",
+        overflowY: "auto",
+        WebkitOverflowScrolling: "touch",
+        flex: isMobileNav ? 1 : undefined,
+        minHeight: 0,
+      }}
+    >
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", md: "1.05fr 1.15fr 0.95fr" },
+          gap: { xs: 3, md: 4 },
+          p: { xs: 2.5, md: 3.5 },
+        }}
+      >
+        <Box
+          component={Link}
+          href={{ pathname: "/", hash: "contact" }}
+          onClick={close}
+          className="arrow-link"
+          sx={{
+            position: "relative",
+            minHeight: { xs: 168, md: 280 },
+            borderRadius: "20px",
+            overflow: "hidden",
+            color: "#f3ede2",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            p: 3,
+          }}
+        >
+          <Image
+            src={rooms[0].cover}
+            alt=""
+            fill
+            sizes="(max-width: 900px) 100vw, 360px"
+            style={{ objectFit: "cover" }}
+          />
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(180deg, rgba(10,10,11,0.15) 0%, rgba(10,10,11,0.72) 100%)",
+            }}
+          />
+          <Typography
+            sx={{
+              position: "relative",
+              fontSize: 12,
+              letterSpacing: "0.16em",
+              fontWeight: 600,
+              mb: 1,
+            }}
+          >
+            {SITE.name.toUpperCase()}
+          </Typography>
+          <Typography
+            sx={{
+              position: "relative",
+              fontFamily: "var(--font-cormorant)",
+              fontSize: { xs: "2rem", md: "2.35rem" },
+              lineHeight: 1.05,
+              fontWeight: 500,
+            }}
+          >
+            {t("footer.statement")}
+            <ArrowOutwardIcon className="arrow" sx={{ fontSize: 22, ml: 0.75, verticalAlign: "middle" }} />
+          </Typography>
+        </Box>
+
+        <Box>
+          <Typography
+            sx={{
+              fontSize: 12,
+              letterSpacing: "0.16em",
+              fontWeight: 600,
+              color: "var(--text-faint)",
+              mb: 1.5,
+            }}
+          >
+            {t("nav.about").toUpperCase()}
+          </Typography>
+          <Stack>
+            {navItems.map((item, index) => (
+              <Box
+                key={item.key}
+                component={Link}
+                href={{ pathname: "/", hash: item.hash }}
+                onClick={close}
+                className="arrow-link"
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1.5,
+                  py: 1.35,
+                  borderTop: "1px solid var(--border)",
+                  color: "var(--font-color)",
+                  fontSize: "1.05rem",
+                  fontWeight: 500,
+                  "&:hover": { color: "var(--primary)" },
+                }}
+              >
+                <Box component="span" sx={{ color: "var(--text-faint)", fontSize: 13, width: 22 }}>
+                  {String(index + 1).padStart(2, "0")}
+                </Box>
+                <Box component="span" sx={{ flexGrow: 1 }}>
+                  {t(`nav.${item.key}`)}
+                </Box>
+                <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
+              </Box>
+            ))}
+          </Stack>
+        </Box>
+
+        <Box>
+          <Typography
+            sx={{
+              fontSize: 12,
+              letterSpacing: "0.16em",
+              fontWeight: 600,
+              color: "var(--text-faint)",
+              mb: 1.5,
+            }}
+          >
+            {t("nav.around").toUpperCase()}
+          </Typography>
+          <Stack>
+            {aroundItems.map((item) => (
+              <Box
+                key={item.key}
+                component={Link}
+                href={item.href ?? { pathname: "/", hash: item.hash }}
+                onClick={close}
+                className="arrow-link"
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1.5,
+                  py: 1.35,
+                  borderTop: "1px solid var(--border)",
+                  color: "var(--font-color)",
+                  fontSize: "1.05rem",
+                  fontWeight: 500,
+                  "&:hover": { color: "var(--primary)" },
+                }}
+              >
+                <Box component="span" sx={{ flexGrow: 1 }}>
+                  {t(`nav.${item.key}`)}
+                </Box>
+                <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
+              </Box>
+            ))}
+          </Stack>
+        </Box>
+      </Box>
+
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        spacing={{ xs: 2.5, md: 4 }}
+        sx={{
+          alignItems: { md: "center" },
+          justifyContent: "space-between",
+          px: { xs: 2.5, md: 3.5 },
+          py: 2.25,
+          borderTop: "1px solid var(--border)",
+          bgcolor: "color-mix(in srgb, var(--font-color) 4%, var(--card-color))",
+        }}
+      >
+        <Box
+          component="a"
+          href={`mailto:${SITE.email}`}
+          className="arrow-link"
+          sx={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 0.75,
+            color: "var(--font-color)",
+            fontWeight: 500,
+            fontSize: 15,
+          }}
+        >
+          {SITE.email}
+          <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
+        </Box>
+
+        <Stack spacing={1}>
+          <Typography sx={{ fontSize: 12, letterSpacing: "0.12em", fontWeight: 600, color: "var(--text-faint)" }}>
+            {t("nav.language").toUpperCase()}
+          </Typography>
+          <Stack direction="row" spacing={0.5} sx={{ flexWrap: "wrap" }}>
+            {routing.locales.map((loc) => {
+              const selected = loc === locale;
+              return (
+                <Button
+                  key={loc}
+                  onClick={() => {
+                    close();
+                    router.replace(pathname, { locale: loc });
+                  }}
+                  startIcon={<LocaleFlag locale={loc} />}
+                  sx={{
+                    color: selected ? "#fff" : "var(--font-color)",
+                    bgcolor: selected ? "var(--primary)" : "transparent",
+                    borderRadius: "999px",
+                    px: 1.4,
+                    py: 0.6,
+                    minWidth: 0,
+                    fontSize: 14,
+                    fontWeight: selected ? 600 : 500,
+                    "&:hover": { bgcolor: selected ? "var(--primary-dark)" : "var(--primary-glow)" },
+                  }}
+                >
+                  {t(`languages.${loc}`)}
+                </Button>
+              );
+            })}
+          </Stack>
+        </Stack>
+
+        <Stack spacing={1}>
+          <Typography sx={{ fontSize: 12, letterSpacing: "0.12em", fontWeight: 600, color: "var(--text-faint)" }}>
+            {t("nav.appearance").toUpperCase()}
+          </Typography>
+          <Stack direction="row" spacing={0.5} sx={{ flexWrap: "wrap" }}>
+            {["light", "dark", "system"].map((value) => {
+              const selected = mode === value;
+              return (
+                <Button
+                  key={value}
+                  aria-label={t(`theme.${value}`)}
+                  aria-pressed={selected}
+                  onClick={() => setMode(value)}
+                  startIcon={themeIcons[value]}
+                  sx={{
+                    color: selected ? "#fff" : "var(--font-color)",
+                    bgcolor: selected ? "var(--primary)" : "transparent",
+                    border: "1px solid",
+                    borderColor: selected ? "var(--primary)" : "var(--border)",
+                    borderRadius: "999px",
+                    px: 1.4,
+                    py: 0.55,
+                    minWidth: 0,
+                    fontSize: 13,
+                    fontWeight: 500,
+                    "&:hover": {
+                      bgcolor: selected ? "var(--primary-dark)" : "var(--primary-glow)",
+                      borderColor: selected ? "var(--primary-dark)" : "var(--border)",
+                    },
+                  }}
+                >
+                  {t(`theme.${value}`)}
+                </Button>
+              );
+            })}
+          </Stack>
+        </Stack>
+      </Stack>
+    </Box>
+  );
+
+  const mobileMenuPortal =
+    mounted && menuOpen && isMobileNav
+      ? createPortal(
+          <>
+            <Box
+              aria-hidden
+              onClick={close}
+              sx={{
+                position: "fixed",
+                inset: 0,
+                zIndex: 1400,
+                bgcolor: "rgba(10, 10, 11, 0.52)",
+                backdropFilter: "blur(2px)",
+              }}
+            />
+            <Box
+              id="site-nav-panel"
+              role="dialog"
+              aria-modal="true"
+              sx={{
+                position: "fixed",
+                top: 64,
+                left: 12,
+                right: 12,
+                bottom: 12,
+                zIndex: 1401,
+                display: "flex",
+                flexDirection: "column",
+                minHeight: 0,
+              }}
+            >
+              {menuPanelSurface}
+            </Box>
+          </>,
+          document.body,
+        )
+      : null;
+
   return (
+    <>
     <AppBar
       position="fixed"
       elevation={0}
@@ -108,7 +445,14 @@ export default function SiteHeader() {
       }}
     >
       <Container ref={barRef} maxWidth="lg" sx={{ position: "relative" }}>
-        <Toolbar disableGutters sx={{ gap: 1.5, minHeight: { xs: 64, md: 76 } }}>
+        <Toolbar
+          disableGutters
+          sx={{
+            gap: { xs: 1, md: 1.5 },
+            minHeight: { xs: 64, md: 76 },
+            flexWrap: "nowrap",
+          }}
+        >
           <Box
             component={Link}
             href="/"
@@ -175,23 +519,27 @@ export default function SiteHeader() {
               border: `1px solid ${menuOpen ? "var(--primary)" : borderColor}`,
               bgcolor: menuOpen ? "var(--primary)" : "transparent",
               borderRadius: "13px",
-              px: 1.6,
+              px: { xs: 1.15, sm: 1.6 },
               py: 0.85,
               minWidth: 0,
               fontSize: 13,
               fontWeight: 600,
               letterSpacing: "0.01em",
+              flexShrink: 0,
+              "& .MuiButton-startIcon": { mr: { xs: 0, sm: 1 } },
               "&:hover": {
                 bgcolor: menuOpen ? "var(--primary-dark)" : "transparent",
                 borderColor: menuOpen ? "var(--primary-dark)" : borderColor,
               },
             }}
           >
-            {t("nav.menu")}
+            <Box component="span" sx={{ display: { xs: "none", sm: "inline" } }}>
+              {t("nav.menu")}
+            </Box>
           </Button>
         </Toolbar>
 
-        {menuOpen ? (
+        {menuOpen && !isMobileNav ? (
           <Box
             id="site-nav-panel"
             sx={{
@@ -204,274 +552,12 @@ export default function SiteHeader() {
               pb: 2,
             }}
           >
-            <Box
-              sx={{
-                borderRadius: "28px",
-                overflow: "hidden",
-                bgcolor: "var(--card-color)",
-                color: "var(--font-color)",
-                border: "1px solid var(--border)",
-                boxShadow: "0 28px 70px -28px rgba(0,0,0,0.45)",
-                maxHeight: "calc(100vh - 96px)",
-                overflowY: "auto",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: { xs: "1fr", md: "1.05fr 1.15fr 0.95fr" },
-                  gap: { xs: 3, md: 4 },
-                  p: { xs: 2.5, md: 3.5 },
-                }}
-              >
-                <Box
-                  component={Link}
-                  href={{ pathname: "/", hash: "contact" }}
-                  onClick={close}
-                  className="arrow-link"
-                  sx={{
-                    position: "relative",
-                    minHeight: { xs: 168, md: 280 },
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    color: "#f3ede2",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    p: 3,
-                  }}
-                >
-                  <Image
-                    src={rooms[0].cover}
-                    alt=""
-                    fill
-                    sizes="(max-width: 900px) 100vw, 360px"
-                    style={{ objectFit: "cover" }}
-                  />
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      inset: 0,
-                      background:
-                        "linear-gradient(180deg, rgba(10,10,11,0.15) 0%, rgba(10,10,11,0.72) 100%)",
-                    }}
-                  />
-                  <Typography
-                    sx={{
-                      position: "relative",
-                      fontSize: 12,
-                      letterSpacing: "0.16em",
-                      fontWeight: 600,
-                      mb: 1,
-                    }}
-                  >
-                    {SITE.name.toUpperCase()}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      position: "relative",
-                      fontFamily: "var(--font-cormorant)",
-                      fontSize: { xs: "2rem", md: "2.35rem" },
-                      lineHeight: 1.05,
-                      fontWeight: 500,
-                    }}
-                  >
-                    {t("footer.statement")}
-                    <ArrowOutwardIcon className="arrow" sx={{ fontSize: 22, ml: 0.75, verticalAlign: "middle" }} />
-                  </Typography>
-                </Box>
-
-                <Box>
-                  <Typography
-                    sx={{
-                      fontSize: 12,
-                      letterSpacing: "0.16em",
-                      fontWeight: 600,
-                      color: "var(--text-faint)",
-                      mb: 1.5,
-                    }}
-                  >
-                    {t("nav.about").toUpperCase()}
-                  </Typography>
-                  <Stack>
-                    {navItems.map((item, index) => (
-                      <Box
-                        key={item.key}
-                        component={Link}
-                        href={{ pathname: "/", hash: item.hash }}
-                        onClick={close}
-                        className="arrow-link"
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 1.5,
-                          py: 1.35,
-                          borderTop: "1px solid var(--border)",
-                          color: "var(--font-color)",
-                          fontSize: "1.05rem",
-                          fontWeight: 500,
-                          "&:hover": { color: "var(--primary)" },
-                        }}
-                      >
-                        <Box component="span" sx={{ color: "var(--text-faint)", fontSize: 13, width: 22 }}>
-                          {String(index + 1).padStart(2, "0")}
-                        </Box>
-                        <Box component="span" sx={{ flexGrow: 1 }}>
-                          {t(`nav.${item.key}`)}
-                        </Box>
-                        <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
-                      </Box>
-                    ))}
-                  </Stack>
-                </Box>
-
-                <Box>
-                  <Typography
-                    sx={{
-                      fontSize: 12,
-                      letterSpacing: "0.16em",
-                      fontWeight: 600,
-                      color: "var(--text-faint)",
-                      mb: 1.5,
-                    }}
-                  >
-                    {t("nav.around").toUpperCase()}
-                  </Typography>
-                  <Stack>
-                    {aroundItems.map((item) => (
-                      <Box
-                        key={item.key}
-                        component={Link}
-                        href={item.href ?? { pathname: "/", hash: item.hash }}
-                        onClick={close}
-                        className="arrow-link"
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 1.5,
-                          py: 1.35,
-                          borderTop: "1px solid var(--border)",
-                          color: "var(--font-color)",
-                          fontSize: "1.05rem",
-                          fontWeight: 500,
-                          "&:hover": { color: "var(--primary)" },
-                        }}
-                      >
-                        <Box component="span" sx={{ flexGrow: 1 }}>
-                          {t(`nav.${item.key}`)}
-                        </Box>
-                        <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
-                      </Box>
-                    ))}
-                  </Stack>
-                </Box>
-              </Box>
-
-              <Stack
-                direction={{ xs: "column", md: "row" }}
-                spacing={{ xs: 2.5, md: 4 }}
-                sx={{
-                  alignItems: { md: "center" },
-                  justifyContent: "space-between",
-                  px: { xs: 2.5, md: 3.5 },
-                  py: 2.25,
-                  borderTop: "1px solid var(--border)",
-                  bgcolor: "color-mix(in srgb, var(--font-color) 4%, var(--card-color))",
-                }}
-              >
-                <Box
-                  component="a"
-                  href={`mailto:${SITE.email}`}
-                  className="arrow-link"
-                  sx={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 0.75,
-                    color: "var(--font-color)",
-                    fontWeight: 500,
-                    fontSize: 15,
-                  }}
-                >
-                  {SITE.email}
-                  <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
-                </Box>
-
-                <Stack spacing={1}>
-                  <Typography sx={{ fontSize: 12, letterSpacing: "0.12em", fontWeight: 600, color: "var(--text-faint)" }}>
-                    {t("nav.language").toUpperCase()}
-                  </Typography>
-                  <Stack direction="row" spacing={0.5} sx={{ flexWrap: "wrap" }}>
-                    {routing.locales.map((loc) => {
-                      const selected = loc === locale;
-                      return (
-                        <Button
-                          key={loc}
-                          onClick={() => {
-                            close();
-                            router.replace(pathname, { locale: loc });
-                          }}
-                          startIcon={<LocaleFlag locale={loc} />}
-                          sx={{
-                            color: selected ? "#fff" : "var(--font-color)",
-                            bgcolor: selected ? "var(--primary)" : "transparent",
-                            borderRadius: "999px",
-                            px: 1.4,
-                            py: 0.6,
-                            minWidth: 0,
-                            fontSize: 14,
-                            fontWeight: selected ? 600 : 500,
-                            "&:hover": { bgcolor: selected ? "var(--primary-dark)" : "var(--primary-glow)" },
-                          }}
-                        >
-                          {t(`languages.${loc}`)}
-                        </Button>
-                      );
-                    })}
-                  </Stack>
-                </Stack>
-
-                <Stack spacing={1}>
-                  <Typography sx={{ fontSize: 12, letterSpacing: "0.12em", fontWeight: 600, color: "var(--text-faint)" }}>
-                    {t("nav.appearance").toUpperCase()}
-                  </Typography>
-                  <Stack direction="row" spacing={0.5}>
-                    {["light", "dark", "system"].map((value) => {
-                      const selected = mode === value;
-                      return (
-                        <Button
-                          key={value}
-                          aria-label={t(`theme.${value}`)}
-                          aria-pressed={selected}
-                          onClick={() => setMode(value)}
-                          startIcon={themeIcons[value]}
-                          sx={{
-                            color: selected ? "#fff" : "var(--font-color)",
-                            bgcolor: selected ? "var(--primary)" : "transparent",
-                            border: "1px solid",
-                            borderColor: selected ? "var(--primary)" : "var(--border)",
-                            borderRadius: "999px",
-                            px: 1.4,
-                            py: 0.55,
-                            minWidth: 0,
-                            fontSize: 13,
-                            fontWeight: 500,
-                            "&:hover": {
-                              bgcolor: selected ? "var(--primary-dark)" : "var(--primary-glow)",
-                              borderColor: selected ? "var(--primary-dark)" : "var(--border)",
-                            },
-                          }}
-                        >
-                          {t(`theme.${value}`)}
-                        </Button>
-                      );
-                    })}
-                  </Stack>
-                </Stack>
-              </Stack>
-            </Box>
+            {menuPanelSurface}
           </Box>
         ) : null}
       </Container>
     </AppBar>
+    {mobileMenuPortal}
+  </>
   );
 }
