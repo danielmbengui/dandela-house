@@ -11,6 +11,7 @@ import { useTranslations } from "next-intl";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import BrandLogo from "@/components/brand/BrandLogo";
+import { cardRadius } from "@/components/ui/GlassCard";
 
 const VIDEO_SRC = "/videos/dandela-remotion.mp4";
 const POSTER_SRC = "/videos/dandela-remotion-poster.jpg";
@@ -22,7 +23,7 @@ function LandscapeFrame({ children }) {
         position: "relative",
         width: "100%",
         aspectRatio: "16 / 9",
-        borderRadius: { xs: "22px", md: "28px" },
+        borderRadius: { xs: "11px", md: "28px" },
         overflow: "hidden",
         bgcolor: "#050706",
         boxShadow: "0 28px 70px -32px rgba(0,0,0,0.55)",

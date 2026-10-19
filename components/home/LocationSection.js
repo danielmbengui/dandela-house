@@ -10,7 +10,7 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { useTranslations } from "next-intl";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import GlassCard from "@/components/ui/GlassCard";
+import GlassCard, { cardPadding } from "@/components/ui/GlassCard";
 import { SITE } from "@/lib/site";
 
 const POINTS = [
@@ -124,7 +124,7 @@ export default function LocationSection() {
           <Grid size={{ xs: 12, md: 7 }}>
             <SectionHeading index="05" kicker={t("kicker")} title={t("title")} subtitle={t("text")} />
             <Reveal delay={0.1}>
-              <GlassCard sx={{ mt: 4, p: { xs: 3.5, md: 4.5 } }}>
+              <GlassCard sx={{ mt: 4, p: cardPadding }}>
                 <Stack direction="row" spacing={1.5} sx={{ alignItems: "flex-start", mb: 2.5 }}>
                   <PlaceOutlinedIcon sx={{ color: "var(--primary)", mt: "2px" }} />
                   <Typography sx={{ lineHeight: 1.6 }}>{t("address")}</Typography>

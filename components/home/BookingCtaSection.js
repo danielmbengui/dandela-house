@@ -8,6 +8,7 @@ import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
 import { useTranslations } from "next-intl";
 import Reveal from "@/components/ui/Reveal";
 import { SITE, whatsappHref } from "@/lib/site";
+import { cardRadius } from "@/components/ui/GlassCard";
 
 const CREAM = "#f3ede2";
 
@@ -22,9 +23,9 @@ export default function BookingCtaSection() {
             sx={{
               position: "relative",
               overflow: "hidden",
-              borderRadius: { xs: 5, md: 7 },
-              px: { xs: 3, md: 8 },
-              py: { xs: 7, md: 11 },
+              borderRadius: { xs: cardRadius.xs, md: 7 },
+              px: { xs: 4, md: 8 },
+              py: { xs: 7.5, md: 11 },
               color: CREAM,
               textAlign: "center",
               border: "1px solid rgba(217,180,91,0.3)",

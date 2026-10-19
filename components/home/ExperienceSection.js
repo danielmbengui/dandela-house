@@ -11,7 +11,7 @@ import CleaningServicesOutlinedIcon from "@mui/icons-material/CleaningServicesOu
 import { useTranslations } from "next-intl";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import GlassCard from "@/components/ui/GlassCard";
+import GlassCard, { cardPadding, cardRadius } from "@/components/ui/GlassCard";
 
 const ITEMS = [
   { key: "garage", Icon: GarageOutlinedIcon },
@@ -30,7 +30,7 @@ function Tile({ item, index }) {
       <GlassCard
         sx={{
           height: "100%",
-          p: { xs: 3.5, md: 4.5 },
+          p: cardPadding,
           "&:hover": { transform: "translateY(-6px)", borderColor: "var(--primary)" },
           "&:hover .tile-icon": { bgcolor: "var(--primary)", color: "#fff" },
         }}
@@ -78,7 +78,7 @@ export default function ExperienceSection() {
                   position: "relative",
                   height: "100%",
                   minHeight: { xs: 320, md: "100%" },
-                  borderRadius: 5,
+                  borderRadius: cardRadius,
                   overflow: "hidden",
                   border: "1px solid var(--border)",
                   boxShadow: "var(--shadow-soft)",

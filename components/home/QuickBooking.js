@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useTranslations } from "next-intl";
-import GlassCard from "@/components/ui/GlassCard";
+import GlassCard, { cardPadding } from "@/components/ui/GlassCard";
 import { publishedRooms } from "@/lib/rooms";
 import { whatsappHref } from "@/lib/site";
 
@@ -69,7 +69,7 @@ export default function QuickBooking({ sx }) {
         e.preventDefault();
         window.open(href, "_blank", "noopener,noreferrer");
       }}
-      sx={{ p: { xs: 3, md: 4 }, ...sx }}
+      sx={{ p: cardPadding, ...sx }}
     >
       <Stack
         direction={{ xs: "column", lg: "row" }}

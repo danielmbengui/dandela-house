@@ -2,6 +2,12 @@
 
 import { Box } from "@mui/material";
 
+/** Arrondi des cartes : moitié sur mobile pour un rendu moins « bulle ». */
+export const cardRadius = { xs: 2.5, md: 5 };
+
+/** Padding intérieur cartes (MUI spacing). */
+export const cardPadding = { xs: 4.5, md: 4.5 };
+
 /** Carte « verre dépoli » : fond translucide, bordure fine, flou d'arrière-plan. */
 export default function GlassCard({ children, sx, strong = false, ...props }) {
   return (
@@ -9,7 +15,7 @@ export default function GlassCard({ children, sx, strong = false, ...props }) {
       {...props}
       sx={{
         position: "relative",
-        borderRadius: 5,
+        borderRadius: cardRadius,
         border: "1px solid var(--border)",
         bgcolor: strong ? "var(--surface-strong)" : "var(--surface)",
         backdropFilter: "blur(18px) saturate(140%)",

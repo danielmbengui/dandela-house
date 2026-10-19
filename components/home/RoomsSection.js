@@ -22,6 +22,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { cardPadding, cardRadius } from "@/components/ui/GlassCard";
 import { EASE } from "@/components/ui/Reveal";
 import { homeRooms } from "@/lib/rooms";
 import { formatKz } from "@/lib/format";
@@ -69,7 +70,7 @@ function RoomCard({ room, index, featured, compact }) {
             : compact
               ? { xs: 420, md: 360 }
               : { xs: 400, md: 420 },
-          borderRadius: 5,
+          borderRadius: cardRadius,
           overflow: "hidden",
           border: "1px solid var(--border)",
           bgcolor: "var(--bg-elev)",
@@ -161,7 +162,7 @@ function RoomCard({ room, index, featured, compact }) {
             left: 0,
             right: 0,
             bottom: 0,
-            p: { xs: 3.5, md: 4.5 },
+            p: cardPadding,
             color: "#f3ede2",
             transition: "transform 500ms cubic-bezier(.22,1,.36,1)",
           }}

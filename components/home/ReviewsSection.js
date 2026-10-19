@@ -6,7 +6,7 @@ import FormatQuoteRoundedIcon from "@mui/icons-material/FormatQuoteRounded";
 import { useTranslations } from "next-intl";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import GlassCard from "@/components/ui/GlassCard";
+import GlassCard, { cardPadding } from "@/components/ui/GlassCard";
 
 export default function ReviewsSection() {
   const t = useTranslations("home.reviews");
@@ -20,7 +20,7 @@ export default function ReviewsSection() {
           {items.map((review, i) => (
             <Grid key={review.name} size={{ xs: 12, md: 4 }}>
               <Reveal delay={i * 0.1} style={{ height: "100%" }}>
-                <GlassCard sx={{ height: "100%", p: { xs: 3.5, md: 4.5 }, display: "flex", flexDirection: "column" }}>
+                <GlassCard sx={{ height: "100%", p: cardPadding, display: "flex", flexDirection: "column" }}>
                   <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "center", mb: 2 }}>
                     <Stack direction="row" spacing={0.25}>
                       {[0, 1, 2, 3, 4].map((s) => (

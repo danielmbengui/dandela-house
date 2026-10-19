@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import { galleryImages } from "@/lib/rooms";
+import { cardRadius } from "@/components/ui/GlassCard";
 
 const SPANS = {
   wide: { gridColumn: { xs: "span 2", md: "span 2" }, gridRow: "span 1" },
@@ -57,7 +58,7 @@ export default function GallerySection() {
                   display: "block",
                   position: "relative",
                   overflow: "hidden",
-                  borderRadius: 4,
+                    borderRadius: { xs: cardRadius.xs, md: 4 },
                   border: "1px solid var(--border)",
                   p: 0,
                   cursor: "pointer",
