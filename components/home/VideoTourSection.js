@@ -14,7 +14,7 @@ import BrandLogo from "@/components/brand/BrandLogo";
 import { cardRadius } from "@/components/ui/GlassCard";
 
 const VIDEO_SRC = "/videos/dandela-remotion.mp4";
-const POSTER_SRC = "/videos/dandela-remotion-poster.jpg";
+const POSTER_SRC = "/images/outside/1.jpeg";
 
 function LandscapeFrame({ children }) {
   return (
@@ -22,12 +22,17 @@ function LandscapeFrame({ children }) {
       sx={{
         position: "relative",
         width: "100%",
+        maxWidth: { md: "100%" },
         aspectRatio: "16 / 9",
+        minHeight: { xs: 220, sm: 280, md: 360, lg: 420 },
         borderRadius: { xs: "11px", md: "20px" },
         overflow: "hidden",
         bgcolor: "#050706",
         boxShadow: "0 28px 70px -32px rgba(0,0,0,0.55)",
         border: "1px solid var(--border)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       {children}
@@ -107,8 +112,8 @@ export default function VideoTourSection() {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 5, md: 7 }} sx={{ alignItems: "center" }}>
-          <Grid size={{ xs: 12, md: 7 }}>
+        <Grid container spacing={{ xs: 5, md: 7 }} sx={{ alignItems: { xs: "stretch", md: "flex-start" } }}>
+          <Grid size={{ xs: 12, lg: 7 }}>
             <Reveal y={32} duration={1}>
               <LandscapeFrame>
                 <video
@@ -121,7 +126,13 @@ export default function VideoTourSection() {
                   preload="none"
                   onPlay={() => setPlaying(true)}
                   onPause={() => setPlaying(false)}
-                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block" }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    objectPosition: "center center",
+                    display: "block",
+                  }}
                 />
                 <Stack
                   direction="row"
@@ -139,7 +150,7 @@ export default function VideoTourSection() {
             </Reveal>
           </Grid>
 
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid size={{ xs: 12, lg: 5 }}>
             <SectionHeading index="02" kicker={t("kicker")} title={t("title")} subtitle={t("subtitle")} />
             <Reveal delay={0.15}>
               <Stack spacing={1.75} sx={{ mt: 4 }}>
