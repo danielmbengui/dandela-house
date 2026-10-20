@@ -121,6 +121,7 @@ export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const barRef = useRef(null);
+  const menuPanelRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
@@ -144,7 +145,10 @@ export default function SiteHeader() {
   useEffect(() => {
     if (!menuOpen) return undefined;
     const onDown = (event) => {
-      if (!barRef.current?.contains(event.target)) setMenuOpen(false);
+      const target = event.target;
+      if (barRef.current?.contains(target)) return;
+      if (menuPanelRef.current?.contains(target)) return;
+      setMenuOpen(false);
     };
     const onKey = (event) => {
       if (event.key === "Escape") setMenuOpen(false);
@@ -417,9 +421,10 @@ export default function SiteHeader() {
               return (
                 <Button
                   key={loc}
+                  type="button"
                   onClick={() => {
-                    close();
                     router.replace(pathname, { locale: loc });
+                    close();
                   }}
                   startIcon={<LocaleFlag locale={loc} />}
                   sx={{
@@ -451,6 +456,7 @@ export default function SiteHeader() {
               return (
                 <Button
                   key={value}
+                  type="button"
                   aria-label={t(`theme.${value}`)}
                   aria-pressed={selected}
                   onClick={() => setMode(value)}
@@ -498,6 +504,7 @@ export default function SiteHeader() {
               }}
             />
             <Box
+              ref={menuPanelRef}
               id="site-nav-panel"
               role="dialog"
               aria-modal="true"
@@ -636,6 +643,7 @@ export default function SiteHeader() {
 
         {menuOpen && !isMobileNav ? (
           <Box
+            ref={menuPanelRef}
             id="site-nav-panel"
             sx={{
               position: "absolute",
