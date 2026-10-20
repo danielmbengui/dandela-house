@@ -99,7 +99,11 @@ export default function SiteFooter() {
               {t("footer.contactTitle")}
             </Typography>
             <Stack spacing={1.25} sx={{ mt: 2 }}>
-              <ArrowLink external href={SITE.phoneHref}>{SITE.phoneDisplay}</ArrowLink>
+              {SITE.phones.map((phone) => (
+                <ArrowLink key={phone.e164} external href={whatsappHref(undefined, phone.e164)}>
+                  {phone.display}
+                </ArrowLink>
+              ))}
               <ArrowLink external href={`mailto:${SITE.email}`}>{SITE.email}</ArrowLink>
               <Typography sx={{ color: "var(--text-muted)", fontSize: 15, lineHeight: 1.6 }}>
                 {tLoc("address")}

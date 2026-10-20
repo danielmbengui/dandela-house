@@ -5,7 +5,6 @@ export type SlideConfig = {
   imageSrc: string;
   imageAlt: string;
   motion?: KenBurnsMotion;
-  /** Focal point 0–1 pour recadrage format paysage / carré. */
   focusX?: number;
   focusY?: number;
   title?: string;
@@ -20,7 +19,6 @@ export type SceneConfig = {
 
 export type MusicConfig = {
   src: string;
-  /** true = fichier silencieux ou temporaire — remplacer par la piste finale. */
   isPlaceholder: boolean;
   note: string;
   volume: number;
@@ -47,9 +45,15 @@ export type PresentationConfig = {
   };
 };
 
-const kubango = "images/rooms/K. Kubango";
-const maquela = "images/rooms/Maquela";
-const malange = "images/rooms/Malange";
+const R = {
+  kubango: "images/rooms/K. Kubango",
+  malange: "images/rooms/Malange",
+  maquela: "images/rooms/Maquela",
+  bie: "images/rooms/Bie",
+  huambo: "images/rooms/Huambo",
+  outside: (n: number) => `images/outside/${n}.jpeg`,
+  corridor: (n: number) => `images/corridors/${n}.jpeg`,
+};
 
 /**
  * Configuration centralisée — modifier textes et médias ici sans toucher aux composants.
@@ -57,10 +61,10 @@ const malange = "images/rooms/Malange";
 export const presentationFr: PresentationConfig = {
   locale: "fr",
   brandName: "DANDELA House",
-  locationLine: "Guest house · Sapu, Saurimo · Angola",
+  locationLine: "Guest house · Sapù, Luanda · Angola",
   ctaTitle: "Réservez votre séjour",
-  ctaSubtitle: "Cinq chambres, réception et sérénité au cœur de Sapu.",
-  ctaHint: "contact@dandela-house.ao",
+  ctaSubtitle: "Cinq chambres, réception et sérénité au Sapù, près de Calemba 2.",
+  ctaHint: "house@dandela.com",
   logoMark: "images/logo-mark-dark.png",
   logoFull: "images/logo-full-dark.png",
   music: {
@@ -77,21 +81,21 @@ export const presentationFr: PresentationConfig = {
       id: "intro",
       slides: [
         {
-          imageSrc: "images/main-header.jpg",
-          imageAlt: "Façade et environnement de DANDELA House",
+          imageSrc: R.outside(1),
+          imageAlt: "Extérieur DANDELA House",
           motion: "zoomIn",
           focusX: 0.5,
-          focusY: 0.35,
-          kicker: "Sapu · Saurimo",
+          focusY: 0.4,
+          kicker: "Sapù · Luanda",
           title: "DANDELA House",
           subtitle: "Votre refuge en Angola",
         },
         {
-          imageSrc: "images/terrace.jpg",
-          imageAlt: "Terrasse de DANDELA House",
+          imageSrc: R.outside(2),
+          imageAlt: "Façade et entrée",
           motion: "panRight",
-          focusX: 0.55,
-          focusY: 0.4,
+          focusX: 0.5,
+          focusY: 0.45,
           title: "Bienvenue",
           subtitle: "Confort, intimité et accueil chaleureux",
         },
@@ -101,35 +105,51 @@ export const presentationFr: PresentationConfig = {
       id: "rooms",
       slides: [
         {
-          imageSrc: `${kubango}/1.jpg`,
+          imageSrc: `${R.kubango}/1.jpg`,
           imageAlt: "Chambre K. Kubango",
           motion: "zoomIn",
           kicker: "Chambre",
           title: "K. Kubango",
-          subtitle: "Kitchenette, TV et salle de bain privée",
+          subtitle: "Kitchenette, lit double, TV, clim et balcon",
         },
         {
-          imageSrc: `${maquela}/1.jpg`,
-          imageAlt: "Chambre Maquela",
+          imageSrc: `${R.malange}/1.png`,
+          imageAlt: "Chambre Malange",
           motion: "panLeft",
           kicker: "Chambre",
-          title: "Maquela",
-          subtitle: "Espace calme à l'étage",
+          title: "Malange",
+          subtitle: "Salle de bain privée et frigo",
         },
         {
-          imageSrc: `${malange}/1.png`,
-          imageAlt: "Chambre Malange",
+          imageSrc: `${R.maquela}/1.jpg`,
+          imageAlt: "Chambre Maquela",
           motion: "zoomOut",
           kicker: "Chambre",
-          title: "Malange",
-          subtitle: "Confort pour un séjour prolongé",
+          title: "Maquela",
+          subtitle: "Calme et climatisée à l'étage",
         },
         {
-          imageSrc: "images/guest-room.jpg",
-          imageAlt: "Chambre invité",
+          imageSrc: `${R.bie}/1.jpeg`,
+          imageAlt: "Chambre Bié",
           motion: "panRight",
+          kicker: "Chambre",
+          title: "Bié",
+          subtitle: "Espace privé pour votre séjour",
+        },
+        {
+          imageSrc: `${R.huambo}/1.jpeg`,
+          imageAlt: "Chambre Huambo",
+          motion: "zoomIn",
+          kicker: "Chambre",
+          title: "Huambo",
+          subtitle: "Même confort dans chaque chambre",
+        },
+        {
+          imageSrc: `${R.huambo}/2.jpeg`,
+          imageAlt: "Détail chambre",
+          motion: "panLeft",
           title: "Cinq chambres privées",
-          subtitle: "Lit confortable, frigo et ménage 3× par semaine",
+          subtitle: "Kitchenette, frigo, salle de bain, lit double, TV, clim et balcon",
         },
       ],
     },
@@ -137,32 +157,32 @@ export const presentationFr: PresentationConfig = {
       id: "commons",
       slides: [
         {
-          imageSrc: "images/reception.jpg",
-          imageAlt: "Réception DANDELA House",
+          imageSrc: R.corridor(2),
+          imageAlt: "Couloir",
           motion: "zoomIn",
-          title: "Réception",
-          subtitle: "Accueil sur place de 08h à 17h",
+          title: "Couloirs",
+          subtitle: "Circulation fluide à l'étage",
         },
         {
-          imageSrc: "images/lobby.jpg",
-          imageAlt: "Espace d'accueil",
+          imageSrc: R.corridor(4),
+          imageAlt: "Espace commun",
           motion: "panLeft",
+          title: "Espaces communs",
+          subtitle: "Propreté et lumière naturelle",
+        },
+        {
+          imageSrc: R.corridor(6),
+          imageAlt: "Couloir DANDELA House",
+          motion: "panRight",
           title: "Accueil & ambiance",
           subtitle: "Un cadre soigné dès votre arrivée",
         },
         {
-          imageSrc: "images/lounge.jpg",
-          imageAlt: "Salle de repos",
+          imageSrc: R.corridor(10),
+          imageAlt: "Circulation intérieure",
           motion: "zoomOut",
           title: "Salle de repos",
-          subtitle: "Espace commun à l'étage",
-        },
-        {
-          imageSrc: "images/terrace.jpg",
-          imageAlt: "Terrasse avec tapis de course",
-          motion: "panRight",
-          title: "Terrasse",
-          subtitle: "Tapis de course et moment de détente",
+          subtitle: "Espace commun à l'étage, boissons disponibles",
         },
       ],
     },
@@ -170,25 +190,25 @@ export const presentationFr: PresentationConfig = {
       id: "amenities",
       slides: [
         {
-          imageSrc: "images/dandela-house-parking.png",
-          imageAlt: "Garage et stationnement",
+          imageSrc: R.outside(4),
+          imageAlt: "Extérieur et accès",
           motion: "zoomIn",
           title: "Garage sécurisé",
           subtitle: "Deux places pour vos véhicules",
         },
         {
-          imageSrc: "images/reception.jpg",
-          imageAlt: "Accueil sécurisé",
+          imageSrc: R.outside(5),
+          imageAlt: "Environnement de la maison",
           motion: "panLeft",
           title: "Sérénité",
-          subtitle: "Gardes à l'entrée et caméras de vidéosurveillance",
+          subtitle: "Gardes à l'entrée et vidéosurveillance",
         },
         {
-          imageSrc: "images/bedroom.jpg",
-          imageAlt: "Détail chambre",
+          imageSrc: R.corridor(12),
+          imageAlt: "Intérieur de la maison",
           motion: "zoomIn",
           title: "Tout le nécessaire",
-          subtitle: "Kitchenette, douche et WC dans chaque chambre",
+          subtitle: "Réception sur place, 08h–17h",
         },
       ],
     },
@@ -196,7 +216,7 @@ export const presentationFr: PresentationConfig = {
       id: "outro",
       slides: [
         {
-          imageSrc: "images/main-header.jpg",
+          imageSrc: R.outside(7),
           imageAlt: "DANDELA House",
           motion: "zoomIn",
           focusX: 0.5,

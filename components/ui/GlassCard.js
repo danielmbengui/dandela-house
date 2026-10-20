@@ -2,8 +2,8 @@
 
 import { Box } from "@mui/material";
 
-/** Arrondi des cartes : moitié sur mobile pour un rendu moins « bulle ». */
-export const cardRadius = { xs: 2.5, md: 5 };
+/** Arrondi des cartes. `xs` reste en unité MUI ; `md` est en px pour éviter le multiplicateur (18 × 5 = 90 px). */
+export const cardRadius = { xs: 2.5, md: "20px" };
 
 /** Padding intérieur cartes (MUI spacing). */
 export const cardPadding = { xs: 4.5, md: 4.5 };

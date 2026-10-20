@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTimeZone, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { AppProviders } from "@/components/providers/AppProviders";
 import DocumentLang from "@/components/providers/DocumentLang";
@@ -37,9 +37,10 @@ export default async function LocaleLayout({ children, params }) {
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const timeZone = await getTimeZone();
 
   return (
-    <AppProviders locale={locale} messages={messages}>
+    <AppProviders locale={locale} messages={messages} timeZone={timeZone}>
       <DocumentLang locale={locale} />
       <SiteHeader />
       <main className="w-full max-w-full overflow-x-clip pt-16 md:pt-[76px]">

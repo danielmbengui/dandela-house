@@ -100,7 +100,7 @@ export default function ExperienceSection() {
                 />
                 <Stack sx={{ position: "absolute", left: 32, right: 32, bottom: 32, color: "#f3ede2" }}>
                   <Typography variant="overline" sx={{ color: "var(--gold-soft)" }}>
-                    Sapu · Saurimo
+                    Sapù · Luanda
                   </Typography>
                   <Typography variant="h4" component="p" sx={{ fontStyle: "italic" }}>
                     DANDELA House

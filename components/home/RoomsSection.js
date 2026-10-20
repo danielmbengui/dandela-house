@@ -17,6 +17,8 @@ import AcUnitOutlinedIcon from "@mui/icons-material/AcUnitOutlined";
 import ShowerOutlinedIcon from "@mui/icons-material/ShowerOutlined";
 import TvOutlinedIcon from "@mui/icons-material/TvOutlined";
 import WifiOutlinedIcon from "@mui/icons-material/WifiOutlined";
+import BalconyOutlinedIcon from "@mui/icons-material/BalconyOutlined";
+import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useTranslations } from "next-intl";
@@ -31,10 +33,11 @@ import { whatsappHref } from "@/lib/site";
 const ICONS = {
   bed: BedOutlinedIcon,
   kitchenette: KitchenOutlinedIcon,
-  fridge: KitchenOutlinedIcon,
+  fridge: Inventory2OutlinedIcon,
   ac: AcUnitOutlinedIcon,
   bathroom: ShowerOutlinedIcon,
   tv: TvOutlinedIcon,
+  balcony: BalconyOutlinedIcon,
   wifi: WifiOutlinedIcon,
 };
 

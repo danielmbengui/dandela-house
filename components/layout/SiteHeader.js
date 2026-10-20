@@ -53,6 +53,62 @@ const aroundItems = [
   { key: "roomsPage", href: "/chambres-tarifs" },
 ];
 
+const SECTION_IDS = navItems.map((item) => item.hash);
+const SCROLL_SPY_OFFSET = 112;
+
+function useActiveNavSection(pathname) {
+  const [activeHash, setActiveHash] = useState(null);
+
+  const isRoomsPage = pathname === "/chambres-tarifs" || pathname === "/rooms-rates";
+
+  useEffect(() => {
+    if (isRoomsPage) {
+      setActiveHash("rooms");
+      return undefined;
+    }
+
+    if (pathname !== "/") {
+      setActiveHash(null);
+      return undefined;
+    }
+
+    const readActiveFromScroll = () => {
+      let current = null;
+      for (const id of SECTION_IDS) {
+        const node = document.getElementById(id);
+        if (!node) continue;
+        if (node.getBoundingClientRect().top <= SCROLL_SPY_OFFSET) current = id;
+      }
+      setActiveHash(current);
+    };
+
+    const readActiveFromHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (SECTION_IDS.includes(hash)) setActiveHash(hash);
+      else readActiveFromScroll();
+    };
+
+    readActiveFromHash();
+    window.addEventListener("scroll", readActiveFromScroll, { passive: true });
+    window.addEventListener("hashchange", readActiveFromHash);
+    return () => {
+      window.removeEventListener("scroll", readActiveFromScroll);
+      window.removeEventListener("hashchange", readActiveFromHash);
+    };
+  }, [pathname, isRoomsPage]);
+
+  return activeHash;
+}
+
+function isNavItemActive(item, activeHash, pathname) {
+  if (item.hash && activeHash === item.hash) return true;
+  if (item.href === "/chambres-tarifs" && (pathname === "/chambres-tarifs" || pathname === "/rooms-rates")) {
+    return true;
+  }
+  if (item.hash === "faq" && activeHash === "faq") return true;
+  return false;
+}
+
 export default function SiteHeader() {
   const t = useTranslations();
   const locale = useLocale();
@@ -71,6 +127,7 @@ export default function SiteHeader() {
   }, []);
 
   const isHome = pathname === "/";
+  const activeHash = useActiveNavSection(pathname);
   const onDark = isHome && !scrolled && !menuOpen;
 
   useEffect(() => {
@@ -123,7 +180,7 @@ export default function SiteHeader() {
   const menuPanelSurface = (
     <Box
       sx={{
-        borderRadius: { xs: "22px", md: "28px" },
+        borderRadius: { xs: "22px", md: "20px" },
         overflow: "hidden",
         bgcolor: "var(--card-color)",
         color: "var(--font-color)",
@@ -214,26 +271,32 @@ export default function SiteHeader() {
             {t("nav.about").toUpperCase()}
           </Typography>
           <Stack>
-            {navItems.map((item, index) => (
+            {navItems.map((item, index) => {
+              const active = isNavItemActive(item, activeHash, pathname);
+              return (
               <Box
                 key={item.key}
                 component={Link}
                 href={{ pathname: "/", hash: item.hash }}
                 onClick={close}
                 className="arrow-link"
+                aria-current={active ? "true" : undefined}
                 sx={{
                   display: "flex",
                   alignItems: "center",
                   gap: 1.5,
                   py: 1.35,
                   borderTop: "1px solid var(--border)",
-                  color: "var(--font-color)",
+                  color: active ? "var(--primary)" : "var(--font-color)",
                   fontSize: "1.05rem",
-                  fontWeight: 500,
+                  fontWeight: active ? 600 : 500,
                   "&:hover": { color: "var(--primary)" },
                 }}
               >
-                <Box component="span" sx={{ color: "var(--text-faint)", fontSize: 13, width: 22 }}>
+                <Box
+                  component="span"
+                  sx={{ color: active ? "var(--primary)" : "var(--text-faint)", fontSize: 13, width: 22 }}
+                >
                   {String(index + 1).padStart(2, "0")}
                 </Box>
                 <Box component="span" sx={{ flexGrow: 1 }}>
@@ -241,7 +304,8 @@ export default function SiteHeader() {
                 </Box>
                 <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
               </Box>
-            ))}
+            );
+            })}
           </Stack>
         </Box>
 
@@ -258,22 +322,25 @@ export default function SiteHeader() {
             {t("nav.around").toUpperCase()}
           </Typography>
           <Stack>
-            {aroundItems.map((item) => (
+            {aroundItems.map((item) => {
+              const active = isNavItemActive(item, activeHash, pathname);
+              return (
               <Box
                 key={item.key}
                 component={Link}
                 href={item.href ?? { pathname: "/", hash: item.hash }}
                 onClick={close}
                 className="arrow-link"
+                aria-current={active ? "true" : undefined}
                 sx={{
                   display: "flex",
                   alignItems: "center",
                   gap: 1.5,
                   py: 1.35,
                   borderTop: "1px solid var(--border)",
-                  color: "var(--font-color)",
+                  color: active ? "var(--primary)" : "var(--font-color)",
                   fontSize: "1.05rem",
-                  fontWeight: 500,
+                  fontWeight: active ? 600 : 500,
                   "&:hover": { color: "var(--primary)" },
                 }}
               >
@@ -282,7 +349,8 @@ export default function SiteHeader() {
                 </Box>
                 <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
               </Box>
-            ))}
+            );
+            })}
           </Stack>
         </Box>
       </Box>
@@ -299,22 +367,45 @@ export default function SiteHeader() {
           bgcolor: "color-mix(in srgb, var(--font-color) 4%, var(--card-color))",
         }}
       >
-        <Box
-          component="a"
-          href={`mailto:${SITE.email}`}
-          className="arrow-link"
-          sx={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 0.75,
-            color: "var(--font-color)",
-            fontWeight: 500,
-            fontSize: 15,
-          }}
-        >
-          {SITE.email}
-          <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
-        </Box>
+        <Stack spacing={0.75}>
+          {SITE.phones.map((phone) => (
+            <Box
+              key={phone.e164}
+              component="a"
+              href={whatsappHref(undefined, phone.e164)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="arrow-link"
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 0.75,
+                color: "var(--font-color)",
+                fontWeight: 500,
+                fontSize: 15,
+              }}
+            >
+              {phone.display}
+              <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
+            </Box>
+          ))}
+          <Box
+            component="a"
+            href={`mailto:${SITE.email}`}
+            className="arrow-link"
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 0.75,
+              color: "var(--font-color)",
+              fontWeight: 500,
+              fontSize: 15,
+            }}
+          >
+            {SITE.email}
+            <ArrowOutwardIcon className="arrow" sx={{ fontSize: 16 }} />
+          </Box>
+        </Stack>
 
         <Stack spacing={1}>
           <Typography sx={{ fontSize: 12, letterSpacing: "0.12em", fontWeight: 600, color: "var(--text-faint)" }}>
@@ -470,27 +561,31 @@ export default function SiteHeader() {
             spacing={0.25}
             sx={{ display: { xs: "none", lg: "flex" }, flexGrow: 1, alignItems: "center" }}
           >
-            {navItems.map((item) => (
-              <Box
-                key={item.key}
-                component={Link}
-                href={{ pathname: "/", hash: item.hash }}
-                className="nav-link"
-                onClick={close}
-                sx={{
-                  px: 1.25,
-                  py: 0.75,
-                  fontSize: 15,
-                  fontWeight: 500,
-                  letterSpacing: "-0.01em",
-                  opacity: 0.82,
-                  transition: "opacity 200ms ease",
-                  "&:hover": { opacity: 1 },
-                }}
-              >
-                {t(`nav.${item.key}`)}
-              </Box>
-            ))}
+            {navItems.map((item) => {
+              const active = isNavItemActive(item, activeHash, pathname);
+              return (
+                <Box
+                  key={item.key}
+                  component={Link}
+                  href={{ pathname: "/", hash: item.hash }}
+                  className={active ? "nav-link is-active" : "nav-link"}
+                  onClick={close}
+                  aria-current={active ? "true" : undefined}
+                  sx={{
+                    px: 1.25,
+                    py: 0.75,
+                    fontSize: 15,
+                    fontWeight: active ? 600 : 500,
+                    letterSpacing: "-0.01em",
+                    opacity: active ? 1 : 0.82,
+                    transition: "opacity 200ms ease, color 200ms ease",
+                    "&:hover": { opacity: 1 },
+                  }}
+                >
+                  {t(`nav.${item.key}`)}
+                </Box>
+              );
+            })}
           </Stack>
 
           <Box sx={{ flexGrow: { xs: 1, lg: 0 } }} />

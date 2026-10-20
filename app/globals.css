@@ -161,6 +161,15 @@ body {
 .nav-link:hover::after {
   transform: scaleX(1);
 }
+.nav-link.is-active {
+  color: var(--primary) !important;
+  opacity: 1 !important;
+  font-weight: 600;
+}
+.nav-link.is-active::after {
+  transform: scaleX(1);
+  background: var(--primary);
+}
 
 .arrow-link .arrow {
   display: inline-block;

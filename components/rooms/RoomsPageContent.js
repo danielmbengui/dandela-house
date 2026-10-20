@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { roomFeatureKeys, roomPlaceholders } from "@/lib/rooms";
+import { roomFeatureKeys, roomPlaceholders, standardRoomFeatureKeys } from "@/lib/rooms";
 import { formatKz } from "@/lib/format";
 
 export default function RoomsPageContent() {
@@ -106,7 +106,7 @@ export default function RoomsPageContent() {
                       </Box>
                     </Typography>
                     <Stack spacing={0.75}>
-                      {roomFeatureKeys.slice(0, 4).map((key) => (
+                      {standardRoomFeatureKeys.map((key) => (
                         <Typography key={key} variant="caption" color="text.secondary">
                           • {t(`features.${key}`)}
                         </Typography>

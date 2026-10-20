@@ -86,7 +86,7 @@ function Compass() {
           whiteSpace: "nowrap",
         }}
       >
-        Sapu
+        Sapù
       </Typography>
       {["N", "E", "S", "W"].map((d, i) => (
         <Typography
@@ -138,7 +138,7 @@ export default function LocationSection() {
                         sx={{
                           alignItems: "center",
                           p: 2.25,
-                          borderRadius: 3,
+                          borderRadius: { xs: 3, md: "12px" },
                           bgcolor: "var(--surface)",
                           border: "1px solid var(--border)",
                         }}

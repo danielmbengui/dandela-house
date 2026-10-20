@@ -1,11 +1,11 @@
 {
   "meta": {
-    "title": "DANDELA House — Guest house à Saurimo (Sapu), Angola",
-    "description": "Cinq chambres privées avec kitchenette et climatisation, réception, garage sécurisé et gardiennage. Réservez votre chambre à Sapu, Saurimo, en quelques secondes."
+    "title": "DANDELA House — Guest house à Sapù (Luanda), Angola",
+    "description": "Cinq chambres avec kitchenette, frigo, salle de bain, lit double, TV, climatisation et balcon. Réservez à Sapù, près de Calemba 2 — 475M+M9Q, Luanda."
   },
   "metaRooms": {
     "title": "Chambres et tarifs — DANDELA House",
-    "description": "Découvrez les 5 chambres de DANDELA House : kitchenette, TV, salle de bain privée et ménage trois fois par semaine."
+    "description": "Les 5 chambres de DANDELA House : kitchenette, frigo, salle de bain, lit double, TV, climatisation, balcon et ménage trois fois par semaine."
   },
   "nav": {
     "home": "Accueil",
@@ -24,10 +24,10 @@
   },
   "home": {
     "hero": {
-      "kicker": "Guest house · Sapu, Saurimo · Angola",
+      "kicker": "Guest house · Sapù, Luanda · Angola",
       "titleA": "Dormez bien.",
-      "titleB": "Vivez Saurimo.",
-      "subtitle": "Cinq chambres privées, calmes et climatisées, dans une maison gardée au cœur de Sapu. Kitchenette, garage fermé et réception sur place : arrivez, posez vos valises, respirez.",
+      "titleB": "Vivez Luanda.",
+      "subtitle": "Cinq chambres privées, calmes et climatisées, dans une maison gardée au Sapù, près de Calemba 2. Kitchenette, garage fermé et réception sur place : arrivez, posez vos valises, respirez.",
       "ctaBook": "Réserver sur WhatsApp",
       "ctaRooms": "Découvrir les chambres",
       "from": "À partir de",
@@ -74,7 +74,7 @@
     "rooms": {
       "kicker": "Les chambres",
       "title": "Cinq chambres, un même soin du détail",
-      "subtitle": "Chaque chambre porte le nom d'une ville d'Angola. Toutes sont à l'étage, avec kitchenette, salle de bain privée et climatisation.",
+      "subtitle": "Chaque chambre porte le nom d'une ville d'Angola. Toutes sont à l'étage, avec le même équipement : kitchenette, frigo, salle de bain, lit double, TV, climatisation et balcon.",
       "perNight": "/ nuit",
       "soon": "Bientôt",
       "soonName": "Chambre à venir",
@@ -82,12 +82,13 @@
       "details": "Toutes les chambres",
       "doorAlt": "Plaque de la chambre {name}",
       "features": {
-        "bed": "Lit confortable",
+        "bed": "Lit double",
         "kitchenette": "Kitchenette",
         "ac": "Climatisation",
-        "bathroom": "Douche + WC privés",
+        "bathroom": "Salle de bain + WC",
         "tv": "Télévision",
         "fridge": "Réfrigérateur",
+        "balcony": "Balcon",
         "wifi": "Wi‑Fi"
       }
     },
@@ -107,7 +108,7 @@
     "experience": {
       "kicker": "L'expérience",
       "title": "Tout ce qu'il faut, rien de superflu",
-      "subtitle": "Une maison pensée pour les séjours courts comme prolongés : voyageurs d'affaires, familles de passage, missions à Saurimo.",
+      "subtitle": "Une maison pensée pour les séjours courts comme prolongés : voyageurs d'affaires, familles de passage, missions à Luanda.",
       "items": {
         "garage": {
           "title": "Garage fermé",
@@ -142,6 +143,8 @@
       "labels": {
         "facade": "Façade",
         "courtyard": "Cour et garage",
+        "outside": "Extérieur de la maison",
+        "corridor": "Couloirs et espaces communs",
         "room": "Chambre {name}",
         "door": "Chambre {name}"
       },
@@ -150,26 +153,27 @@
     },
     "location": {
       "kicker": "Où nous trouver",
-      "title": "Sapu, Saurimo — Lunda Sul",
-      "text": "Dans un quartier résidentiel calme, à quelques minutes du centre de Saurimo. Idéal pour les missions professionnelles, les familles de passage et les séjours prolongés.",
-      "address": "Quartier Sapu, Saurimo, province de Lunda Sul, Angola",
-      "mapsCta": "Ouvrir dans Maps",
+      "title": "Sapù, Luanda — province de Luanda",
+      "text": "Rua da Ana Paula, quartier Sapù près de Calemba 2. Repère Google Maps : 475M+M9Q, Luanda.",
+      "address": "Rua da Ana Paula, Sapù (Calemba 2), 475M+M9Q, Luanda, province de Luanda, Angola",
+      "mapsCta": "Ouvrir dans Google Maps",
+      "mapTitle": "Carte — Dandela House, Sapù, Luanda",
       "points": {
         "airport": {
-          "label": "Aéroport de Saurimo",
-          "value": "≈ 15 min"
+          "label": "Aéroport international 4 de Fevereiro",
+          "value": "≈ 25 min"
         },
         "center": {
-          "label": "Centre-ville",
-          "value": "≈ 10 min"
+          "label": "Baixa (centre-ville)",
+          "value": "≈ 20 min"
         },
         "market": {
-          "label": "Marché et commerces",
-          "value": "≈ 5 min"
+          "label": "Marché et commerces (Arreiou)",
+          "value": "≈ 1 min"
         },
         "hospital": {
-          "label": "Hôpital provincial",
-          "value": "≈ 12 min"
+          "label": "Hôpital de référence",
+          "value": "≈ 20 min"
         }
       },
       "pointsNote": "Temps indicatifs en voiture."
@@ -222,7 +226,7 @@
         },
         {
           "q": "Que comprend la chambre ?",
-          "a": "Chaque chambre a une kitchenette, la climatisation, un lit confortable et une salle de bain privée avec douche et WC. Le ménage passe trois fois par semaine."
+          "a": "Chaque chambre comprend une kitchenette, un frigo, une salle de bain avec WC, un lit double, une télévision, la climatisation et un balcon. Le ménage passe trois fois par semaine."
         },
         {
           "q": "Les tarifs affichés sont-ils définitifs ?",
@@ -232,7 +236,7 @@
     }
   },
   "footer": {
-    "tagline": "Guest house à Sapu, Saurimo — Lunda Sul, Angola.",
+    "tagline": "Guest house au Sapù (Calemba 2), Luanda — Angola.",
     "rights": "Tous droits réservés.",
     "socialTitle": "Suivez-nous",
     "exploreTitle": "Explorer",
@@ -242,7 +246,7 @@
   },
   "roomsPage": {
     "title": "Chambres et tarifs",
-    "intro": "Cinq chambres à l'étage, avec le même confort essentiel. Les tarifs affichés sont indicatifs et confirmés à la réservation.",
+    "intro": "Cinq chambres à l'étage, toutes avec le même équipement. Les tarifs affichés sont indicatifs et confirmés à la réservation.",
     "priceLabel": "Tarif indicatif",
     "priceSoon": "À définir",
     "perNight": "/ nuit",
@@ -253,15 +257,17 @@
       "chambre-1": "K. Kubango",
       "chambre-2": "Malange",
       "chambre-3": "Maquela",
-      "chambre-4": "Chambre 4",
-      "chambre-5": "Chambre 5"
+      "chambre-4": "Bié",
+      "chambre-5": "Huambo"
     },
     "features": {
       "kitchenette": "Kitchenette équipée",
       "fridge": "Réfrigérateur",
-      "bed": "Lit confortable",
+      "bathroom": "Salle de bain + WC",
+      "bed": "Lit double",
       "tv": "Télévision",
-      "bathroom": "Salle de bain (douche + WC)",
+      "ac": "Climatisation",
+      "balcony": "Balcon",
       "housekeeping": "Ménage 3× par semaine"
     },
     "buildingTitle": "Organisation du bâtiment",
@@ -280,5 +286,11 @@
     "light": "Clair",
     "dark": "Sombre",
     "system": "Système"
+  },
+  "consent": {
+    "title": "Cookies",
+    "body": "Ce site peut conserver certaines informations sur votre appareil pour améliorer votre visite. Acceptez pour les garder d’une visite à l’autre, ou refusez pour ne pas les enregistrer.",
+    "accept": "Accepter",
+    "reject": "Refuser"
   }
 }

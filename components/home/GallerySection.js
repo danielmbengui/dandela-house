@@ -58,7 +58,7 @@ export default function GallerySection() {
                   display: "block",
                   position: "relative",
                   overflow: "hidden",
-                    borderRadius: { xs: cardRadius.xs, md: 4 },
+                    borderRadius: cardRadius,
                   border: "1px solid var(--border)",
                   p: 0,
                   cursor: "pointer",
