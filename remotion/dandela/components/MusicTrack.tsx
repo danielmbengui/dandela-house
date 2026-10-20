@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, staticFile, useCurrentFrame } from "remotion";
-import type { MusicConfig } from "../config/presentation.fr";
+import type { MusicConfig } from "../config/presentation.types";
 import { FPS, TOTAL_FRAMES } from "../config/timing";
 
 type MusicTrackProps = {

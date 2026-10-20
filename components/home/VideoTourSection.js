@@ -7,13 +7,13 @@ import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { videoTourSrcForLocale } from "@/lib/videoTour";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import BrandLogo from "@/components/brand/BrandLogo";
 import { cardRadius } from "@/components/ui/GlassCard";
 
-const VIDEO_SRC = "/videos/dandela-remotion.mp4";
 const POSTER_SRC = "/images/outside/1.jpeg";
 
 function LandscapeFrame({ children }) {
@@ -42,6 +42,8 @@ function LandscapeFrame({ children }) {
 
 export default function VideoTourSection() {
   const t = useTranslations("home.video");
+  const locale = useLocale();
+  const videoSrc = videoTourSrcForLocale(locale);
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
   const [playing, setPlaying] = useState(false);
@@ -63,7 +65,7 @@ export default function VideoTourSection() {
     );
     io.observe(node);
     return () => io.disconnect();
-  }, []);
+  }, [videoSrc]);
 
   useEffect(() => {
     if (!canLoad) return undefined;
@@ -73,7 +75,11 @@ export default function VideoTourSection() {
     start();
     node.addEventListener("loadeddata", start, { once: true });
     return () => node.removeEventListener("loadeddata", start);
-  }, [canLoad]);
+  }, [canLoad, videoSrc]);
+
+  useEffect(() => {
+    setPlaying(false);
+  }, [videoSrc]);
 
   const togglePlay = () => {
     const node = videoRef.current;
@@ -117,8 +123,9 @@ export default function VideoTourSection() {
             <Reveal y={32} duration={1}>
               <LandscapeFrame>
                 <video
+                  key={videoSrc}
                   ref={videoRef}
-                  src={canLoad ? VIDEO_SRC : undefined}
+                  src={canLoad ? videoSrc : undefined}
                   poster={POSTER_SRC}
                   muted
                   loop

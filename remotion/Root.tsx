@@ -4,24 +4,25 @@ import {
   DandelaPresentation,
   type DandelaPresentationProps,
 } from "./dandela/DandelaPresentation";
+import {
+  compositionId,
+  PRESENTATION_FORMATS,
+  PRESENTATION_LOCALES,
+} from "./dandela/config/compositions";
 import { VIDEO_FORMATS, type VideoFormatId } from "./dandela/config/formats";
 import { FPS, TOTAL_DURATION_SECONDS, TOTAL_FRAMES } from "./dandela/config/timing";
+import type { PresentationLocale } from "./dandela/config/presentation.types";
 
-const compositionIds: Record<VideoFormatId, string> = {
-  vertical: "DandelaPresentation-FR-9x16",
-  horizontal: "DandelaPresentation-FR-16x9",
-  square: "DandelaPresentation-FR-1x1",
-};
-
-const CompositionForFormat: React.FC<{ formatId: VideoFormatId }> = ({
-  formatId,
-}) => {
+const CompositionForLocaleFormat: React.FC<{
+  locale: PresentationLocale;
+  formatId: VideoFormatId;
+}> = ({ locale, formatId }) => {
   const spec = VIDEO_FORMATS[formatId];
-  const defaultProps: DandelaPresentationProps = { formatId };
+  const defaultProps: DandelaPresentationProps = { formatId, locale };
 
   return (
     <Composition
-      id={compositionIds[formatId]}
+      id={compositionId(locale, formatId)}
       component={DandelaPresentation}
       durationInFrames={TOTAL_FRAMES}
       fps={FPS}
@@ -35,9 +36,15 @@ const CompositionForFormat: React.FC<{ formatId: VideoFormatId }> = ({
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <CompositionForFormat formatId="vertical" />
-      <CompositionForFormat formatId="horizontal" />
-      <CompositionForFormat formatId="square" />
+      {PRESENTATION_LOCALES.flatMap((locale) =>
+        PRESENTATION_FORMATS.map((formatId) => (
+          <CompositionForLocaleFormat
+            key={compositionId(locale, formatId)}
+            locale={locale}
+            formatId={formatId}
+          />
+        )),
+      )}
     </>
   );
 };
@@ -46,5 +53,5 @@ export const RemotionRoot: React.FC = () => {
 export const REMOTION_META = {
   fps: FPS,
   durationSeconds: TOTAL_DURATION_SECONDS,
-  defaultComposition: compositionIds.vertical,
+  defaultComposition: compositionId("fr", "vertical"),
 } as const;

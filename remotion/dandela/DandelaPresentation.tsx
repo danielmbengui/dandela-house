@@ -2,12 +2,13 @@ import React, { useMemo } from "react";
 import { AbsoluteFill, Sequence, Series } from "remotion";
 import type { VideoFormatId } from "./config/formats";
 import { getFormat } from "./config/formats";
-import {
-  getSceneList,
-  presentationFr,
-  type PresentationConfig,
-  type SceneConfig,
-} from "./config/presentation.fr";
+import { getPresentationConfig } from "./config/presentation.index";
+import type {
+  PresentationConfig,
+  PresentationLocale,
+  SceneConfig,
+} from "./config/presentation.types";
+import { getSceneList } from "./config/presentation.types";
 import {
   FPS,
   SCENE_DURATIONS_SECONDS,
@@ -23,6 +24,7 @@ import { SceneTransition } from "./components/SceneTransition";
 
 export type DandelaPresentationProps = {
   formatId: VideoFormatId;
+  locale?: PresentationLocale;
   config?: PresentationConfig;
 };
 
@@ -49,10 +51,12 @@ const distributeSlideDurations = (
 
 export const DandelaPresentation: React.FC<DandelaPresentationProps> = ({
   formatId,
-  config = presentationFr,
+  locale = "fr",
+  config,
 }) => {
+  const resolvedConfig = config ?? getPresentationConfig(locale);
   const format = getFormat(formatId);
-  const scenes = getSceneList(config);
+  const scenes = getSceneList(resolvedConfig);
 
   const sceneFrames = useMemo(
     () =>
@@ -66,7 +70,7 @@ export const DandelaPresentation: React.FC<DandelaPresentationProps> = ({
 
   return (
     <AbsoluteFill style={{ backgroundColor: dandelaColors.forestDeep }}>
-      <MusicTrack music={config.music} />
+      <MusicTrack music={resolvedConfig.music} />
 
       {scenes.map((scene, sceneIndex) => {
         const sceneStart = cursor;
@@ -86,7 +90,7 @@ export const DandelaPresentation: React.FC<DandelaPresentationProps> = ({
             name={scene.id}
           >
             {scene.id === "outro" ? (
-              <OutroSequence config={config} format={format} />
+              <OutroSequence config={resolvedConfig} format={format} />
             ) : (
               <Series>
                 {scene.slides.map((slide, slideIndex) => (
@@ -109,8 +113,8 @@ export const DandelaPresentation: React.FC<DandelaPresentationProps> = ({
                 )}
               >
                 <LogoReveal
-                  logoSrc={config.logoMark}
-                  brandName={config.brandName}
+                  logoSrc={resolvedConfig.logoMark}
+                  brandName={resolvedConfig.brandName}
                   format={format}
                   variant="mark"
                 />
@@ -120,7 +124,7 @@ export const DandelaPresentation: React.FC<DandelaPresentationProps> = ({
         );
       })}
 
-      {config.music.isPlaceholder ? (
+      {resolvedConfig.music.isPlaceholder ? (
         <AbsoluteFill
           style={{
             justifyContent: "flex-start",

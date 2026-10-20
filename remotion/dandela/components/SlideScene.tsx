@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
-import type { SlideConfig } from "../config/presentation.fr";
+import type { SlideConfig } from "../config/presentation.types";
 import type { VideoFormatSpec } from "../config/formats";
 import { AnimatedImage } from "./AnimatedImage";
 import { CinematicText } from "./CinematicText";
