@@ -1,12 +1,13 @@
-"use client";
-
 import { Box, Typography } from "@mui/material";
-import { useTranslations } from "next-intl";
 
-/** Bandeau défilant, dans l'esprit du marquee PlayPad : capitales + séparateur. */
-export default function MarqueeStrip() {
-  const t = useTranslations("home.marquee");
-  const items = t.raw("items");
+/**
+ * @param {{ items: string[] }} props
+ */
+export default function MarqueeStrip({ items = [] }) {
+  if (!items.length) {
+    return null;
+  }
+
   const doubled = [...items, ...items];
 
   return (

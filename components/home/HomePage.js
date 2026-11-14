@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import HeroSection from "./HeroSection";
 import MarqueeStrip from "./MarqueeStrip";
 import RoomsSection from "./RoomsSection";
@@ -8,12 +9,22 @@ import LocationSection from "./LocationSection";
 import ReviewsSection from "./ReviewsSection";
 import FaqSection from "./FaqSection";
 import BookingCtaSection from "./BookingCtaSection";
+import { fetchMarqueeBannerTexts } from "@/lib/api/banners";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const locale = await getLocale();
+  const apiItems = await fetchMarqueeBannerTexts(locale);
+  let marqueeItems = apiItems;
+
+  if (!marqueeItems.length) {
+    const t = await getTranslations("home.marquee");
+    marqueeItems = t.raw("items");
+  }
+
   return (
     <>
       <HeroSection />
-      <MarqueeStrip />
+      <MarqueeStrip items={marqueeItems} />
       <RoomsSection />
       <VideoTourSection />
       <ExperienceSection />
