@@ -21,7 +21,7 @@ const POINTS = [
 ];
 
 /** Repère graphique : cercles concentriques + point doré (pas une carte). */
-function Compass() {
+function Compass({ label = "Sapù" }) {
   return (
     <Box
       aria-hidden
@@ -86,7 +86,7 @@ function Compass() {
           whiteSpace: "nowrap",
         }}
       >
-        Sapù
+        {label}
       </Typography>
       {["N", "E", "S", "W"].map((d, i) => (
         <Typography
@@ -109,8 +109,14 @@ function Compass() {
   );
 }
 
-export default function LocationSection() {
+/**
+ * @param {{ location?: { addressLine?: string, points?: { key: string, label: string, value: string }[]|null, compassLabel?: string }|null }} props
+ */
+export default function LocationSection({ location = null }) {
   const t = useTranslations("home.location");
+  const addressLine = location?.addressLine?.trim() || t("address");
+  const apiPoints = location?.points?.length ? location.points : null;
+  const compassLabel = location?.compassLabel?.trim() || "Sapù";
 
   return (
     <Box component="section" id="location" className="section-anchor" sx={{ py: { xs: 10, md: 14 } }}>
@@ -118,7 +124,7 @@ export default function LocationSection() {
         <Grid container spacing={{ xs: 6, md: 8 }} sx={{ alignItems: "center" }}>
           <Grid size={{ xs: 12, md: 5 }}>
             <Reveal>
-              <Compass />
+              <Compass label={compassLabel} />
             </Reveal>
           </Grid>
           <Grid size={{ xs: 12, md: 7 }}>
@@ -127,11 +133,15 @@ export default function LocationSection() {
               <GlassCard sx={{ mt: 4, p: cardPadding }}>
                 <Stack direction="row" spacing={1.5} sx={{ alignItems: "flex-start", mb: 2.5 }}>
                   <PlaceOutlinedIcon sx={{ color: "var(--primary)", mt: "2px" }} />
-                  <Typography sx={{ lineHeight: 1.6 }}>{t("address")}</Typography>
+                  <Typography sx={{ lineHeight: 1.6 }}>{addressLine}</Typography>
                 </Stack>
                 <Grid container spacing={1.5}>
-                  {POINTS.map(({ key, Icon }) => (
-                    <Grid key={key} size={{ xs: 12, sm: 6 }}>
+                  {(apiPoints ?? POINTS.map(({ key }) => ({ key, label: t(`points.${key}.label`), value: t(`points.${key}.value`) }))).map(
+                    (point) => {
+                      const preset = POINTS.find((p) => p.key === point.key);
+                      const Icon = preset?.Icon ?? PlaceOutlinedIcon;
+                      return (
+                    <Grid key={point.key} size={{ xs: 12, sm: 6 }}>
                       <Stack
                         direction="row"
                         spacing={1.5}
@@ -145,14 +155,16 @@ export default function LocationSection() {
                       >
                         <Icon sx={{ color: "var(--primary)" }} fontSize="small" />
                         <Box sx={{ flex: 1 }}>
-                          <Typography variant="body2">{t(`points.${key}.label`)}</Typography>
+                          <Typography variant="body2">{point.label}</Typography>
                         </Box>
                         <Typography className="font-serif" sx={{ fontSize: "1.15rem", color: "var(--text)" }}>
-                          {t(`points.${key}.value`)}
+                          {point.value}
                         </Typography>
                       </Stack>
                     </Grid>
-                  ))}
+                      );
+                    },
+                  )}
                 </Grid>
                 <Stack
                   direction={{ xs: "column", sm: "row" }}
@@ -164,7 +176,7 @@ export default function LocationSection() {
                   </Typography>
                   <Button
                     component="a"
-                    href={SITE.mapsHref}
+                    href={location?.mapsHref ?? SITE.mapsHref}
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="outlined"

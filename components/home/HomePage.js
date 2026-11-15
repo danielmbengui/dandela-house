@@ -10,10 +10,18 @@ import ReviewsSection from "./ReviewsSection";
 import FaqSection from "./FaqSection";
 import BookingCtaSection from "./BookingCtaSection";
 import { fetchMarqueeBannerTexts } from "@/lib/api/banners";
+import { fetchEntityLocation } from "@/lib/api/location";
+import { fetchHomeRooms } from "@/lib/api/rooms";
+import { homeRooms } from "@/lib/rooms";
 
 export default async function HomePage() {
   const locale = await getLocale();
-  const apiItems = await fetchMarqueeBannerTexts(locale);
+  const [apiItems, apiRooms, entityLocation] = await Promise.all([
+    fetchMarqueeBannerTexts(locale),
+    fetchHomeRooms(),
+    fetchEntityLocation(locale),
+  ]);
+  const roomsForHome = apiRooms.length ? apiRooms : homeRooms;
   let marqueeItems = apiItems;
 
   if (!marqueeItems.length) {
@@ -25,14 +33,14 @@ export default async function HomePage() {
     <>
       <HeroSection />
       <MarqueeStrip items={marqueeItems} />
-      <RoomsSection />
+      <RoomsSection rooms={roomsForHome} />
       <VideoTourSection />
       <ExperienceSection />
       <GallerySection />
-      <LocationSection />
+      <LocationSection location={entityLocation} />
       <ReviewsSection />
       <FaqSection />
-      <BookingCtaSection />
+      <BookingCtaSection location={entityLocation} />
     </>
   );
 }

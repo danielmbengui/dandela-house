@@ -30,6 +30,49 @@ import { homeRooms } from "@/lib/rooms";
 import { formatKz } from "@/lib/format";
 import { whatsappHref } from "@/lib/site";
 
+function isAbsoluteUrl(src) {
+  return /^https?:\/\//i.test(String(src ?? ""));
+}
+
+function RoomPhoto({ src, alt, fill, sizes, style, className }) {
+  if (isAbsoluteUrl(src)) {
+    return (
+      <Box
+        component="img"
+        src={src}
+        alt={alt}
+        className={className}
+        loading="lazy"
+        decoding="async"
+        sx={
+          fill
+            ? {
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+                ...style,
+              }
+            : { width: "100%", height: "100%", objectFit: "cover", display: "block", ...style }
+        }
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill={fill}
+      sizes={sizes}
+      className={className}
+      style={fill ? { objectFit: "cover", ...style } : style}
+    />
+  );
+}
+
 const ICONS = {
   bed: BedOutlinedIcon,
   kitchenette: KitchenOutlinedIcon,
@@ -95,12 +138,11 @@ function RoomCard({ room, index, featured, compact }) {
             filter: room.comingSoon ? "grayscale(0.6) brightness(0.7)" : "none",
           }}
         >
-          <Image
+          <RoomPhoto
             src={room.cover}
             alt={name}
             fill
             sizes={featured ? "(max-width: 900px) 100vw, 60vw" : "(max-width: 900px) 100vw, 33vw"}
-            style={{ objectFit: "cover" }}
           />
         </Box>
         <Box
@@ -146,13 +188,7 @@ function RoomCard({ room, index, featured, compact }) {
                 position: "relative",
               }}
             >
-              <Image
-                src={room.door}
-                alt={t("doorAlt", { name })}
-                fill
-                sizes="72px"
-                style={{ objectFit: "cover" }}
-              />
+              <RoomPhoto src={room.door} alt={t("doorAlt", { name })} fill sizes="72px" />
             </Box>
           ) : null}
         </Stack>
@@ -237,9 +273,13 @@ function RoomCard({ room, index, featured, compact }) {
   );
 }
 
-export default function RoomsSection() {
+/**
+ * @param {{ rooms?: typeof homeRooms }} props
+ */
+export default function RoomsSection({ rooms: roomsProp }) {
   const t = useTranslations("home.rooms");
-  const [first, ...rest] = homeRooms;
+  const list = roomsProp?.length ? roomsProp : homeRooms;
+  const [first, ...rest] = list;
 
   return (
     <Box component="section" id="rooms" className="section-anchor" sx={{ py: { xs: 10, md: 14 } }}>

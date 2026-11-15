@@ -13,9 +13,18 @@ import { cardRadius } from "@/components/ui/GlassCard";
 
 const CREAM = "#f3ede2";
 
-export default function BookingCtaSection() {
+/**
+ * @param {{ location?: { placeName?: string, addressLine?: string, mapsHref?: string, mapsEmbedSrc?: string, phones?: { display: string, e164: string }[], email?: string }|null }} props
+ */
+export default function BookingCtaSection({ location = null }) {
   const t = useTranslations("home.cta");
   const tLoc = useTranslations("home.location");
+  const placeName = location?.placeName?.trim() || SITE.mapsPlaceName;
+  const addressLine = location?.addressLine?.trim() || tLoc("address");
+  const mapsEmbedSrc = location?.mapsEmbedSrc?.trim() || SITE.mapsEmbedSrc;
+  const mapsHref = location?.mapsHref?.trim() || SITE.mapsHref;
+  const phones = location?.phones?.length ? location.phones : SITE.phones;
+  const email = location?.email?.trim() || SITE.email;
 
   return (
     <Box component="section" id="contact" className="section-anchor" sx={{ py: { xs: 6, md: 10 } }}>
@@ -43,7 +52,7 @@ export default function BookingCtaSection() {
                 <Box
                   component="iframe"
                   title={tLoc("mapTitle")}
-                  src={SITE.mapsEmbedSrc}
+                  src={mapsEmbedSrc}
                   loading="lazy"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
@@ -71,16 +80,16 @@ export default function BookingCtaSection() {
                   <PlaceOutlinedIcon sx={{ color: "var(--primary)", mt: "2px", flexShrink: 0 }} />
                   <Box>
                     <Typography sx={{ fontWeight: 600, lineHeight: 1.35, mb: 0.5 }}>
-                      {SITE.mapsPlaceName}
+                      {placeName}
                     </Typography>
                     <Typography sx={{ color: "var(--text-muted)", lineHeight: 1.6 }}>
-                      {tLoc("address")}
+                      {addressLine}
                     </Typography>
                   </Box>
                 </Stack>
                 <Button
                   component="a"
-                  href={SITE.mapsHref}
+                  href={mapsHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="contained"
@@ -147,7 +156,7 @@ export default function BookingCtaSection() {
                   spacing={1.5}
                   sx={{ justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}
                 >
-                  {SITE.phones.map((phone, index) => (
+                  {phones.map((phone, index) => (
                     <Button
                       key={phone.e164}
                       component="a"
@@ -178,7 +187,7 @@ export default function BookingCtaSection() {
                 </Stack>
                 <Button
                   component="a"
-                  href={`mailto:${SITE.email}`}
+                  href={`mailto:${email}`}
                   variant="text"
                   size="large"
                   startIcon={<MailOutlineRoundedIcon />}
