@@ -161,8 +161,15 @@ export default function HousePlanTestPage({ payload }) {
         <Typography variant="h4" gutterBottom>
           Test plan maison (BDD)
         </Typography>
+        {payload?.error ? (
+          <Typography color="error" sx={{ mb: 1 }}>
+            API : {payload.error}
+            {payload.status ? ` (${payload.status})` : ""}
+          </Typography>
+        ) : null}
         <Typography color="text.secondary">
-          Aucun étage trouvé dans `houses_floors` pour cette maison, ou l’endpoint n’est pas encore déployé.
+          Aucun étage dans `houses_floors` / `houses_floor_zones` / `houses_floor_cells` pour cette
+          maison, ou l’endpoint `/api/houses/:uid/floor-plan` n’est pas encore déployé.
         </Typography>
       </Container>
     );
