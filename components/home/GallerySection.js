@@ -9,8 +9,50 @@ import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { useTranslations } from "next-intl";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import { galleryImages } from "@/lib/rooms";
+import { galleryImages as fallbackGalleryImages } from "@/lib/rooms";
 import { cardRadius } from "@/components/ui/GlassCard";
+
+function isAbsoluteUrl(src) {
+  return /^https?:\/\//i.test(String(src ?? ""));
+}
+
+function GalleryPhoto({ src, alt, fill, sizes, style }) {
+  if (isAbsoluteUrl(src)) {
+    return (
+      <Box
+        component="img"
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        sx={{
+          ...(fill
+            ? {
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+                ...style,
+              }
+            : {}),
+        }}
+        style={fill ? undefined : style}
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill={fill}
+      sizes={sizes}
+      style={fill ? { objectFit: "cover", ...style } : style}
+    />
+  );
+}
 
 const SPANS = {
   wide: { gridColumn: { xs: "span 2", md: "span 2" }, gridRow: "span 1" },
@@ -18,8 +60,12 @@ const SPANS = {
   square: { gridColumn: "span 1", gridRow: "span 1" },
 };
 
-export default function GallerySection() {
+/**
+ * @param {{ images?: typeof fallbackGalleryImages }} props
+ */
+export default function GallerySection({ images: imagesProp }) {
   const t = useTranslations("home.gallery");
+  const galleryImages = imagesProp?.length ? imagesProp : fallbackGalleryImages;
   const [index, setIndex] = useState(null);
 
   const label = (img) =>
@@ -45,7 +91,7 @@ export default function GallerySection() {
           }}
         >
           {galleryImages.map((img, i) => (
-            <Box key={`${img.src}-${i}`} sx={{ ...SPANS[img.span ?? "square"], minHeight: 0 }}>
+            <Box key={img.id ?? `${img.src}-${i}`} sx={{ ...SPANS[img.span ?? "square"], minHeight: 0 }}>
               <Reveal delay={(i % 4) * 0.06} style={{ height: "100%" }}>
               <Box
                 component="button"
@@ -68,12 +114,12 @@ export default function GallerySection() {
                   "&:focus-visible": { outline: "2px solid var(--primary)", outlineOffset: 2 },
                 }}
               >
-                <Image
+                <GalleryPhoto
                   src={img.src}
                   alt={label(img)}
                   fill
                   sizes="(max-width: 900px) 50vw, 25vw"
-                  style={{ objectFit: "cover", transition: "transform 1.1s cubic-bezier(.22,1,.36,1)" }}
+                  style={{ transition: "transform 1.1s cubic-bezier(.22,1,.36,1)" }}
                 />
                 <Box
                   className="gallery-label"
@@ -116,7 +162,7 @@ export default function GallerySection() {
       >
         {current ? (
           <Box sx={{ position: "relative", width: "100%", height: { xs: "70vh", md: "82vh" } }}>
-            <Image
+            <GalleryPhoto
               key={current.src}
               src={current.src}
               alt={label(current)}

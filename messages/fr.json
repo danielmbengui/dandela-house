@@ -59,6 +59,74 @@
       "roomNamed": "la chambre {name}",
       "undated": "dates à préciser"
     },
+    "floorPlan": {
+      "kicker": "Plan interactif",
+      "title": "Le parcours des chambres",
+      "subtitle": "Explorez la maison étage par étage : faites pivoter la maquette et cliquez sur une chambre pour ouvrir sa fiche.",
+      "hint": "Glissez pour pivoter · cliquez sur une chambre",
+      "hintStairs": "Glissez pour pivoter · cliquez sur l’escalier pour changer d’étage",
+      "floorsLabel": "Choisir un étage",
+      "floorName": "{floor, plural, =0 {Rez-de-chaussée} other {{floor, selectordinal, one {#er étage} other {#e étage}}}}",
+      "floorShort": "{floor}",
+      "basementName": "Sous-sol {level}",
+      "onThisFloor": "Sur cet étage",
+      "stairs": "Escalier",
+      "kinds": {
+        "room": "Chambre",
+        "break-room": "Salle de repos",
+        "waiting-room": "Salle d’attente",
+        "kitchen": "Cuisine",
+        "terrace": "Terrasse",
+        "parking": "Parking",
+        "other": "Espace commun"
+      },
+      "zones": {
+        "security": {
+          "name": "Surveillance",
+          "tag": "Sécurité"
+        },
+        "kitchen": {
+          "name": "Cuisine"
+        },
+        "outdoor": {
+          "name": "Extérieur",
+          "tag": "Hors parcours"
+        },
+        "terrace": {
+          "name": "Terrasse",
+          "tag": "À l'air libre"
+        },
+        "balcony": {
+          "name": "Balcon",
+          "tag": "À l'air libre"
+        },
+        "reception": {
+          "name": "Réception",
+          "tag": "Accueil"
+        },
+        "parking": {
+          "name": "Parking",
+          "tag": "Véhicules"
+        },
+        "entrance": {
+          "name": "Entrée"
+        },
+        "carEntrance": {
+          "name": "Entrée voitures"
+        }
+      },
+      "legend": {
+        "room": "Chambres",
+        "common": "Espaces communs",
+        "outdoor": "Terrasse & balcon",
+        "exterior": "Hors parcours",
+        "service": "Services",
+        "corridor": "Circulation",
+        "stairs": "Escalier"
+      },
+      "close": "Fermer",
+      "unavailable": "La maquette 3D ne peut pas s’afficher sur cet appareil. La liste des lieux reste disponible."
+    },
     "marquee": {
       "items": [
         "Kitchenette équipée",
@@ -73,7 +141,7 @@
     },
     "rooms": {
       "kicker": "Les chambres",
-      "title": "Cinq chambres, un même soin du détail",
+      "title": "Des chambres, un même soin du détail",
       "subtitle": "Chaque chambre porte le nom d'une ville d'Angola. Toutes sont à l'étage, avec le même équipement : kitchenette, frigo, salle de bain, lit double, TV, climatisation et balcon.",
       "perNight": "/ nuit",
       "soon": "Bientôt",
@@ -81,6 +149,7 @@
       "book": "Réserver",
       "details": "Toutes les chambres",
       "doorAlt": "Plaque de la chambre {name}",
+      "logoAlt": "Logo de la chambre {name}",
       "features": {
         "bed": "Lit double",
         "kitchenette": "Kitchenette",

@@ -19,10 +19,8 @@ import TvOutlinedIcon from "@mui/icons-material/TvOutlined";
 import WifiOutlinedIcon from "@mui/icons-material/WifiOutlined";
 import BalconyOutlinedIcon from "@mui/icons-material/BalconyOutlined";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { cardPadding, cardRadius } from "@/components/ui/GlassCard";
 import { EASE } from "@/components/ui/Reveal";
@@ -32,6 +30,44 @@ import { whatsappHref } from "@/lib/site";
 
 function isAbsoluteUrl(src) {
   return /^https?:\/\//i.test(String(src ?? ""));
+}
+
+function RoomEntityLogo({ src, alt, backColor, size = 76 }) {
+  if (!src) return null;
+
+  return (
+    <Box
+      className="room-entity-logo"
+      sx={{
+        width: size,
+        height: size,
+        borderRadius: 2.5,
+        overflow: "hidden",
+        flexShrink: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        p: 1,
+        bgcolor: backColor || "rgba(243,237,226,0.14)",
+        border: "1px solid rgba(243,237,226,0.32)",
+        boxShadow: "0 10px 30px -14px rgba(0,0,0,0.65)",
+        backdropFilter: "blur(6px)",
+      }}
+    >
+      {isAbsoluteUrl(src) ? (
+        <Box
+          component="img"
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          sx={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }}
+        />
+      ) : (
+        <Image src={src} alt={alt} width={size - 16} height={size - 16} style={{ objectFit: "contain", width: "100%", height: "auto" }} />
+      )}
+    </Box>
+  );
 }
 
 function RoomPhoto({ src, alt, fill, sizes, style, className }) {
@@ -167,7 +203,6 @@ function RoomCard({ room, index, featured, compact }) {
               color: "#f3ede2",
               backdropFilter: "blur(8px)",
               border: "1px solid rgba(243,237,226,0.2)",
-              fontFamily: "var(--font-cormorant)",
               fontSize: "1rem",
               px: 0.5,
             }}
@@ -207,19 +242,29 @@ function RoomCard({ room, index, featured, compact }) {
           }}
         >
           <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "flex-end", mb: 1.5 }}>
-            <Typography
-              variant="h3"
-              component="h3"
-              sx={{
-                fontSize: featured
-                  ? { xs: "2.4rem", md: "3.2rem" }
-                  : compact
-                    ? { xs: "1.9rem", md: "1.9rem" }
-                    : { xs: "2rem", md: "2.3rem" },
-              }}
-            >
-              {name}
-            </Typography>
+            <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", minWidth: 0, flex: 1 }}>
+              {room.logo ? (
+                <RoomEntityLogo
+                  src={room.logo}
+                  alt={t("logoAlt", { name })}
+                  backColor={room.logoBackColor}
+                  size={featured ? 64 : compact ? 48 : 56}
+                />
+              ) : null}
+              <Typography
+                variant="h3"
+                component="h3"
+                sx={{
+                  fontSize: featured
+                    ? { xs: "2.4rem", md: "3.2rem" }
+                    : compact
+                      ? { xs: "1.9rem", md: "1.9rem" }
+                      : { xs: "2rem", md: "2.3rem" },
+                }}
+              >
+                {name}
+              </Typography>
+            </Stack>
             {!room.comingSoon ? (
               <Box sx={{ textAlign: "right" }}>
                 <Typography className="font-serif" sx={{ fontSize: { xs: "1.5rem", md: "1.7rem" }, lineHeight: 1, color: "var(--gold-soft)" }}>
@@ -284,22 +329,13 @@ export default function RoomsSection({ rooms: roomsProp }) {
   return (
     <Box component="section" id="rooms" className="section-anchor" sx={{ py: { xs: 10, md: 14 } }}>
       <Container maxWidth="lg">
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ justifyContent: "space-between", alignItems: { md: "flex-end" }, mb: { xs: 5, md: 7 } }}
-        >
-          <SectionHeading index="01" kicker={t("kicker")} title={t("title")} subtitle={t("subtitle")} />
-          <Button
-            component={Link}
-            href="/chambres-tarifs"
-            variant="outlined"
-            endIcon={<ArrowOutwardIcon />}
-            sx={{ flexShrink: 0, color: "var(--text)" }}
-          >
-            {t("details")}
-          </Button>
-        </Stack>
+        <SectionHeading
+          index="01"
+          kicker={t("kicker")}
+          title={t("title")}
+          subtitle={t("subtitle")}
+          sx={{ mb: { xs: 5, md: 7 } }}
+        />
 
         <Grid container spacing={{ xs: 2.5, md: 3 }}>
           <Grid size={{ xs: 12, md: 7 }}>

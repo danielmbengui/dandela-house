@@ -59,6 +59,74 @@
       "roomNamed": "o quarto {name}",
       "undated": "datas a definir"
     },
+    "floorPlan": {
+      "kicker": "Planta interativa",
+      "title": "Percurso dos quartos",
+      "subtitle": "Explore a casa piso a piso: rode a maquete e clique num quarto para abrir a sua ficha.",
+      "hint": "Arraste para rodar · clique num quarto",
+      "hintStairs": "Arraste para rodar · clique nas escadas para mudar de piso",
+      "floorsLabel": "Escolher um piso",
+      "floorName": "{floor, plural, =0 {Rés-do-chão} other {#.º andar}}",
+      "floorShort": "{floor}",
+      "basementName": "Cave {level}",
+      "onThisFloor": "Neste piso",
+      "stairs": "Escadas",
+      "kinds": {
+        "room": "Quarto",
+        "break-room": "Sala de descanso",
+        "waiting-room": "Sala de espera",
+        "kitchen": "Cozinha",
+        "terrace": "Terraço",
+        "parking": "Estacionamento",
+        "other": "Espaço comum"
+      },
+      "zones": {
+        "security": {
+          "name": "Vigilância",
+          "tag": "Segurança"
+        },
+        "kitchen": {
+          "name": "Cozinha"
+        },
+        "outdoor": {
+          "name": "Exterior",
+          "tag": "Fora do percurso"
+        },
+        "terrace": {
+          "name": "Terraço",
+          "tag": "Ao ar livre"
+        },
+        "balcony": {
+          "name": "Varanda",
+          "tag": "Ao ar livre"
+        },
+        "reception": {
+          "name": "Receção",
+          "tag": "Acolhimento"
+        },
+        "parking": {
+          "name": "Estacionamento",
+          "tag": "Veículos"
+        },
+        "entrance": {
+          "name": "Entrada"
+        },
+        "carEntrance": {
+          "name": "Entrada de viaturas"
+        }
+      },
+      "legend": {
+        "room": "Quartos",
+        "common": "Espaços comuns",
+        "outdoor": "Terraço e varanda",
+        "exterior": "Fora do percurso",
+        "service": "Serviços",
+        "corridor": "Circulação",
+        "stairs": "Escadas"
+      },
+      "close": "Fechar",
+      "unavailable": "A maquete 3D não pode ser apresentada neste dispositivo. A lista de espaços continua disponível."
+    },
     "marquee": {
       "items": [
         "Kitchenette equipada",
@@ -73,7 +141,7 @@
     },
     "rooms": {
       "kicker": "Os quartos",
-      "title": "Cinco quartos, o mesmo cuidado em cada detalhe",
+      "title": "Vários quartos, o mesmo cuidado em cada detalhe",
       "subtitle": "Cada quarto tem o nome de uma cidade de Angola. Todos ficam no andar de cima, com o mesmo equipamento: kitchenette, frigorífico, casa de banho, cama de casal, TV, ar condicionado e varanda.",
       "perNight": "/ noite",
       "soon": "Em breve",
@@ -81,6 +149,7 @@
       "book": "Reservar",
       "details": "Todos os quartos",
       "doorAlt": "Placa do quarto {name}",
+      "logoAlt": "Logótipo do quarto {name}",
       "features": {
         "bed": "Cama de casal",
         "kitchenette": "Kitchenette",

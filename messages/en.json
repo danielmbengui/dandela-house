@@ -59,6 +59,74 @@
       "roomNamed": "the {name} room",
       "undated": "dates to be confirmed"
     },
+    "floorPlan": {
+      "kicker": "Interactive plan",
+      "title": "Room walkthrough",
+      "subtitle": "Explore the house floor by floor: rotate the model and click a room to open its details.",
+      "hint": "Drag to rotate · click a room",
+      "hintStairs": "Drag to rotate · click the stairs to change floor",
+      "floorsLabel": "Choose a floor",
+      "floorName": "{floor, plural, =0 {Ground floor} other {{floor, selectordinal, one {#st floor} two {#nd floor} few {#rd floor} other {#th floor}}}}",
+      "floorShort": "{floor}",
+      "basementName": "Basement {level}",
+      "onThisFloor": "On this floor",
+      "stairs": "Stairs",
+      "kinds": {
+        "room": "Room",
+        "break-room": "Lounge",
+        "waiting-room": "Waiting room",
+        "kitchen": "Kitchen",
+        "terrace": "Terrace",
+        "parking": "Parking",
+        "other": "Shared space"
+      },
+      "zones": {
+        "security": {
+          "name": "Surveillance",
+          "tag": "Security"
+        },
+        "kitchen": {
+          "name": "Kitchen"
+        },
+        "outdoor": {
+          "name": "Outdoor grounds",
+          "tag": "Not on the tour"
+        },
+        "terrace": {
+          "name": "Terrace",
+          "tag": "Open air"
+        },
+        "balcony": {
+          "name": "Balcony",
+          "tag": "Open air"
+        },
+        "reception": {
+          "name": "Reception",
+          "tag": "Welcome"
+        },
+        "parking": {
+          "name": "Parking",
+          "tag": "Vehicles"
+        },
+        "entrance": {
+          "name": "Entrance"
+        },
+        "carEntrance": {
+          "name": "Car entrance"
+        }
+      },
+      "legend": {
+        "room": "Rooms",
+        "common": "Shared spaces",
+        "outdoor": "Terrace & balcony",
+        "exterior": "Outside the house",
+        "service": "Services",
+        "corridor": "Circulation",
+        "stairs": "Stairs"
+      },
+      "close": "Close",
+      "unavailable": "The 3D model cannot be displayed on this device. The list of spaces is still available."
+    },
     "marquee": {
       "items": [
         "Equipped kitchenette",
@@ -73,7 +141,7 @@
     },
     "rooms": {
       "kicker": "The rooms",
-      "title": "Five rooms, the same care in every detail",
+      "title": "Our rooms, the same care in every detail",
       "subtitle": "Each room is named after an Angolan city. All are upstairs with the same setup: kitchenette, fridge, bathroom, double bed, TV, air conditioning and balcony.",
       "perNight": "/ night",
       "soon": "Coming soon",
@@ -81,6 +149,7 @@
       "book": "Book",
       "details": "All rooms",
       "doorAlt": "{name} room door sign",
+      "logoAlt": "{name} room logo",
       "features": {
         "bed": "Double bed",
         "kitchenette": "Kitchenette",

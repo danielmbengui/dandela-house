@@ -214,6 +214,12 @@ body {
   font-family: var(--font-cormorant), Georgia, serif;
 }
 
+/* Accueil : Outfit partout (aligné header / navigation) */
+.home-page-sans .MuiTypography-root,
+.home-page-sans .font-serif {
+  font-family: var(--font-outfit), system-ui, sans-serif !important;
+}
+
 .glass {
   background: var(--surface);
   border: 1px solid var(--border);

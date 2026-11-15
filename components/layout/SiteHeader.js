@@ -48,10 +48,7 @@ const navItems = [
   { key: "contact", hash: "contact" },
 ];
 
-const aroundItems = [
-  { key: "faq", hash: "faq" },
-  { key: "roomsPage", href: "/chambres-tarifs" },
-];
+const aroundItems = [{ key: "faq", hash: "faq" }];
 
 const SECTION_IDS = navItems.map((item) => item.hash);
 const SCROLL_SPY_OFFSET = 112;
@@ -59,14 +56,7 @@ const SCROLL_SPY_OFFSET = 112;
 function useActiveNavSection(pathname) {
   const [activeHash, setActiveHash] = useState(null);
 
-  const isRoomsPage = pathname === "/chambres-tarifs" || pathname === "/rooms-rates";
-
   useEffect(() => {
-    if (isRoomsPage) {
-      setActiveHash("rooms");
-      return undefined;
-    }
-
     if (pathname !== "/") {
       setActiveHash(null);
       return undefined;
@@ -95,16 +85,13 @@ function useActiveNavSection(pathname) {
       window.removeEventListener("scroll", readActiveFromScroll);
       window.removeEventListener("hashchange", readActiveFromHash);
     };
-  }, [pathname, isRoomsPage]);
+  }, [pathname]);
 
   return activeHash;
 }
 
 function isNavItemActive(item, activeHash, pathname) {
   if (item.hash && activeHash === item.hash) return true;
-  if (item.href === "/chambres-tarifs" && (pathname === "/chambres-tarifs" || pathname === "/rooms-rates")) {
-    return true;
-  }
   if (item.hash === "faq" && activeHash === "faq") return true;
   return false;
 }

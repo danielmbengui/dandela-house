@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import HeroSection from "./HeroSection";
 import MarqueeStrip from "./MarqueeStrip";
+import FloorPlanSection from "./FloorPlanSection";
 import RoomsSection from "./RoomsSection";
 import VideoTourSection from "./VideoTourSection";
 import ExperienceSection from "./ExperienceSection";
@@ -10,17 +11,21 @@ import ReviewsSection from "./ReviewsSection";
 import FaqSection from "./FaqSection";
 import BookingCtaSection from "./BookingCtaSection";
 import { fetchMarqueeBannerTexts } from "@/lib/api/banners";
+import { fetchHouseGalleryImages, resolveGalleryImages } from "@/lib/api/galleries";
 import { fetchEntityLocation } from "@/lib/api/location";
-import { fetchHomeRooms } from "@/lib/api/rooms";
+import { fetchHomeRooms, fetchHouseCommonPlaces } from "@/lib/api/rooms";
 import { homeRooms } from "@/lib/rooms";
 
 export default async function HomePage() {
   const locale = await getLocale();
-  const [apiItems, apiRooms, entityLocation] = await Promise.all([
+  const [apiItems, apiRooms, entityLocation, apiGallery, commonPlaces] = await Promise.all([
     fetchMarqueeBannerTexts(locale),
     fetchHomeRooms(),
     fetchEntityLocation(locale),
+    fetchHouseGalleryImages(),
+    fetchHouseCommonPlaces(),
   ]);
+  const galleryImages = resolveGalleryImages(apiGallery);
   const roomsForHome = apiRooms.length ? apiRooms : homeRooms;
   let marqueeItems = apiItems;
 
@@ -30,17 +35,18 @@ export default async function HomePage() {
   }
 
   return (
-    <>
+    <div className="home-page-sans">
       <HeroSection />
       <MarqueeStrip items={marqueeItems} />
+      <FloorPlanSection rooms={roomsForHome} commons={commonPlaces} />
       <RoomsSection rooms={roomsForHome} />
       <VideoTourSection />
       <ExperienceSection />
-      <GallerySection />
+      <GallerySection images={galleryImages} />
       <LocationSection location={entityLocation} />
       <ReviewsSection />
       <FaqSection />
       <BookingCtaSection location={entityLocation} />
-    </>
+    </div>
   );
 }

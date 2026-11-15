@@ -6,6 +6,7 @@ import { AppProviders } from "@/components/providers/AppProviders";
 import DocumentLang from "@/components/providers/DocumentLang";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
+import { fetchEntityLocation } from "@/lib/api/location";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -38,6 +39,7 @@ export default async function LocaleLayout({ children, params }) {
   setRequestLocale(locale);
   const messages = await getMessages();
   const timeZone = await getTimeZone();
+  const entityLocation = await fetchEntityLocation(locale);
 
   return (
     <AppProviders locale={locale} messages={messages} timeZone={timeZone}>
@@ -46,7 +48,7 @@ export default async function LocaleLayout({ children, params }) {
       <main className="w-full max-w-full overflow-x-clip pt-16 md:pt-[76px]">
         {children}
       </main>
-      <SiteFooter />
+      <SiteFooter location={entityLocation} />
     </AppProviders>
   );
 }

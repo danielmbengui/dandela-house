@@ -7,11 +7,6 @@ export const routing = defineRouting({
   localePrefix: "always",
   pathnames: {
     "/": "/",
-    "/chambres-tarifs": {
-      pt: "/chambres-tarifs",
-      fr: "/chambres-tarifs",
-      en: "/rooms-rates",
-    },
   },
 });
 

@@ -40,10 +40,16 @@ function ArrowLink({ href, external, children }) {
   );
 }
 
-export default function SiteFooter() {
+/** @param {{ location?: Awaited<ReturnType<typeof import("@/lib/api/location").fetchEntityLocation>> | null }} props */
+export default function SiteFooter({ location = null }) {
   const t = useTranslations();
   const tLoc = useTranslations("home.location");
   const year = new Date().getFullYear();
+
+  const phones = location?.phones?.length ? location.phones : SITE.phones;
+  const email = location?.email?.trim() || SITE.email;
+  const addressLine = location?.addressLine?.trim() || tLoc("address");
+  const socialLinks = location?.socialLinks ?? [];
 
   return (
     <Box component="footer" sx={{ mt: { xs: 4, md: 6 }, bgcolor: "var(--card-color)", borderTop: "1px solid var(--border)" }}>
@@ -78,35 +84,37 @@ export default function SiteFooter() {
                   {t(`nav.${item.key}`)}
                 </ArrowLink>
               ))}
-              <ArrowLink href="/chambres-tarifs">{t("nav.roomsPage")}</ArrowLink>
             </Stack>
           </Grid>
 
-          <Grid size={{ xs: 6, sm: 4, md: 2 }}>
-            <Typography variant="overline" sx={{ color: "var(--primary)" }}>
-              {t("footer.socialTitle")}
-            </Typography>
-            <Stack spacing={1.25} sx={{ mt: 2 }}>
-              <ArrowLink external href={whatsappHref()}>WhatsApp</ArrowLink>
-              <ArrowLink external href={SITE.social.facebook}>Facebook</ArrowLink>
-              <ArrowLink external href={SITE.social.instagram}>Instagram</ArrowLink>
-              <ArrowLink external href={SITE.social.tiktok}>TikTok</ArrowLink>
-            </Stack>
-          </Grid>
+          {socialLinks.length > 0 ? (
+            <Grid size={{ xs: 6, sm: 4, md: 2 }}>
+              <Typography variant="overline" sx={{ color: "var(--primary)" }}>
+                {t("footer.socialTitle")}
+              </Typography>
+              <Stack spacing={1.25} sx={{ mt: 2 }}>
+                {socialLinks.map((item) => (
+                  <ArrowLink key={item.id} external href={item.href}>
+                    {item.label}
+                  </ArrowLink>
+                ))}
+              </Stack>
+            </Grid>
+          ) : null}
 
           <Grid size={{ xs: 12, sm: 4, md: 3 }}>
             <Typography variant="overline" sx={{ color: "var(--primary)" }}>
               {t("footer.contactTitle")}
             </Typography>
             <Stack spacing={1.25} sx={{ mt: 2 }}>
-              {SITE.phones.map((phone) => (
+              {phones.map((phone) => (
                 <ArrowLink key={phone.e164} external href={whatsappHref(undefined, phone.e164)}>
                   {phone.display}
                 </ArrowLink>
               ))}
-              <ArrowLink external href={`mailto:${SITE.email}`}>{SITE.email}</ArrowLink>
+              <ArrowLink external href={`mailto:${email}`}>{email}</ArrowLink>
               <Typography sx={{ color: "var(--text-muted)", fontSize: 15, lineHeight: 1.6 }}>
-                {tLoc("address")}
+                {addressLine}
               </Typography>
             </Stack>
           </Grid>
