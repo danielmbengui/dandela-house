@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import {
   CONSENT,
@@ -84,8 +84,16 @@ export default function PreferencesConsent() {
       <Typography sx={{ fontWeight: 600, fontSize: 13, letterSpacing: "0.02em", mb: 0.5 }}>
         {t("title")}
       </Typography>
-      <Typography sx={{ color: "var(--text-muted)", fontSize: 12.5, lineHeight: 1.55, mb: 1.5 }}>
+      <Typography sx={{ color: "var(--text-muted)", fontSize: 12.5, lineHeight: 1.55, mb: 1 }}>
         {t("body")}
+      </Typography>
+      <Typography sx={{ fontSize: 12, mb: 1.5 }}>
+        <Link
+          href="/legal/privacy"
+          style={{ color: "var(--primary)", textDecoration: "underline", textUnderlineOffset: 3 }}
+        >
+          {t("privacyLink")}
+        </Link>
       </Typography>
       <Stack direction="row" spacing={0.75} sx={{ justifyContent: "flex-end" }}>
         <Button

@@ -152,7 +152,7 @@ function Area({ floor, area, palette, presence, floorActive, highlighted, onPath
   useEffect(() => () => geometry.dispose(), [geometry]);
 
   const height = HEIGHTS[area.tone] ?? HEIGHTS.common;
-  const baseColor = palette.tones[area.tone] ?? palette.tones.common;
+  const baseColor = area.fillColor || (palette.tones[area.tone] ?? palette.tones.common);
   const interactive = floorActive && Boolean(onSelect);
   const isStairs = area.kind === "stairs";
   /** Volume hors maison (cours, limite du plan) : discret, sans mise en avant rouge. */

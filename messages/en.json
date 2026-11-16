@@ -305,6 +305,9 @@
     }
   },
   "footer": {
+    "legalTitle": "Legal",
+    "termsLink": "Terms of use",
+    "privacyLink": "Privacy policy",
     "tagline": "Guest house in Sapù (Calemba 2), Luanda — Angola.",
     "rights": "All rights reserved.",
     "socialTitle": "Follow us",
@@ -359,6 +362,7 @@
   "consent": {
     "title": "Cookies",
     "body": "This site may store some information on your device to improve your visit. Accept to keep it between visits, or decline if you prefer not to save it.",
+    "privacyLink": "Privacy policy",
     "accept": "Accept",
     "reject": "Decline"
   }

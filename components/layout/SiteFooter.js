@@ -102,6 +102,16 @@ export default function SiteFooter({ location = null }) {
             </Grid>
           ) : null}
 
+          <Grid size={{ xs: 6, sm: 4, md: 2 }}>
+            <Typography variant="overline" sx={{ color: "var(--primary)" }}>
+              {t("footer.legalTitle")}
+            </Typography>
+            <Stack spacing={1.25} sx={{ mt: 2 }}>
+              <ArrowLink href="/legal/terms">{t("footer.termsLink")}</ArrowLink>
+              <ArrowLink href="/legal/privacy">{t("footer.privacyLink")}</ArrowLink>
+            </Stack>
+          </Grid>
+
           <Grid size={{ xs: 12, sm: 4, md: 3 }}>
             <Typography variant="overline" sx={{ color: "var(--primary)" }}>
               {t("footer.contactTitle")}

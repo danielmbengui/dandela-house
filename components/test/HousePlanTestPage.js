@@ -178,13 +178,17 @@ export default function HousePlanTestPage({ payload }) {
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 } }}>
       <Stack spacing={2} sx={{ mb: 3 }}>
-        <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
+        <Stack
+          direction="row"
+          spacing={1}
+          sx={{ alignItems: "center", flexWrap: "wrap", gap: 1 }}
+        >
           <Typography variant="h4" component="h1">
             Test plan maison (BDD)
           </Typography>
           <Chip label="temporaire" size="small" color="warning" variant="outlined" />
         </Stack>
-        <Typography color="text.secondary" maxWidth={720}>
+        <Typography color="text.secondary" sx={{ maxWidth: 720 }}>
           Données `houses_floors`, `houses_floor_zones`, `houses_floor_cells`. La grille 2D respecte le
           repère 1/1 en bas à gauche ; la vue 3D réutilise le moteur de la page d’accueil.
         </Typography>

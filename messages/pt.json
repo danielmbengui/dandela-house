@@ -309,6 +309,9 @@
     "rights": "Todos os direitos reservados.",
     "socialTitle": "Siga-nos",
     "exploreTitle": "Explorar",
+    "legalTitle": "Legal",
+    "termsLink": "Termos de utilização",
+    "privacyLink": "Política de privacidade",
     "contactTitle": "Contacto",
     "statement": "A estadia começa aqui",
     "backToTop": "Voltar ao topo"
@@ -359,6 +362,7 @@
   "consent": {
     "title": "Cookies",
     "body": "Este site pode guardar algumas informações no seu dispositivo para melhorar a sua visita. Aceite para as manter entre visitas, ou recuse para não as registar.",
+    "privacyLink": "Política de privacidade",
     "accept": "Aceitar",
     "reject": "Recusar"
   }

@@ -13,17 +13,19 @@ import BookingCtaSection from "./BookingCtaSection";
 import { fetchMarqueeBannerTexts } from "@/lib/api/banners";
 import { fetchHouseGalleryImages, resolveGalleryImages } from "@/lib/api/galleries";
 import { fetchEntityLocation } from "@/lib/api/location";
+import { fetchHouseFloorPlan } from "@/lib/api/floorPlan";
 import { fetchHomeRooms, fetchHouseCommonPlaces } from "@/lib/api/rooms";
 import { homeRooms } from "@/lib/rooms";
 
 export default async function HomePage() {
   const locale = await getLocale();
-  const [apiItems, apiRooms, entityLocation, apiGallery, commonPlaces] = await Promise.all([
+  const [apiItems, apiRooms, entityLocation, apiGallery, commonPlaces, floorPlan] = await Promise.all([
     fetchMarqueeBannerTexts(locale),
     fetchHomeRooms(),
     fetchEntityLocation(locale),
     fetchHouseGalleryImages(),
     fetchHouseCommonPlaces(),
+    fetchHouseFloorPlan(),
   ]);
   const galleryImages = resolveGalleryImages(apiGallery);
   const roomsForHome = apiRooms.length ? apiRooms : homeRooms;
@@ -38,7 +40,7 @@ export default async function HomePage() {
     <div className="home-page-sans">
       <HeroSection />
       <MarqueeStrip items={marqueeItems} />
-      <FloorPlanSection rooms={roomsForHome} commons={commonPlaces} />
+      <FloorPlanSection rooms={roomsForHome} commons={commonPlaces} floorPlan={floorPlan} />
       <RoomsSection rooms={roomsForHome} />
       <VideoTourSection />
       <ExperienceSection />

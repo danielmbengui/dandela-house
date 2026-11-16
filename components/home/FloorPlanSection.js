@@ -11,7 +11,7 @@ import { cardRadius } from "@/components/ui/GlassCard";
 import PlaceDialog from "@/components/home/floorPlan/PlaceDialog";
 import { FLOOR_PALETTES, LEGEND_TONES } from "@/components/home/floorPlan/palette";
 import { useThemeMode } from "@/components/providers/ThemeModeProvider";
-import { ZONES, buildFloors } from "@/lib/floorPlan";
+import { buildHomeFloors, dbZoneI18nKey, dbZoneLabel } from "@/lib/floorPlan";
 import { formatKz } from "@/lib/format";
 import { homeRooms } from "@/lib/rooms";
 
@@ -70,9 +70,9 @@ function ToneBar({ color }) {
 }
 
 /**
- * @param {{ rooms?: typeof homeRooms, commons?: object[] }} props
+ * @param {{ rooms?: typeof homeRooms, commons?: object[], floorPlan?: { floors?: object[] } | null }} props
  */
-export default function FloorPlanSection({ rooms: roomsProp, commons }) {
+export default function FloorPlanSection({ rooms: roomsProp, commons, floorPlan }) {
   const t = useTranslations("home.floorPlan");
   const tRooms = useTranslations("home.rooms");
   const { resolvedMode } = useThemeMode();
@@ -92,15 +92,27 @@ export default function FloorPlanSection({ rooms: roomsProp, commons }) {
   );
   const zoneTag = useCallback(
     (zone) => {
-      const key = `zones.${zone}.tag`;
+      const i18nZone = dbZoneI18nKey(zone);
+      const key = `zones.${i18nZone}.tag`;
       return t.has(key) ? t(key) : "";
+    },
+    [t],
+  );
+
+  const zoneTitle = useCallback(
+    (floor, area) => {
+      if (area.dbLabel) return area.dbLabel;
+      const i18nZone = dbZoneI18nKey(area.zone);
+      const key = `zones.${i18nZone}.name`;
+      if (i18nZone && t.has(key)) return t(key);
+      return dbZoneLabel(floor, area.key) || area.zone || "";
     },
     [t],
   );
 
   /** Étages + textes affichés sur la maquette (nom du lieu, catégorie, destination de l'escalier). */
   const floors = useMemo(() => {
-    const built = buildFloors({ rooms, commons: commons ?? [] });
+    const built = buildHomeFloors({ rooms, commons: commons ?? [], floorPlan });
     const withStairs = built.filter((floor) => floor.hasStairs);
 
     return built.map((floor) => {
@@ -118,7 +130,7 @@ export default function FloorPlanSection({ rooms: roomsProp, commons }) {
           if (place) texts[area.key] = { title: place.shortName, subtitle: kindLabel(place.kind) };
         } else if (area.kind === "zone") {
           texts[area.key] = {
-            title: t(`zones.${area.zone}.name`),
+            title: zoneTitle(floor, area),
             subtitle: zoneTag(area.zone),
           };
         } else if (area.kind === "stairs") {
@@ -130,7 +142,7 @@ export default function FloorPlanSection({ rooms: roomsProp, commons }) {
       }
       return { ...floor, stairsTarget, texts };
     });
-  }, [rooms, commons, t, kindLabel, floorName, zoneTag]);
+  }, [rooms, commons, floorPlan, t, kindLabel, floorName, zoneTag, zoneTitle]);
 
   const [activeLevel, setActiveLevel] = useState(null);
   const [hoveredKey, setHoveredKey] = useState(null);
@@ -266,7 +278,7 @@ export default function FloorPlanSection({ rooms: roomsProp, commons }) {
                   pointerEvents: "none",
                 }}
               >
-                {floorName(active.level)}
+                {active.name?.trim() || floorName(active.level)}
               </Typography>
 
               {/* Sélecteur d'étage, du plus bas au plus haut : le rez-de-chaussée d'abord */}
@@ -285,8 +297,8 @@ export default function FloorPlanSection({ rooms: roomsProp, commons }) {
                         component="button"
                         type="button"
                         aria-pressed={current}
-                        aria-label={floorName(floor.level)}
-                        title={floorName(floor.level)}
+                        aria-label={floor.name?.trim() || floorName(floor.level)}
+                        title={floor.name?.trim() || floorName(floor.level)}
                         onClick={() => selectFloor(floor.level)}
                         sx={{
                           minWidth: 44,
@@ -357,14 +369,14 @@ export default function FloorPlanSection({ rooms: roomsProp, commons }) {
                     };
 
                 if (!place) {
+                  const area = active.areas.find((a) => a.key === item.key);
+                  const title = area ? zoneTitle(active, area) : item.zone;
                   return (
                     <Box component="li" key={item.key}>
                       <Box sx={rowSx(item.key, false, item.tone)} {...hover}>
                         <ToneBar color={palette.tones[item.tone]} />
                         <Box sx={{ minWidth: 0, flex: 1 }}>
-                          <Typography sx={{ fontWeight: 600, lineHeight: 1.2 }}>
-                            {t(`zones.${item.zone}.name`)}
-                          </Typography>
+                          <Typography sx={{ fontWeight: 600, lineHeight: 1.2 }}>{title}</Typography>
                           {zoneTag(item.zone) ? (
                             <Typography variant="caption" sx={{ color: "var(--text-muted)" }}>
                               {zoneTag(item.zone)}
