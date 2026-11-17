@@ -179,8 +179,16 @@ Authorization: Bearer <id_token>
 `phone_number` optionnel si déjà sur le profil utilisateur.  
 En **tests sandbox**, utiliser `900000000` (succès), `900000001` (solde insuffisant), etc.
 
-Stocker côté app : `charge.id` (UUID AppyPay) + `merchant_transaction_id` pour corréler avec la commande / réservation.  
-Poller `GET …/charges/:id` ou attendre le webhook configuré sur l’API (`/api/payments/appypay/webhook`).
+**Persistance réservation** — table `bookings_transactions` (API) :
+
+| Colonne | Valeur |
+|---------|--------|
+| `merchant_transaction_id` | Transaction ID AppyPay = `charge.id` (UUID) |
+| `reference_number` | Provider Transaction ID (ex. GPO Multicaixa) |
+| `merchant_reference` | ID marchand 15 car. (`appypay_merchant_reference` dans la réponse charge) |
+
+Créer la ligne en passant `uid_booking` dans `POST /api/payments/app/charges`, ou `POST /api/bookings-transactions` avec `sync_from_charge_id`.  
+Poller `GET …/charges/:id` ou webhook (`/api/payments/appypay/webhook`) pour mettre à jour `reference_number` et le statut.
 
 ### Référence bancaire
 
