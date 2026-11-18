@@ -109,13 +109,18 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE } },
 };
 
-export default function HeroSection() {
+/**
+ * @param {{ startingPriceKz?: number, receptionHours?: string|null }} props
+ */
+export default function HeroSection({ startingPriceKz, receptionHours = null }) {
   const t = useTranslations("home.hero");
   const tVideo = useTranslations("home.video");
   const reduce = useReducedMotion();
 
+  const priceKz = startingPriceKz ?? startingPrice;
+
   const stats = [1, 2, 3, 4].map((i) => ({
-    value: t(`stat${i}Value`),
+    value: i === 2 && receptionHours ? receptionHours : t(`stat${i}Value`),
     label: t(`stat${i}Label`),
   }));
 
@@ -142,12 +147,12 @@ export default function HeroSection() {
         style={{ position: "absolute", inset: 0, zIndex: -3 }}
       >
         <Image
-          src="/images/main-header.jpg"
+          src="https://medias.house.dandela.com/houses/srdb7mYRXOLYj1sK05OgFA7544Bi/outside/outside-center.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center 28%" }}
+          style={{ objectFit: "cover", objectPosition: "center" }}
         />
       </motion.div>
 
@@ -280,7 +285,7 @@ export default function HeroSection() {
                     className="font-serif"
                     sx={{ fontSize: { xs: "1.8rem", md: "2.2rem" }, lineHeight: 1, color: CREAM }}
                   >
-                    {formatKz(startingPrice)}
+                    {formatKz(priceKz)}
                   </Typography>
                   <Typography variant="body2" sx={{ color: CREAM_MUTED }}>
                     {t("perNight")}

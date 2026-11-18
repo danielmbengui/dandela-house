@@ -247,7 +247,8 @@ x-api-key: <API_KEY_APP>
 | Détail + chambres | `GET /api/houses/:uid` |
 | Chambre | `GET /api/rooms/:uid` (`price` depuis `entities_pricings` si présent, sinon `rooms`) |
 | Offres réservables | `GET /api/rooms?bookable=1&available=1&adults=&children=` (+ `occupancy=1` pour les bornes) |
-| Grille tarifs | `GET /api/entities/:uid/pricings` (`price`, `uid_currency`) |
+| Grille tarifs | `GET /api/entities/:uid/pricings`, catalogue `GET /api/entities-pricings` (`?uid_house=&min_room_price=1`) |
+| Horaires réception | `GET /api/entities-opening-hours?uid_entity=&role=reception&lang=` (`primary.text`) |
 | Devises catalogue | `GET /api/currencies` |
 | Devises de l’entité | `GET /api/entities/:uid/currencies` |
 | Saisons catalogue | `GET /api/seasons` |
