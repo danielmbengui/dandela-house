@@ -80,6 +80,22 @@
         "parking": "Parking",
         "other": "Shared space"
       },
+      "zoneTypes": {
+        "entry": "Entrance",
+        "carEntry": "Vehicle entrance",
+        "corridor": "Corridor",
+        "kitchen": "Kitchen",
+        "extern": "Outdoor",
+        "commonPiece": "Shared room",
+        "parking": "Parking",
+        "room": "Room",
+        "stairs": "Stairs",
+        "balcony": "Balcony",
+        "security": "Security",
+        "reception": "Reception",
+        "terrace": "Terrace",
+        "other": "Other"
+      },
       "zones": {
         "security": {
           "name": "Surveillance",

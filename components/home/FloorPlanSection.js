@@ -11,7 +11,7 @@ import { cardRadius } from "@/components/ui/GlassCard";
 import PlaceDialog from "@/components/home/floorPlan/PlaceDialog";
 import { FLOOR_PALETTES, LEGEND_TONES } from "@/components/home/floorPlan/palette";
 import { useThemeMode } from "@/components/providers/ThemeModeProvider";
-import { buildHomeFloors, dbZoneI18nKey, dbZoneLabel } from "@/lib/floorPlan";
+import { buildHomeFloors, dbZoneI18nKey, normalizeFloorZoneType } from "@/lib/floorPlan";
 import { formatKz } from "@/lib/format";
 import { homeRooms } from "@/lib/rooms";
 
@@ -31,8 +31,6 @@ class CanvasBoundary extends Component {
     return this.state.failed ? this.props.fallback : this.props.children;
   }
 }
-
-const KNOWN_KINDS = new Set(["room", "break-room", "waiting-room", "kitchen", "terrace", "parking"]);
 
 /** Pastille de légende. */
 function Swatch({ color, size = 12 }) {
@@ -86,31 +84,31 @@ export default function FloorPlanSection({ rooms: roomsProp, commons, floorPlan 
     (level) => (level < 0 ? t("basementName", { level: -level }) : t("floorName", { floor: level })),
     [t],
   );
-  const kindLabel = useCallback(
-    (kind) => t(`kinds.${KNOWN_KINDS.has(kind) ? kind : "other"}`),
-    [t],
-  );
-  const zoneTag = useCallback(
-    (zone) => {
-      const i18nZone = dbZoneI18nKey(zone);
-      const key = `zones.${i18nZone}.tag`;
-      return t.has(key) ? t(key) : "";
+
+  const zoneTypeLabel = useCallback(
+    (rawType) => {
+      const normalized = normalizeFloorZoneType(rawType);
+      const i18nKey = dbZoneI18nKey(normalized);
+      if (!i18nKey) return "";
+      const key = `zoneTypes.${i18nKey}`;
+      return t.has(key) ? t(key) : normalized;
     },
     [t],
   );
 
-  const zoneTitle = useCallback(
-    (floor, area) => {
-      if (area.dbLabel) return area.dbLabel;
-      const i18nZone = dbZoneI18nKey(area.zone);
-      const key = `zones.${i18nZone}.name`;
-      if (i18nZone && t.has(key)) return t(key);
-      return dbZoneLabel(floor, area.key) || area.zone || "";
-    },
-    [t],
+  const areaZoneType = useCallback((area) => {
+    if (area.zoneType) return normalizeFloorZoneType(area.zoneType);
+    if (area.zone) return normalizeFloorZoneType(area.zone);
+    if (area.kind === "stairs") return "stairs";
+    return "";
+  }, []);
+
+  const zoneAreaTitle = useCallback(
+    (area) => zoneTypeLabel(areaZoneType(area)),
+    [areaZoneType, zoneTypeLabel],
   );
 
-  /** Étages + textes affichés sur la maquette (nom du lieu, catégorie, destination de l'escalier). */
+  /** Étages + textes affichés sur la maquette (nom du lieu, type de zone, destination de l'escalier). */
   const floors = useMemo(() => {
     const built = buildHomeFloors({ rooms, commons: commons ?? [], floorPlan });
     const withStairs = built.filter((floor) => floor.hasStairs);
@@ -127,22 +125,27 @@ export default function FloorPlanSection({ rooms: roomsProp, commons, floorPlan 
       for (const area of floor.areas) {
         if (area.kind === "place") {
           const place = floor.places.find((p) => p.id === area.placeId);
-          if (place) texts[area.key] = { title: place.shortName, subtitle: kindLabel(place.kind) };
+          if (place) {
+            texts[area.key] = {
+              title: place.shortName || place.name,
+              subtitle: zoneTypeLabel(areaZoneType(area)),
+            };
+          }
         } else if (area.kind === "zone") {
           texts[area.key] = {
-            title: zoneTitle(floor, area),
-            subtitle: zoneTag(area.zone),
+            title: zoneAreaTitle(area),
+            subtitle: "",
           };
         } else if (area.kind === "stairs") {
           texts[area.key] = {
-            title: t("stairs"),
+            title: zoneTypeLabel("stairs"),
             subtitle: stairsTarget === null ? "" : floorName(stairsTarget),
           };
         }
       }
       return { ...floor, stairsTarget, texts };
     });
-  }, [rooms, commons, floorPlan, t, kindLabel, floorName, zoneTag, zoneTitle]);
+  }, [rooms, commons, floorPlan, floorName, zoneTypeLabel, areaZoneType, zoneAreaTitle]);
 
   const [activeLevel, setActiveLevel] = useState(null);
   const [hoveredKey, setHoveredKey] = useState(null);
@@ -181,6 +184,14 @@ export default function FloorPlanSection({ rooms: roomsProp, commons, floorPlan 
       }
     },
     [floors, openPlace],
+  );
+
+  const placeZoneTypeOnFloor = useCallback(
+    (floor, placeId) => {
+      const area = floor.areas.find((a) => a.kind === "place" && a.placeId === placeId);
+      return area ? zoneTypeLabel(areaZoneType(area)) : "";
+    },
+    [areaZoneType, zoneTypeLabel],
   );
 
   if (!active) return null;
@@ -370,18 +381,13 @@ export default function FloorPlanSection({ rooms: roomsProp, commons, floorPlan 
 
                 if (!place) {
                   const area = active.areas.find((a) => a.key === item.key);
-                  const title = area ? zoneTitle(active, area) : item.zone;
+                  const title = area ? zoneAreaTitle(area) : zoneTypeLabel(item.zone);
                   return (
                     <Box component="li" key={item.key}>
                       <Box sx={rowSx(item.key, false, item.tone)} {...hover}>
                         <ToneBar color={palette.tones[item.tone]} />
                         <Box sx={{ minWidth: 0, flex: 1 }}>
                           <Typography sx={{ fontWeight: 600, lineHeight: 1.2 }}>{title}</Typography>
-                          {zoneTag(item.zone) ? (
-                            <Typography variant="caption" sx={{ color: "var(--text-muted)" }}>
-                              {zoneTag(item.zone)}
-                            </Typography>
-                          ) : null}
                         </Box>
                       </Box>
                     </Box>
@@ -389,8 +395,9 @@ export default function FloorPlanSection({ rooms: roomsProp, commons, floorPlan 
                 }
 
                 const isRoom = place.type === "room";
+                const typeLine = placeZoneTypeOnFloor(active, place.id);
                 const meta = [
-                  kindLabel(place.kind),
+                  typeLine,
                   isRoom
                     ? place.source.comingSoon
                       ? tRooms("soon")
@@ -432,7 +439,14 @@ export default function FloorPlanSection({ rooms: roomsProp, commons, floorPlan 
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
         place={selected?.place ?? null}
-        kicker={selected ? `${kindLabel(selected.place.kind)} · ${floorName(selected.level)}` : ""}
+        kicker={
+          selected
+            ? `${placeZoneTypeOnFloor(
+                floors.find((f) => f.level === selected.level) ?? active,
+                selected.place.id,
+              )} · ${floorName(selected.level)}`
+            : ""
+        }
       />
     </Box>
   );
