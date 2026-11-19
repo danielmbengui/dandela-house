@@ -11,17 +11,17 @@ import ReviewsSection from "./ReviewsSection";
 import FaqSection from "./FaqSection";
 import BookingCtaSection from "./BookingCtaSection";
 import { bannerTextForLocale, fetchEntityBanners, receptionHoursFromBanners } from "@/lib/api/banners";
-import { fetchReceptionHoursLabel } from "@/lib/api/openingHours";
-import { fetchHouseMinRoomPrice } from "@/lib/api/pricings";
 import { fetchHouseGalleryImages, resolveGalleryImages } from "@/lib/api/galleries";
 import { fetchEntityLocation } from "@/lib/api/location";
 import { fetchHouseFloorPlan } from "@/lib/api/floorPlan";
-import { fetchHomeRooms, fetchHouseCommonPlaces } from "@/lib/api/rooms";
+import { fetchReceptionHoursLabel } from "@/lib/api/openingHours";
+import { fetchHouseMinRoomPrice } from "@/lib/api/pricings";
+import { fetchHomeRooms, fetchHouseCommonPlaces, minHomeRoomPrice } from "@/lib/api/rooms";
 import { homeRooms, startingPrice as fallbackStartingPrice } from "@/lib/rooms";
 
 export default async function HomePage() {
   const locale = await getLocale();
-  const [entityBanners, apiRooms, entityLocation, apiGallery, commonPlaces, floorPlan, pricingSummary, receptionHoursApi] =
+  const [entityBanners, apiRooms, entityLocation, apiGallery, commonPlaces, floorPlan, priceSummary, receptionHoursApi] =
     await Promise.all([
       fetchEntityBanners(locale),
       fetchHomeRooms(),
@@ -43,7 +43,10 @@ export default async function HomePage() {
     marqueeItems = t.raw("items");
   }
 
-  const heroStartingPrice = pricingSummary?.min_price ?? fallbackStartingPrice;
+  const heroStartingPrice =
+    priceSummary?.min_price ??
+    minHomeRoomPrice(roomsForHome) ??
+    fallbackStartingPrice;
   const heroReceptionHours =
     receptionHoursApi ?? receptionHoursFromBanners(entityBanners, locale);
 
